@@ -2,6 +2,13 @@ import React, { useState } from "react";
 import classes from "../styles/Signup.module.css";
 import Amazon_Logo from "../assets/logo/PrimeLogo.png";
 import Important from "../assets/logo/i.png";
+import EmailSignUp from "../components/EmailSignup";
+import {
+  checkForEmpty,
+  validateConfirmPassword,
+  validateEmail,
+  validatePassword,
+} from "../components/Validations";
 export const Signup = () => {
   const [shouldPerformValidation, setShouldPerformValidation] = useState(false);
   const [data, setData] = useState({
@@ -10,47 +17,6 @@ export const Signup = () => {
     Password: "",
     Confirm_password: "",
   });
-  const validateEmail = (text, errorMessage = "This is a required field") => {
-    if (text.trim().length === 0) {
-      return errorMessage;
-    }
-
-    let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-    return reg.test(text) ? "" : "Please enter valid email";
-  };
-  const validatePassword = (
-    text,
-    errorMessage = "This is a required field"
-  ) => {
-    if (text.trim().length === 0) {
-      return errorMessage;
-    }
-    let reg =
-      /^(?=.*[0-9])(?=.*[!@#$%^&*?)(])(?=.*[A-Z])[a-zA-Z0-9!@#$%^&*?)(]{6,12}$/;
-    return reg.test(text)
-      ? ""
-      : "Password Must contain at least one number and one uppercase and lowercase letter";
-  };
-  const checkForEmpty = (text, errorMessage = "This is a required field") => {
-    if (text.length === 0) {
-      return errorMessage;
-    }
-    return "";
-  };
-  const validateConfirmPassword = (
-    password1,
-    password2,
-    errorMessage = "Password does not match"
-  ) => {
-    if (password2.trim().length === 0) {
-      return "This is a required field";
-    }
-    if (password1 === password2) {
-      return "";
-    }
-    return errorMessage;
-  };
-
   const onChangeHandler = (e) => {
     const { name, value } = e.target;
     setData((prevState) => ({
@@ -58,7 +24,7 @@ export const Signup = () => {
       [name]: value,
     }));
   };
-  const onSubmitHandler = () => {
+  const onSubmitHandler = async () => {
     setShouldPerformValidation(true);
     if (
       !checkForEmpty(data.Name) &&
@@ -67,36 +33,66 @@ export const Signup = () => {
       !validateConfirmPassword(data.Password, data.Confirm_password)
     ) {
       setShouldPerformValidation(false);
-      console.log(data);
+      const Credential = await EmailSignUp(data.Email, data.Password);
+      console.log(Credential);
+      if (Credential) {
+        setData({
+          Name: "",
+          Email: "",
+          Password: "",
+          Confirm_password: "",
+        });
+      }
     }
   };
   return (
     <div className={classes.container}>
-      <img className={classes.logo} src={Amazon_Logo} />
+      <img className={classes.logo} src={Amazon_Logo} alt="amazon_logo" />
       <div className={classes.formdiv}>
         <div className={classes.formdivinner}>
           <h1>Create account</h1>
           <label>Your name</label>
-          <input name="Name" onChange={onChangeHandler}></input>
+          <input
+            value={data.Name}
+            name="Name"
+            onChange={onChangeHandler}
+          ></input>
           <p className={classes.errorp}>
-            {shouldPerformValidation && checkForEmpty(data.Name)}
+            {shouldPerformValidation &&
+              checkForEmpty(data.Name, "Enter your name")}
           </p>
           <label>Email</label>
-          <input name="Email" onChange={onChangeHandler}></input>
+          <input
+            value={data.Email}
+            name="Email"
+            onChange={onChangeHandler}
+          ></input>
           <p className={classes.errorp}>
-            {shouldPerformValidation && validateEmail(data.Email)}
+            {shouldPerformValidation &&
+              validateEmail(data.Email, "Enter your email")}
           </p>
           <label>Password</label>
-          <input name="Password" onChange={onChangeHandler}></input>
+          <input
+            value={data.Password}
+            type="password"
+            name="Password"
+            onChange={onChangeHandler}
+          ></input>
           <p className={classes.errorp}>
-            {shouldPerformValidation && validatePassword(data.Password)}
+            {shouldPerformValidation &&
+              validatePassword(data.Password, "Enter your password")}
           </p>
           <div className={classes.alignbox}>
-            <img className={classes.iLogo} src={Important}></img>
+            <img className={classes.iLogo} src={Important} alt="ilogo"></img>
             <span>Passwords must be at least 6 characters</span>
           </div>
           <label>Re-enter password</label>
-          <input name="Confirm_password" onChange={onChangeHandler}></input>
+          <input
+            value={data.Confirm_password}
+            type="password"
+            name="Confirm_password"
+            onChange={onChangeHandler}
+          ></input>
           <p className={classes.errorp}>
             {shouldPerformValidation &&
               validateConfirmPassword(data.Password, data.Confirm_password)}

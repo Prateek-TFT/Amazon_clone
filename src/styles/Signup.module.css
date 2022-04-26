@@ -98,3 +98,27 @@ hr {
   margin: 8px 2px;
   align-self: start;
 }
+@media screen and (max-width: 750px) {
+  .formdiv {
+    width: 50vw;
+  }
+  .formdivinner {
+    width: 46vw;
+  }
+}
+@media screen and (max-width: 500px) {
+  .formdiv {
+    width: 80vw;
+  }
+  .formdivinner {
+    width: 76vw;
+  }
+}
+@media screen and (max-width: 290px) {
+  .formdiv {
+    width: 90vw;
+  }
+  .formdivinner {
+    width: 86vw;
+  }
+}
