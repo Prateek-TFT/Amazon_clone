@@ -1,0 +1,57 @@
+.nav {
+  text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  background-color: #0f171e;
+  box-sizing: border-box;
+  color: rgba(242, 244, 246, 0.9);
+  cursor: default;
+  display: block;
+  font-size: 17px;
+  height: 70px;
+  left: 0;
+  line-height: 24px;
+  margin: 0;
+  padding: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 200;
+}
+
+.navContainer {
+  align-items: center;
+  box-sizing: border-box;
+  justify-content: center;
+  display: flex;
+  height: 100%;
+  margin: 0 auto;
+  padding: 16px 20px;
+  position: relative;
+  width: 100%;
+}
+.logo {
+  height: 5.5rem;
+}
+
+a {
+  vertical-align: baseline;
+}
+.navPrimaryComponents {
+  align-items: center;
+  display: flex;
+  flex-grow: 1;
+  flex-shrink: 1;
+  width: 100%;
+  justify-content: end;
+}
+.navAccounts {
+  padding-left: 1rem;
+  color: rgb(242 244 246 / 90%);
+  font-size: 14px;
+  font-family: Amazon Ember, Amazon Arabic Ember, Arial, sans-serif !important;
+}
+.navLanguage {
+  color: rgb(242 244 246 / 90%);
+  font-size: 14px;
+  font-family: Amazon Ember, Amazon Arabic Ember, Arial, sans-serif !important;
+}
