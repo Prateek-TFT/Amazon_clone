@@ -99,6 +99,10 @@ hr {
   margin: 8px 2px;
   align-self: start;
 }
+.hr {
+  width: 15vw;
+  background-image: linear-gradient(to left, white, gray, black, gray, white);
+}
 @media screen and (max-width: 750px) {
   .formdiv {
     width: 50vw;

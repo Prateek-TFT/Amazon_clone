@@ -106,7 +106,7 @@ export const Signup = () => {
             <p className={classes.pLink}>Privacy Notice</p>
           </p>
           <br></br>
-          <hr></hr>
+          <hr className={classes.hr}></hr>
           <div>
             <p>Already have an account?</p>
             <p className={classes.pLink}>Sign-in</p>
