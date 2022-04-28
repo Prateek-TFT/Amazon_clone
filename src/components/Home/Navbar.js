@@ -17,6 +17,27 @@ export default function Navbar() {
                     />
                 </a>
                 <div className={styles.navPrimaryComponents}>
+                    <div className={styles.navMainMenu}>
+                        <ul className={styles.navUl}>
+                            <li className={styles.navLi}>
+                                <a to="">Home</a>
+                            </li>
+                            <li className={styles.navLi}>
+                                <a to="">TV Shows</a>
+                            </li>
+                            <li className={styles.navLi}>
+                                <a to="">Movies</a>
+                            </li>
+                            <li className={styles.navLi}>
+                                <a to="">Channels</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div className={styles.navSearchbar}>
+                        <form className={styles.nosubmit}>
+                            <input className={styles.nosubmit} type="search" placeholder="Search" />
+                        </form>
+                    </div>
                     <div className={styles.navLanguage}>
                         <select>
                             {/* <option>EN</option> */}
@@ -24,7 +45,7 @@ export default function Navbar() {
                             <option value="Hindi">Hindi</option>
                         </select>
                     </div>
-                    <span className={styles.navAccounts}>Sign In</span>                    
+                    <span className={styles.navAccounts}>Sign In</span>
                 </div>
             </div>
         </header>
