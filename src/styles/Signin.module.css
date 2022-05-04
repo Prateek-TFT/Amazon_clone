@@ -1,0 +1,139 @@
+body {
+    font-size: 13px;
+    line-height: 19px;
+    color: #111;
+    font-family: Arial, sans-serif;
+  }
+  .logo {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .title {
+    font-size: 28px;
+    margin-bottom: 20px;
+    font-family: "Amazon Ember", Arial, sans-serif;
+  }
+  .container {
+    padding: 20px;
+  }
+  .outer_box {
+    margin-top: 20px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    align-items: center;
+    width: 330px;
+    /* border: 1px solid #dad1d1; */
+  
+  }
+  .signin {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    padding: 20px;
+    border: 1px solid #dad1d1;
+    border-radius: 5px;
+  }
+  .form {
+    display: flex;
+    flex-direction: column;
+  }
+  .form label {
+    color: black;
+    width: 100%;
+    font-weight: bold;
+  }
+  .form input {
+    border: 1px solid #a6a6a6;
+    border-radius: 3px;
+    outline: 0;
+    height: 30px;
+    margin-bottom: 10px;
+  }
+  
+  .form input:focus,
+  .form input :active {
+    border: 1px solid #e1b441;
+    border-radius: 3px;
+    outline: 0;
+    height: 30px;
+    margin-bottom: 10px;
+    box-shadow: 0px 0px 3px 1px #f0c14b;
+  }
+  .password {
+    display: flex;
+    justify-content: space-between;
+  }
+  .forget_pwd {
+    width: 80%;
+    color: #1815cf;
+    text-decoration: none;
+  }
+  .forget_pwd:hover, 
+  .forget_pwd:active {
+    width: 80%;
+    color: #d10c0c;
+    text-decoration:underline;
+  }
+  .button {
+    border: 1px solid #a6a6a6;
+    border-radius: 3px;
+    background: linear-gradient(to bottom, #f7dfa5, #f0c14b);
+    height: 30px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    outline: none;
+    cursor: pointer;
+  }
+  .button:hover {
+    background: linear-gradient(to bottom, #dcc692, #daa728);
+  }
+  .horizontal {
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px solid #acaaaa;
+    line-height: 1px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+  .horizontal span {
+    background: #fff;
+    padding: 0 7px;
+    color: #767676;
+  }
+  .button_signup {
+    border-color: #adb1b8 #a2a6ac #8d9096;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 3px;
+    background-color: #e7e9ec;
+    height: 30px;
+    margin-top: 10px;
+    outline: none;
+    cursor: pointer;
+  }
+  .button_signup:hover {
+    background-color: #d6dae2;
+  }
+  .invalid {
+    display: flex;
+    flex-direction: column;
+  }
+  .invalid label {
+    color: black;
+    width: 100%;
+    font-weight: bold;
+  }
+  .invalid input {
+    border: 1px solid #a81111;
+    border-radius: 3px;
+    outline: 0;
+    height: 30px;
+    box-shadow: 0px 0px 3px inset #f80000;
+  }
+  .invalid p {
+    color: #c40000;
+    font-size: 12px;
+    text-align: start;
+  }

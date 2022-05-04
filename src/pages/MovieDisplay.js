@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "../styles/MovieDisplay.module.css";
 import playbutton from "../assets/logo/play.png";
+import { Footer } from "../components/Footer";
 export const MovieDisplay = () => {
   return (
     <div className={styles.container}>
@@ -22,7 +23,11 @@ export const MovieDisplay = () => {
           </div>
         </div>
         <div className={styles.Subcontainerdiv}>
-          <img className={styles.Subcontainer1buttonImage} src={playbutton} />
+          <img
+            className={styles.Subcontainer1buttonImage}
+            alt={"playButton"}
+            src={playbutton}
+          />
           <button className={styles.Subcontainer1button}>Play</button>
           <div className={styles.Subcontainerdiv2}>
             <div className={styles.Subcontainerdiv2icons}>
@@ -171,7 +176,7 @@ export const MovieDisplay = () => {
       </div>
       <div className={styles.subContainer2}>
         <p>
-          By clicking play, you agree to our{" "}
+          By clicking play, you agree to our
           <p className={styles.castDetailrightsubdivblue}>Terms of Use.</p>
         </p>
         <div className={styles.subContainer2otherbox}>
@@ -227,8 +232,36 @@ export const MovieDisplay = () => {
           </div>
         </div>
       </div>
-      <div className={styles.subContainer3}></div>
-      <div className={styles.subContainer4}></div>
+      <div className={styles.subContainer3}>
+        <div className={styles.realated_detailsDiv}>
+          <p>Related</p>
+          <p>Details</p>
+        </div>
+        <p className={styles.moreDetailp}>More Details</p>
+        <div className={styles.moreDetailDiv}>
+          <div className={styles.moreDetailLeftDiv}>
+            <p>Producers</p>
+            <p>Studio</p>
+            <p>Content advisory</p>
+            <p>Supporting actors</p>
+          </div>
+          <div className={styles.moreDetailRightDiv}>
+            <p className={styles.castDetailrightsubdivblue}>
+              Farhan Akhtar , Hetvi Karia , Vijay Kiragandur , Rugved Mondkar ,
+              K.V. Rama Rao ,
+            </p>
+            <p>Hombale Films and Excel Entertainment Pvt Ltd</p>
+            <p> Smoking, alcohol use, foul language, violence</p>
+            <p className={styles.castDetailrightsubdivblue}>
+              {" "}
+              Anant Nag, Vasishta N. Simha
+            </p>
+          </div>
+        </div>
+      </div>
+      <div className={styles.subContainer4}>
+        <Footer />
+      </div>
     </div>
   );
 };

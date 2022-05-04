@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import classes from "../styles/Signup.module.css";
 import Amazon_Logo from "../assets/logo/PrimeLogo.png";
 import Important from "../assets/logo/i.png";
@@ -9,7 +9,11 @@ import {
   validateEmail,
   validatePassword,
 } from "../components/Validations";
+import { AuthContext } from "../store/AuthContext";
+import { Link } from "react-router-dom";
 export const Signup = () => {
+  const Authctx = useContext(AuthContext);
+
   const [shouldPerformValidation, setShouldPerformValidation] = useState(false);
   const [data, setData] = useState({
     Name: "",
@@ -34,7 +38,7 @@ export const Signup = () => {
     ) {
       setShouldPerformValidation(false);
       const Credential = await EmailSignUp(data.Email, data.Password);
-      console.log(Credential);
+      // Authctx.setLogin(Credential.user.accessToken);
       if (Credential) {
         setData({
           Name: "",
@@ -109,7 +113,9 @@ export const Signup = () => {
           <hr className={classes.hr}></hr>
           <div>
             <p>Already have an account?</p>
-            <p className={classes.pLink}>Sign-in</p>
+            <Link style={{ textDecoration: "none" }} to="/signin">
+              <p className={classes.pLink}>Sign-in</p>
+            </Link>
           </div>
         </div>
       </div>
