@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import Prime_logo from "../assets/logo/PrimeLogo.png";
 import styles from "../styles/ForgotPassword.module.css";
-import {validateEmail} from '../components/Validations'
+import { validateEmail } from "../components/Validations";
+import Forgotpassword from "../components/Forgotpassword";
+import { useNavigate } from "react-router-dom";
 const ForgotPassword = () => {
   const [email, setEmail] = useState("");
   const [error, setError] = useState(false);
+  const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
   const changeEmailHandler = (event) => {
     setEmail(event.target.value);
@@ -16,6 +19,8 @@ const ForgotPassword = () => {
       try {
         setError(false);
         setIsLoading(true);
+        Forgotpassword(email);
+        navigate("/signin");
       } catch {
         alert("Failed to Reset Password");
       }
@@ -23,7 +28,7 @@ const ForgotPassword = () => {
       setEmail("");
     }
   };
- 
+
   const inputClass = error ? styles.invalid : styles.form;
   return (
     <div className={styles.container}>
