@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import AuthFormLayout from '../components/UI/AuthFormLayout';
 import { useAuth } from '../store/AuthProvider';
 import styles from '../styles/SignIn.module.css';

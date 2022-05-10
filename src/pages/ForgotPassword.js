@@ -3,6 +3,7 @@ import AuthFormLayout from '../components/UI/AuthFormLayout';
 import { emailRegex } from '../utils/validate';
 import { useAuth } from '../store/AuthProvider';
 import { useState } from 'react';
+import { Navigate } from 'react-router-dom';
 
 const ForgotPassword = () => {
     const [email,setEmail] = useState('');
@@ -11,7 +12,7 @@ const ForgotPassword = () => {
     const [loading , setLoading] = useState(false);
 
     const {resetPassword} = useAuth();
-    
+
     const handleChange = (e) => setEmail(e.target.value)
 
     const handleResetPasswordSubmit = async(e) => {

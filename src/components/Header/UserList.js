@@ -5,9 +5,10 @@ import styles from '../../styles/Navbar.module.css';
 
 const UserList = () => {
   const {user , signout} = useAuth();
-  console.log(user)
+
 
   const handleSignOut = async() => await signout();
+  
   return (
     <ul className={styles["user-list"]}>
       {

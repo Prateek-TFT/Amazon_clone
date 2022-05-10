@@ -31,7 +31,7 @@ const Navbar = () => {
                     <div className={styles['nav-primary']}>
                         <span className={styles['browse']} onClick={handleShowNavList}>Browse <i className="fa fa-sort-down" /></span>
                         { showNav && <Navlist  navStyle={styles['nav-responsive-list']}/> }
-                        { width > 1040 && <Navlist navStyle={styles['nav-list']} /> }
+                        { width > 1040 && <Navlist  navStyle={styles['nav-list']} /> }
                     </div>
                     <div className={styles['nav-secondary']}>
                         <div className={styles['btn']}><button>Try for free</button></div>
@@ -46,7 +46,7 @@ const Navbar = () => {
                                 <img src={user} alt="user-icon"/>
                                 <i className={showUser ? "fa fa-sort-up" : "fa fa-sort-down"}/>
                             </div>
-                            {   showUser && <UserList /> }
+                            {   showUser && <UserList onClickOutside = {handleShowUserList} /> }
                         </div>
                     </div>
                 </div>

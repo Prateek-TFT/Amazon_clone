@@ -60,6 +60,8 @@
     padding: 0;
     margin: 0;
     width: 100vw;
+    opacity: 1;
+    z-index: 200;
 }
 .nav-responsive-list li {
     display: block;
@@ -114,6 +116,10 @@
     position: relative;
 }
 
+.user:hover {
+    cursor: pointer;
+}
+
 .user i{
     position: absolute;
     top: 10px;
@@ -126,6 +132,8 @@
     background-color: #252E39;
     padding: 0;
     border-radius: 0.25rem;
+    opacity: 1;
+    z-index: 1;
 }
 
 .user-list li {
@@ -136,7 +144,7 @@
     font-size: 1rem;
 }
 
-.user-list li a{
+.user-list li a , .nav-responsive-list li a , .nav-list li a{
     text-decoration: none;
     color: #fff;
 }
