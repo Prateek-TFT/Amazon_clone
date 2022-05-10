@@ -1,27 +1,60 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
-
-.Footer{
-    height: 22vh;
-    width: 100vw;
-    max-width: 100%;
+.footer {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #222222;
     flex-direction: column;
-}
-
-
-.footerLogo{
-    height: 2rem;
-    padding-bottom: 5px;
-}
-.paraTerm{
-    display: flex;
-    justify-content: center;
-    /* margin: auto; */
     align-items: center;
-    font-size: 15px;
-    font-family: "Roboto", sans-serif;
-    margin-bottom: 2rem;
+    background-color: rgb(31,31,31);
+    padding-top: 1rem;
+}
+
+.footer-link  {
+    margin: 0.5rem 0 0.875rem 0;
+    text-decoration: none;
+    text-align: center;
+    word-wrap: break-word;
+}
+
+.footer-link a {
+    color: #0f79af;
+    padding: 0 1rem;
+}
+.footer-link a:hover {
+    cursor: pointer;
+}
+
+.footer-copyright {
+    margin: 0 0 1.5rem 0;
+    color: #949494;
+    text-align: center;
+    word-wrap: break-word;
+}
+
+@media(min-width : 737px) and (max-width : 768px) {
+    .footer {
+        margin-top: 4.25rem !important;
+    }
+}
+@media(min-width : 494px) and (max-width : 736px) {
+    .footer {
+        margin-top: 5.5rem !important;
+    }
+}
+@media(min-width : 476px) and (max-width : 493px) {
+    .footer {
+        margin-top: 7rem !important;
+    }
+}
+@media(min-width : 412px) and (max-width : 476px) {
+    .footer {
+        margin-top: 7rem !important;
+    }
+}
+@media(min-width : 336px) and (max-width : 411px) {
+    .footer {
+        margin-top: 8rem !important;
+    }
+}
+@media(max-width : 335px) {
+    .footer {
+        margin-top: 9rem !important;
+    }
 }
