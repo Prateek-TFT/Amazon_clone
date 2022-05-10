@@ -3,6 +3,12 @@
     background-color: #0F171E;
     height: fit-content;
     box-sizing: border-box;
+    z-index: 900;
+    /* overflow: hidden; */
+}
+.sticky {
+    position: sticky;
+    top: 0;
 }
 
 .nav-container {
