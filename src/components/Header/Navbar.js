@@ -22,7 +22,7 @@ const Navbar = () => {
     }
 
     return (
-        <header className={styles['navbar']}>
+        <header className={`${styles['navbar']} ${styles['sticky']}`}>
             <div className={styles['nav-container']}>
                 <a className={styles['nav-logo']}>
                     <img src={logo} alt='amazon-logo'/>
