@@ -1,4 +1,5 @@
 import React, { Suspense } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Navigate, Route, Routes } from "react-router-dom";
 import Spinner from "./components/UI/Spinner";
 import { useAuth } from "./store/AuthProvider";
@@ -10,6 +11,7 @@ const Home = React.lazy(()=>import('./pages/Home'));
 
 const App = () => {
   const {user} = useAuth();
+
   return (
     <Suspense fallback={<Spinner />}>
       <Routes>
