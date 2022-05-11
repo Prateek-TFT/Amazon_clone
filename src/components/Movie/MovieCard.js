@@ -1,8 +1,6 @@
 import React, { useState } from "react";
-// import Image from "../assets/Image/mission-impossible-3.png";
-// import prime from "../assets/logo/prime.svg";
 import styles from "../../styles/MoviesCard.module.css";
-const MovieCard = () => {
+const MovieCard = ({ movie }) => {
   const [isShown, setIsShown] = useState(false);
   return (
     <div
@@ -12,10 +10,13 @@ const MovieCard = () => {
     >
       <div className={styles.content}>
         <div className={styles.image}>
-          <img src="https://raw.githubusercontent.com/Prateek-TFT/Amazon_clone/sudip/src/assets/Image/mission-impossible-3.png" alt="movie_image" />
+          <img src={movie["Movie Image"]} alt="movie_image" />
         </div>
         <div className={styles.logo}>
-          <img src='https://raw.githubusercontent.com/Prateek-TFT/Amazon_clone/sudip/src/assets/logo/prime.svg' alt="prime_logo" />
+          <img
+            src="https://raw.githubusercontent.com/Prateek-TFT/Amazon_clone/sudip/src/assets/logo/prime.svg"
+            alt="prime_logo"
+          />
         </div>
         {isShown && (
           <div className={styles.details}>
@@ -23,15 +24,15 @@ const MovieCard = () => {
               <div className={styles.play}></div>
             </button>
             <span>Included with Prime</span>
-            <span className={styles.title}>Mission: Impossible III (2006)</span>
+            <span className={styles.title}>{movie["Movie name"]}</span>
             <p className={styles.description}>
-              Ethan Hunt comes face to face with a dangerous and sadistic arms
-              dealer while trying to keep his identity secret in order to
-              protect his girlfriend.
+              {movie["Description"].length > 100
+                ? movie["Description"].substring(0, 100) + "..."
+                : movie["Description"]}
             </p>
             <div className={styles.runTime}>
-              <span>2 h 5 min</span>
-              <span>2006</span>
+              <span>{movie["Movie time"]}</span>
+              <span>{movie["Movie year"]}</span>
             </div>
           </div>
         )}

@@ -2,7 +2,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
 
 .first-container {
-  /* background-image: linear-gradient(to top, #000 0%, transparent 20%), url('https://m.media-amazon.com/images/G/31/AmazonVideo/2019/MLP._SX1440_CR575,0,865,675_QL80_AC_FP_.jpg');; */
   background-image: linear-gradient(to right, #000 40%, transparent 58%),
     url("https://m.media-amazon.com/images/G/31/AmazonVideo/2019/MLP.jpg");
   background-position: right top;
@@ -176,7 +175,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
- 
+  background-color: white;
 }
 
 .third-container h1 {

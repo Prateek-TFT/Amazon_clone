@@ -4,7 +4,8 @@
     align-items: center;
     width: 100%;
     overflow-x: auto;
-    margin-top: 1.5rem;
+    padding-top: 2.25rem;
+    background-color: white;
 }
 
 .inner-box{

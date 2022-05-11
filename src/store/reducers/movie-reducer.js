@@ -1,5 +1,5 @@
 import { 
-  FETCH_MOVIES ,
+  FETCH_MOVIES, TOGGLE_LOADING ,
 
 } from '../actions/movie-action';
   
@@ -7,7 +7,7 @@ import {
 const initialMoviesState = {
   listOfMovies : [],
   listOfWatchListMovis : [],
-  loading : false,
+  loading : true,
 }
 
 export const movieReducers = (state = initialMoviesState , action) => {
@@ -15,7 +15,14 @@ export const movieReducers = (state = initialMoviesState , action) => {
     case FETCH_MOVIES:
       return {
         ...state,
-        listOfMovies : [...action.payload]
+        listOfMovies : [...action.payload],
+        loading : false
+      }
+
+    case  TOGGLE_LOADING : 
+      return {
+        ...state,
+        loading : !state.loading
       }
   
     default:
