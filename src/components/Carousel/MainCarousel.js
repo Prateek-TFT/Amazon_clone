@@ -19,7 +19,7 @@ const CaroselData = [
 export const MainCarousel = (props) => {
   return (
     <Carousel showStatus={false} showThumbs={false}>
-      {CaroselData.map((item, index) => {
+      {CaroselData.map((item,index) => {
         return (
           <div key={index}>
             <img src={item.src} alt={item.alt} />

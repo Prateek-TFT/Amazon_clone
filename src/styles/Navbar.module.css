@@ -4,7 +4,6 @@
     height: fit-content;
     box-sizing: border-box;
     z-index: 900;
-    /* overflow: hidden; */
 }
 .sticky {
     position: sticky;
