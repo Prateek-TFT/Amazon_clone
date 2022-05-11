@@ -4,10 +4,38 @@ import MovieCard from './MovieCard'
 
 const MovieStore = () => {
   return (
-    <>
-      <MovieCard/>
-      
-    </>
+    <div style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gridGap: "10px" }}>
+      <MovieCard />
+      <MovieCard />
+      <MovieCard />
+      <MovieCard />
+      <MovieCard />
+      <MovieCard />
+      <MovieCard />
+      <MovieCard />
+      <MovieCard />
+      <MovieCard />
+      <MovieCard />
+      <MovieCard />
+      <MovieCard />
+      <MovieCard />
+      <MovieCard />
+      <MovieCard />
+      <MovieCard />
+      <MovieCard />
+      <MovieCard />
+      <MovieCard />
+      <MovieCard />
+      <MovieCard />
+      <MovieCard />
+      <MovieCard />
+      <MovieCard />
+      <MovieCard />
+      <MovieCard />
+      <MovieCard />
+      <MovieCard />
+
+    </div>
   )
 }
 

@@ -1,93 +1,99 @@
 .container {
-    height: 170px;
-    width: 285px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    cursor: pointer;
-    color: aliceblue;
-    margin-top: 40px;
-    /* background-color: #0f171e; */
-  }
-  .logo {
-    position: absolute;
-    z-index: 1;
-  }
-  .image img {
-    height: 170px;
-    width: 285px;
-    border-radius: 2px;
-  }
-  .button {
-    height: 40px;
-    width: 40px;
-    border: 2px solid white;
-    border-radius: 20px;
-    outline: none;
-    background-color: #0f171e;
-    margin-bottom: 4px;
-    cursor: pointer;
-  }
-  .play {
-    border-top: 10px solid #0f171e;
-    border-bottom: 10px solid #0f171e;
-    border-left: 20px solid whitesmoke;
-    margin-left: 4px;
-    height: 0px;
-  }
-  .details {
-    display: flex;
-    flex-direction: column;
-    opacity: 0;
-    padding-left: 30px;
-    padding-right: 20px;
-    line-height: 1.1;
-  }
-  .details span {
-    color: #00a8e1;
-    font-weight: bold;
-    font-size: 13px;
-  }
-  .details .title {
-    color: aliceblue;
-    font-size: 16px;
-  }
-  .details .description {
-    color: aliceblue;
-    font-weight: normal;
-  }
-  .details .runTime {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-  }
-  .runTime span {
-    color: aliceblue;
-    font-weight: normal;
-    font-weight: bold;
-  }
-  .container:hover {
-    transform: scale(1.1, 1.1);
-    transition: transform, background-color, 0.25s;
-  }
-  .content:hover {
-    background-color: #0f171e;
-    height: 370px;
-    width: 285px;
-    border: 2px solid #00a8e1;
-    border-radius: 5px;
-    transition: border 0.25s;
-  }
-  .content:hover .details {
-    opacity: 1;
-  }
-  .button:hover {
-    background-color: #00a8e1;
-    border: 2px solid #00a8e1;
-    transition: border, background-color, 0.25s;
-  }
-  .button:hover .play {
-    border-top: 10px solid #00a8e1;
-    border-bottom: 10px solid #00a8e1;
-    transition: border-top, border-bottom, 0.25s;
-  }
+  height: 160px;
+  width: 280px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  cursor: pointer;
+  color: aliceblue;
+  margin-top: 40px;
+ 
+}
+.logo{
+  margin-bottom: 130px;
+}
+.image img {
+  position: absolute;
+  z-index: -1;
+  height: 160px;
+  width: 280px;
+  border-radius: 2px;
+}
+.button {
+  height: 30px;
+  width: 30px;
+  border: 2px solid white;
+  border-radius: 20px;
+  outline: none;
+  background-color: black;
+  margin-bottom: 4px;
+  cursor: pointer;
+}
+.play {
+  border-top: 6px solid black;
+  border-bottom: 6px solid black;
+  border-left: 12px solid whitesmoke;
+  margin-left: 2px;
+  height: 0px;
+}
+.details {
+  display: flex;
+  flex-direction: column;
+  background-color: #1a2732;
+  opacity: 1;
+  padding-top: 10px;
+  padding-left: 29px;
+  padding-right: 19px;
+  padding-bottom: 20px;
+  line-height: 1.1;
+}
+.details span {
+  color: #00a8e1;
+  font-weight: bold;
+  font-size: 13px;
+}
+.details .title {
+  color: aliceblue;
+  font-size: 14px;
+}
+.details .description {
+  color: aliceblue;
+  font-weight: normal;
+  font-size: 13px;
+}
+.details .runTime {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.runTime span {
+  color: aliceblue;
+  font-weight: normal;
+  font-weight: bold;
+  font-size: 13px;
+}
+.container:hover {
+  transform: scale(1.1, 1.1);
+  transition: transform, background-color, 0.25s;
+}
+.content:hover {
+  /* background-color: #0f171e; */
+  /* height: 370px;*/
+  width: 280px; 
+  border: 2px solid #00a8e1;
+  border-radius: 5px;
+  transition: border 0.25s;
+}
+.content:hover .details {
+  opacity: 1;
+}
+.button:hover {
+  background-color: #00a8e1;
+  border: 2px solid #00a8e1;
+  transition: border, background-color, 0.25s;
+}
+.button:hover .play {
+  border-top: 6px solid #00a8e1;
+  border-bottom: 6px solid #00a8e1;
+  transition: border-top, border-bottom, 0.25s;
+}
