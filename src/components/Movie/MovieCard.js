@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import styles from "../../styles/MoviesCard.module.css";
 const MovieCard = ({ movie }) => {
   const [isShown, setIsShown] = useState(false);
@@ -24,7 +25,9 @@ const MovieCard = ({ movie }) => {
               <div className={styles.play}></div>
             </button>
             <span>Included with Prime</span>
-            <span className={styles.title}>{movie["Movie name"]}</span>
+            <Link to={{ pathname: movie['link'] }} target="_blank" >
+              <span className={styles.title}>{movie["Movie name"]}</span>
+            </Link>
             <p className={styles.description}>
               {movie["Description"].length > 100
                 ? movie["Description"].substring(0, 100) + "..."
