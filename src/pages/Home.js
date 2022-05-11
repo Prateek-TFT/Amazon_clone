@@ -7,7 +7,7 @@ import FirstContainer from '../components/Home/FirstContainer';
 import FourthContainer from '../components/Home/FourthContainer';
 import SecondContainer from '../components/Home/SecondContainer';
 import ThirdContainer from '../components/Home/ThirdContainer';
-import MovieCard from '../components/Movie/MovieCard';
+import MovieStore from '../components/Movie/MovieStore';
 import { useAuth } from '../store/AuthProvider';
 
 const Home = () => {
@@ -19,25 +19,8 @@ const Home = () => {
       {user &&
         <>
           <MainCarousel />
-          <div style={{display: "grid", gridTemplateColumns : "auto auto auto auto", gridGap : "1px"}}>
-            <MovieCard />
-            <MovieCard />
-            <MovieCard />
-            <MovieCard />
-            <MovieCard />
-            <MovieCard />
-            <MovieCard />
-            <MovieCard />
-            <MovieCard />
-            <MovieCard />
-            <MovieCard />
-            <MovieCard />
-            <MovieCard />
-            <MovieCard />
-            <MovieCard />
-            <MovieCard />
-            <MovieCard />
-          </div>
+          <MovieStore />
+
         </>
       } {!user && <>
 

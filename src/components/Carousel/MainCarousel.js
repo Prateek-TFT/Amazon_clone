@@ -19,9 +19,9 @@ const CaroselData = [
 export const MainCarousel = (props) => {
   return (
     <Carousel showStatus={false} showThumbs={false}>
-      {CaroselData.map((item) => {
+      {CaroselData.map((item, index) => {
         return (
-          <div>
+          <div key={index}>
             <img src={item.src} alt={item.alt} />
           </div>
         );
