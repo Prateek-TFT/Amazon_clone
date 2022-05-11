@@ -5,7 +5,6 @@ const Navlist = ({navStyle}) => {
   return (
     <ul className={navStyle}>
       <li><Link to="/" >Home</Link></li>
-      <li>Store</li>
       <li>Channels</li>
       <li>
         <span>Catgories</span>
