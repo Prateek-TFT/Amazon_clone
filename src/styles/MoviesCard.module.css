@@ -1,13 +1,17 @@
 .container {
   height: 160px;
   width: 280px;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+  display: inline-block;
   cursor: pointer;
   color: aliceblue;
-  margin-top: 40px;
+  margin-top: 2rem;
+  margin-right: 0.5rem;
 }
+.container:first-child {
+  margin-left: 1.5rem;
+}
+
+
 .logo{
   margin-bottom: 130px;
 }

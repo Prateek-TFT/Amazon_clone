@@ -26,7 +26,7 @@ const Home = () => {
       {user &&
         <>
           <MainCarousel />
-          <MovieStore />
+          <MovieStore style={{marginBottom : '500px'}} />
 
         </>
       } {!user && <>
@@ -38,7 +38,7 @@ const Home = () => {
         <FifthContainer />
       </>
       }
-      <Footer />
+      {/* <Footer /> */}
     </>
   )
 }

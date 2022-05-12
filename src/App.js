@@ -1,5 +1,4 @@
 import React, { Suspense } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { Navigate, Route, Routes } from "react-router-dom";
 import Spinner from "./components/UI/Spinner";
 import { useAuth } from "./store/AuthProvider";
