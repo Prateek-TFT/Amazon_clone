@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import styles from "../../styles/MoviesCard.module.css";
 const MovieCard = ({ movie }) => {
   const [isShown, setIsShown] = useState(false);
@@ -6,7 +7,7 @@ const MovieCard = ({ movie }) => {
     window.location.replace(movie.link)
   }
   return (
-    <div  onClick= {handleClick}
+    <div onClick={handleClick}
       className={styles.container}
       onMouseEnter={() => setIsShown(true)}
       onMouseLeave={() => setIsShown(false)}
@@ -16,7 +17,7 @@ const MovieCard = ({ movie }) => {
           {/* <a href={movie.link} target="_blank"  rel="noreferrer">
             <img src={movie["Movie Image"]} alt="movie_image" />
           </a> */}
-            <img src={movie["Movie Image"]} alt="movie_image" />
+          <img src={movie["Movie Image"]} alt="movie_image" />
         </div>
         <div className={styles.logo}>
           <img
@@ -30,7 +31,7 @@ const MovieCard = ({ movie }) => {
               <div className={styles.play}></div>
             </button>
             <span>Included with Prime</span>
-            <span  className={styles.title}>{movie["Movie name"]}</span>
+            <span className={styles.title}>{movie["Movie name"]}</span>
             <p className={styles.description}>
               {movie["Description"].length > 100
                 ? movie["Description"].substring(0, 100) + "..."
