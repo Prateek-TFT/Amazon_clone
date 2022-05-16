@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useState , useEffect } from "react";
+import { useDispatch  , useSelector} from 'react-redux';
+import { Link, useParams } from "react-router-dom";
 import styles from "../../styles/MovieDetails.module.css";
 import playbutton from "../../assets/logo/play.png";
 import IconButton from "./IconButton";
@@ -6,9 +8,20 @@ import CastDetails from "./CastDetails";
 import FeedbackButton from "./FeedbackButton";
 import RelatedMovieList from "./RelatedMovieList";
 import ProductionDetails from "./ProductionDetails";
+import {handleFetchMovieDetail , handleFetchMovies} from '../../store/actions/movie-action'
 const MovieDetails = () => {
   const [isShowMovie, setIsShowMovie] = useState(true);
   const [isShowDetails, setIsShowDetails] = useState(false);
+
+  const {id} = useParams();
+  const dispatch = useDispatch();
+  const {loading ,movieDetail , listOfMovies} = useSelector(state => state.movie)
+
+  useEffect(()=>{
+    dispatch(handleFetchMovieDetail(id))
+    dispatch(handleFetchMovies())
+  },[])
+
   const showRelatedMoviesHandler = () => {
     setIsShowMovie(true);
     setIsShowDetails(false);
@@ -20,15 +33,15 @@ const MovieDetails = () => {
   return (
     <div className={styles.mainContainer}>
       <div className={styles.innerContainer}>
-        <h1 className={styles.heading}>House of Gucci</h1>
+        <h1 className={styles.heading}>{movieDetail?.['movie-name']}</h1>
         {/* Badges Container */}
         <div className={styles.badgesContainer}>
           <div className={styles.badges}>
             <p>IMDb</p>
           </div>
-          <span>6.6</span>
-          <span>2 h 38 min</span>
-          <span>2021</span>
+          <span>{movieDetail?.['imdb']}</span>
+          <span>{movieDetail?.['duration']}</span>
+          <span>{movieDetail?.['movie-year']}</span>
           <div className={styles.badges}>
             <p>X-Ray</p>
           </div>
@@ -48,26 +61,17 @@ const MovieDetails = () => {
           </div>
           <IconButton />
         </div>
-        {/* Description */}
-        <p className={styles.description}>
-          Inspired by the true story of the family behind the Italian fashion
-          empire. When Patrizia Reggiani marries into the Gucci family, her
-          unbridled ambition begins to unravel the family legacy and triggers a
-          spiral of betrayal, decadence, and murder.
-        </p>
-        {/* Cast details */}
+        <p className={styles.description}>{movieDetail?.['description']}</p>
         <CastDetails />
-        {/* Terms and condition and feedback container */}
         <div className={styles.termContainer}>
           <p className={styles.term}>
             By clicking play, you agree to our
-            <a href="https://www.primevideo.com/help/ref=atv_dp_terms?nodeId=202095490">
+            <Link to="/">
               Terms of Use.
-            </a>
+            </Link>
           </p>
           <FeedbackButton />
         </div>
-        {/* Details and Related component */}
         <div className={styles.lastContainer}>
           <div className={styles.options}>
             <span
@@ -77,14 +81,12 @@ const MovieDetails = () => {
               Related
             </span>
             <span
-              className={isShowDetails ? styles.activeDetails : styles.details}
-              onClick={showDetailsHandler}
-            >
+              className={isShowDetails ? styles.activeDetails : styles.details} onClick={showDetailsHandler} >
               Details
             </span>
           </div>
           {isShowMovie && <RelatedMovieList />}
-          {isShowDetails && <ProductionDetails />}
+          {isShowDetails && <ProductionDetails movieDetail={movieDetail} />}
         </div>
       </div>
     </div>

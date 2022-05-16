@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "../../styles/ProductionDetails.module.css";
-const ProductionDetails = () => {
+const ProductionDetails = ({movieDetail}) => {
   return (
     <>
       <p className={styles.moreDetailp}>More Details</p>
@@ -8,8 +8,7 @@ const ProductionDetails = () => {
         <div className={styles.producer}>
           <dt>Producers</dt>
           <dd className={styles.castDetailrightsubdivblue}>
-            Farhan Akhtar , Hetvi Karia , Vijay Kiragandur , Rugved Mondkar ,
-            K.V. Rama Rao
+            {movieDetail?.['prducer']}
           </dd>
         </div>
         <div className={styles.producer}>
