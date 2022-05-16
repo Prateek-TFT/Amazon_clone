@@ -1,6 +1,6 @@
 import React from "react";
-import MovieCard from "./MovieCard";
+// import MovieCard from "./MovieCard";
 const RelatedMovieList = () => {
-  return <MovieCard />;
+  return <div></div>
 };
 export default RelatedMovieList;
