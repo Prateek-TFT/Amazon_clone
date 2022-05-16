@@ -1,34 +1,34 @@
 import React from "react";
 import styles from "../../styles/CastDetails.module.css";
-const CastDetails = () => {
+const CastDetails = ({movieDetail}) => {
   return (
     <div className={styles.castDetail}>
       <div className={styles.director}>
         <dt className={styles.castTitle}>Directors</dt>
-        <dd className={styles.castDetailrightsubdivblue}>Ridley Scott</dd>
+        <dd className={styles.castDetailrightsubdivblue}>{movieDetail?.['director']}</dd>
       </div>
 
       <div className={styles.starring}>
         <dt className={styles.castTitle}>Starring</dt>
         <dd className={styles.castDetailrightsubdivblue}>
-          Lady Gaga, Adam Driver, Jared Leto
+        {movieDetail?.['starring']}
         </dd>
       </div>
 
       <div className={styles.genres}>
         <dt className={styles.castTitle}>Genres</dt>
 
-        <dd className={styles.castDetailrightsubdivblue}>Drama,Suspense</dd>
+        <dd className={styles.castDetailrightsubdivblue}>{movieDetail?.['genres']}</dd>
       </div>
 
       <div className={styles.subtitle}>
         <dt className={styles.castTitle}>Subtitles</dt>
-        <dd>Dansk [CC] , English [CC]</dd>
+        <dd>{movieDetail?.['subtitles']}</dd>
       </div>
 
       <div className={styles.language}>
-        <dt className={styles.castTitle}>AudioLanguages</dt>
-        <dd>Français (Canada) , Español (España) ,</dd>
+        <dt className={styles.castTitle}>Audio Languages</dt>
+        <dd>{movieDetail?.['audio-lang']}</dd>
       </div>
     </div>
   );

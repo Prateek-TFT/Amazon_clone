@@ -75,6 +75,9 @@ body {
   text-align: justify;
   color: white;
   text-align: start;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-size: 17px;
 }
 .termContainer {
   display: flex;
