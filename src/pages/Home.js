@@ -8,7 +8,7 @@ import FirstContainer from '../components/Home/FirstContainer';
 import FourthContainer from '../components/Home/FourthContainer';
 import SecondContainer from '../components/Home/SecondContainer';
 import ThirdContainer from '../components/Home/ThirdContainer';
-import Card from '../components/Movie/Card';
+import VideoCard from '../components/Movie/VideoCard';
 import MovieStore from '../components/Movie/MovieStore';
 import { handleFetchMovies } from '../store/actions/movie-action';
 import { useAuth } from '../store/AuthProvider';
@@ -28,6 +28,11 @@ const Home = () => {
         <>
           <MainCarousel />
           <MovieStore style={{marginBottom : '500px'}} />
+          <MovieStore style={{marginBottom : '500px'}} />
+          <MovieStore style={{marginBottom : '500px'}} />
+          <MovieStore style={{marginBottom : '500px'}} />
+
+          {/* <VideoCard /> */}
           {/* <Card/> */}
         </>
       } {!user && <>

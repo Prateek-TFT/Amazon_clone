@@ -1,3 +1,5 @@
+/*eslint-disable*/
+
 export const emailRegex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i ;
 export const signUpValidation = (formfields) => {
     let nameError = '';

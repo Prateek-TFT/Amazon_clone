@@ -1,5 +1,6 @@
 .container {
-  height: 160px;
+  position: relative;
+  /* height: 160px; */
   width: 280px;
   display: inline-block;
   cursor: pointer;
@@ -8,7 +9,7 @@
   margin-right: 0.5rem;
 }
 .container:first-child {
-  margin-left: 1.5rem;
+  margin-left: 1rem;
 }
 
 
@@ -20,9 +21,12 @@
   z-index: -1;
   height: 160px;
   width: 280px;
-  border-radius: 2px;
+  border-radius: 5px;
 }
 .button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   height: 30px;
   width: 30px;
   border: 2px solid white;
@@ -44,10 +48,7 @@
   flex-direction: column;
   background-color: #1a2732;
   opacity: 1;
-  padding-top: 10px;
-  padding-left: 29px;
-  padding-right: 19px;
-  padding-bottom: 20px;
+  padding: 10px 19px 20px 29px ;
   line-height: 1.1;
 }
 .details span {
@@ -76,16 +77,15 @@
   font-size: 13px;
 }
 .container:hover {
-  transform: scale(1.1, 1.1);
-  transition: transform, background-color, 0.25s;
+  transform: scale(1.1);
+  transition: transform, background-color, 0.5s;
+  z-index: 1;
 }
 .content:hover {
-  /* background-color: #0f171e; */
-  /* height: 370px;*/
-  width: 280px; 
+  width: 282px; 
   border: 2px solid #00a8e1;
   border-radius: 5px;
-  transition: border 0.25s;
+  transition: border 0.5s;
 }
 .content:hover .details {
   opacity: 1;
@@ -93,10 +93,10 @@
 .button:hover {
   background-color: #00a8e1;
   border: 2px solid #00a8e1;
-  transition: border, background-color, 0.25s;
+  transition: border, background-color, 0.5s;
 }
 .button:hover .play {
   border-top: 6px solid #00a8e1;
   border-bottom: 6px solid #00a8e1;
-  transition: border-top, border-bottom, 0.25s;
+  transition: border-top, border-bottom, 0.5s;
 }

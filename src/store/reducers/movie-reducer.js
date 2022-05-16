@@ -15,8 +15,8 @@ const initialMoviesState = {
 export const movieReducers = (state = initialMoviesState , action) => {
   switch (action.type) {
     case FETCH_MOVIES:
-      const englishMovies = action.payload.filter((movie) => movie['Audio Lang'] === 'English');
-      const hindiMovies = action.payload.filter((movie) => movie['Audio Lang'] === 'Hindi');
+      const englishMovies = action.payload.filter((movie) => movie['audio-lang'] === 'English');
+      const hindiMovies = action.payload.filter((movie) => movie['audio-lang'] === 'Hindi');
       return {
         ...state,
         listOfMovies : [...action.payload],

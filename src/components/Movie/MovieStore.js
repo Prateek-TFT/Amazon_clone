@@ -13,8 +13,9 @@ const MovieStore = () => {
     dots: true,
     infinite: false,
     speed: 500,
-    slidesToShow: 4,
-    slidesToScroll: 4,
+    // rows:2,
+    slidesToShow: 4.3,
+    slidesToScroll: 2,
     initialSlide: 0,
     responsive: [
       {
@@ -44,29 +45,11 @@ const MovieStore = () => {
     ]
   };
 
-  // console.log(englishMoviesList)
+  console.log(englishMoviesList)
 
 
   return (
     <div className={styles['movie-container']}>
-      <Slider {...settings}>
-          {
-            englishMoviesList.length > 0 &&
-            englishMoviesList.map((movie , index) => <MovieCard key={index} movie={movie} />)
-          }
-      </Slider>
-      <Slider {...settings}>
-          {
-            englishMoviesList.length > 0 &&
-            englishMoviesList.map((movie , index) => <MovieCard key={index} movie={movie} />)
-          }
-      </Slider>
-      <Slider {...settings}>
-          {
-            englishMoviesList.length > 0 &&
-            englishMoviesList.map((movie , index) => <MovieCard key={index} movie={movie} />)
-          }
-      </Slider>
       <Slider {...settings}>
           {
             englishMoviesList.length > 0 &&

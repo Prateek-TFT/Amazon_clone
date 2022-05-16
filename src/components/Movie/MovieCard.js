@@ -1,10 +1,12 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import styles from "../../styles/MoviesCard.module.css";
 const MovieCard = ({ movie }) => {
   const [isShown, setIsShown] = useState(false);
+  const navigate = useNavigate();
   const handleClick = () => {
-    window.location.replace(movie.link)
+    // window.location.replace(movie.link)
+    return navigate("/movie-desc")
   }
   return (
     <div onClick={handleClick}
@@ -14,10 +16,7 @@ const MovieCard = ({ movie }) => {
     >
       <div className={styles.content}>
         <div className={styles.image}>
-          {/* <a href={movie.link} target="_blank"  rel="noreferrer">
-            <img src={movie["Movie Image"]} alt="movie_image" />
-          </a> */}
-          <img src={movie["Movie Image"]} alt="movie_image" />
+          <img src={movie?.["image"]} alt="movie_image" />
         </div>
         <div className={styles.logo}>
           <img
@@ -31,15 +30,15 @@ const MovieCard = ({ movie }) => {
               <div className={styles.play}></div>
             </button>
             <span>Included with Prime</span>
-            <span className={styles.title}>{movie["Movie name"]}</span>
+            <span className={styles.title}>{movie["movie-name"]}</span>
             <p className={styles.description}>
-              {movie["Description"].length > 100
-                ? movie["Description"].substring(0, 100) + "..."
-                : movie["Description"]}
+              {movie["description"].length > 100
+                ? movie["description"].substring(0, 100) + "..."
+                : movie["description"]}
             </p>
             <div className={styles.runTime}>
-              <span>{movie["Movie time"]}</span>
-              <span>{movie["Movie year"]}</span>
+              <span>{movie["duration"]}</span>
+              <span>{movie["movie-year"]}</span>
             </div>
           </div>
         )}
