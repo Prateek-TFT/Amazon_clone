@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import styles from "../../styles/MoviesCard.module.css";
+import primeCardLogo from '../../assets/primeCardLogo.png';
 const MovieCard = ({ movie }) => {
   const [isShown, setIsShown] = useState(false);
   const navigate = useNavigate();
   const handleClick = () => {
-    // window.location.replace(movie.link)
-    return navigate("/movie-desc")
+    return navigate(`/movie/detail/${movie['_id']}`)
   }
   return (
     <div onClick={handleClick}
@@ -19,8 +19,7 @@ const MovieCard = ({ movie }) => {
           <img src={movie?.["image"]} alt="movie_image" />
         </div>
         <div className={styles.logo}>
-          <img
-            src="https://raw.githubusercontent.com/Prateek-TFT/Amazon_clone/sudip/src/assets/logo/prime.svg"
+          <img src={primeCardLogo}
             alt="prime_logo"
           />
         </div>

@@ -15,10 +15,9 @@ const App = () => {
 
   return (
     <Suspense fallback={<Spinner />}>
-      {/* <Route path="/" element={<Navbar/>}/> */}
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/movie-desc" element={<MovieDesc/>}/>
+        <Route path="/movie/detail/:id" element={<MovieDesc/>}/>
         <Route path="/signin" element={user ? <Navigate to="/" />:<SignIn />} />
         <Route path="/signup" element={user ? <Navigate to="/" />:<SignUp />} />
         <Route path="/forgot-password" element={user ? <Navigate to="/" />:<ForgotPassword />} />

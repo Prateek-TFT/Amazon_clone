@@ -1,6 +1,10 @@
 import React from "react";
-// import MovieCard from "./MovieCard";
+import {useSelector} from "react-redux";
+import MovieCard from "./MovieCard";
 const RelatedMovieList = () => {
-  return <div></div>
+
+  const {listOfMovies} = useSelector(state => state.movie);
+  
+  return <div></div>;
 };
 export default RelatedMovieList;
