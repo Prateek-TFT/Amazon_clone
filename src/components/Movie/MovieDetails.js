@@ -1,5 +1,5 @@
-import React, { useState , useEffect } from "react";
-import { useDispatch  , useSelector} from 'react-redux';
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import styles from "../../styles/MovieDetails.module.css";
 import playbutton from "../../assets/logo/play.png";
@@ -8,19 +8,24 @@ import CastDetails from "./CastDetails";
 import FeedbackButton from "./FeedbackButton";
 import RelatedMovieList from "./RelatedMovieList";
 import ProductionDetails from "./ProductionDetails";
-import {handleFetchMovieDetail , handleFetchMovies} from '../../store/actions/movie-action'
+import {
+  handleFetchMovieDetail,
+  handleFetchMovies,
+} from "../../store/actions/movie-action";
 const MovieDetails = () => {
   const [isShowMovie, setIsShowMovie] = useState(true);
   const [isShowDetails, setIsShowDetails] = useState(false);
 
-  const {id} = useParams();
+  const { id } = useParams();
   const dispatch = useDispatch();
-  const {loading ,movieDetail , listOfMovies} = useSelector(state => state.movie)
+  const { loading, movieDetail, listOfMovies } = useSelector(
+    (state) => state.movie
+  );
 
-  useEffect(()=>{
-    dispatch(handleFetchMovieDetail(id))
-    dispatch(handleFetchMovies())
-  },[])
+  useEffect(() => {
+    dispatch(handleFetchMovieDetail(id));
+    dispatch(handleFetchMovies());
+  }, [dispatch, id]);
 
   const showRelatedMoviesHandler = () => {
     setIsShowMovie(true);
@@ -33,15 +38,15 @@ const MovieDetails = () => {
   return (
     <div className={styles.mainContainer}>
       <div className={styles.innerContainer}>
-        <h1 className={styles.heading}>{movieDetail?.['movie-name']}</h1>
+        <h1 className={styles.heading}>{movieDetail?.["movie-name"]}</h1>
         {/* Badges Container */}
         <div className={styles.badgesContainer}>
           <div className={styles.badges}>
             <p>IMDb</p>
           </div>
-          <span>{movieDetail?.['imdb']}</span>
-          <span>{movieDetail?.['duration']}</span>
-          <span>{movieDetail?.['movie-year']}</span>
+          <span>{movieDetail?.["imdb"]}</span>
+          <span>{movieDetail?.["duration"]}</span>
+          <span>{movieDetail?.["movie-year"]}</span>
           <div className={styles.badges}>
             <p>X-Ray</p>
           </div>
@@ -57,18 +62,16 @@ const MovieDetails = () => {
               alt={"playButton"}
               src={playbutton}
             />
-            <div>Play</div>
+            <div>Watch with prime</div>
           </div>
           <IconButton />
         </div>
-        <p className={styles.description}>{movieDetail?.['description']}</p>
+        <p className={styles.description}>{movieDetail?.["description"]}</p>
         <CastDetails />
         <div className={styles.termContainer}>
           <p className={styles.term}>
             By clicking play, you agree to our
-            <Link to="/">
-              Terms of Use.
-            </Link>
+            <Link to="/">Terms of Use.</Link>
           </p>
           <FeedbackButton />
         </div>
@@ -81,14 +84,16 @@ const MovieDetails = () => {
               Related
             </span>
             <span
-              className={isShowDetails ? styles.activeDetails : styles.details} onClick={showDetailsHandler} >
+              className={isShowDetails ? styles.activeDetails : styles.details}
+              onClick={showDetailsHandler}
+            >
               Details
             </span>
           </div>
-          {isShowMovie && <RelatedMovieList />}
-          {isShowDetails && <ProductionDetails movieDetail={movieDetail} />}
         </div>
       </div>
+      {isShowMovie && <RelatedMovieList year={movieDetail?.["movie-year"]} />}
+      {isShowDetails && <ProductionDetails movieDetail={movieDetail} />}
     </div>
   );
 };
