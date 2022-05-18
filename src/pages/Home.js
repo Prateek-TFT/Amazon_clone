@@ -27,10 +27,10 @@ const Home = () => {
       {user &&
         <>
           <MainCarousel />
-          <MovieStore style={{marginBottom : '500px'}} />
-          <MovieStore style={{marginBottom : '500px'}} />
-          <MovieStore style={{marginBottom : '500px'}} />
-          <MovieStore style={{marginBottom : '500px'}} />
+          <MovieStore style={{marginBottom : '500px'}} /><br/>
+          <MovieStore style={{marginBottom : '500px'}} /><br/>
+          <MovieStore style={{marginBottom : '500px'}} /><br/>
+          <MovieStore style={{marginBottom : '500px'}} /><br/>
 
           {/* <VideoCard /> */}
           {/* <Card/> */}

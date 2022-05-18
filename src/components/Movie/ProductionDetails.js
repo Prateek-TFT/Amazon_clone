@@ -8,7 +8,7 @@ const ProductionDetails = ({movieDetail}) => {
         <div className={styles.producer}>
           <dt>Producers</dt>
           <dd className={styles.castDetailrightsubdivblue}>
-            {movieDetail?.['prducer']}
+            {movieDetail?.['producer']}
           </dd>
         </div>
         <div className={styles.producer}>
