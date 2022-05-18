@@ -1,8 +1,9 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
-import styles from "../../styles/MoviesCard.module.css";
+import React, { useState } from "react";
+import styles from "./HoverScreen.module.css";
 import prime from "../../assets/logo/prime.svg";
-const MovieCard = ({ movie }) => {
+import { useNavigate } from "react-router-dom";
+
+const HoverScreen = ({ movie }) => {
   const navigate = useNavigate();
   const handleClick = () => {
     return navigate(`/movie/detail/${movie["_id"]}`);
@@ -10,12 +11,14 @@ const MovieCard = ({ movie }) => {
   return (
     <div className={styles.hoverScreen}>
       <img src={prime} alt="logo" className={styles.mediaHoverPrimeImg} />
+
       <img
         src={movie?.["image"]}
         alt="movie_image"
         className={styles.mediaHoverImg}
         onClick={handleClick}
       />
+
       <div className={styles.hoverData}>
         <div className={styles.playDiv}>
           <button className={styles.button}>
@@ -38,4 +41,5 @@ const MovieCard = ({ movie }) => {
     </div>
   );
 };
-export default MovieCard;
+
+export default HoverScreen;
