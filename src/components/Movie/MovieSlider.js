@@ -8,7 +8,7 @@ const MovieSlider = ({moviesList}) => {
         dots: true,
         infinite: false,
         speed: 500,
-        // rows:2,
+        rows:2,
         slidesToShow: 4.3,
         slidesToScroll: 2,
         initialSlide: 0,

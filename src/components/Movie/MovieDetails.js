@@ -50,10 +50,19 @@ const MovieDetails = () => {
           <div className={styles.badges}>
             <p>X-Ray</p>
           </div>
-          <div className={styles.badges}>
-            <p>U/A 13+</p>
+          <p className={styles.description}>{movieDetail?.['description']}</p>
+          <CastDetails />
+          <div className={styles.termContainer}>
+            <p className={styles.term}>
+              By clicking play, you agree to our
+              <Link to="/">
+                Terms of Use.
+              </Link>
+            </p>
+            <FeedbackButton />
           </div>
         </div>
+<<<<<<< HEAD
         {/* Button Container */}
         <div className={styles.buttonContainer}>
           <div className={styles.playButton}>
@@ -95,6 +104,26 @@ const MovieDetails = () => {
       {isShowMovie && <RelatedMovieList year={movieDetail?.["movie-year"]} />}
       {isShowDetails && <ProductionDetails movieDetail={movieDetail} />}
     </div>
+=======
+      </div>
+      <div className={styles.lastContainer}>
+        <div className={styles.options}>
+          <span
+            className={isShowMovie ? styles.activeRelated : styles.related}
+            onClick={showRelatedMoviesHandler}
+          >
+            Related
+          </span>
+          <span
+            className={isShowDetails ? styles.activeDetails : styles.details} onClick={showDetailsHandler} >
+            Details
+          </span>
+        </div>
+        {isShowMovie && <RelatedMovieList />}
+        {isShowDetails && <ProductionDetails movieDetail={movieDetail} />}
+      </div>
+    </>
+>>>>>>> 107a93bdb2e71b7ee54ce50ef97e8a0cb04098e7
   );
 };
 export default MovieDetails;
