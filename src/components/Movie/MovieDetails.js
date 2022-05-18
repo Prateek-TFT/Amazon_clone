@@ -62,7 +62,6 @@ const MovieDetails = () => {
             <FeedbackButton />
           </div>
         </div>
-<<<<<<< HEAD
         {/* Button Container */}
         <div className={styles.buttonContainer}>
           <div className={styles.playButton}>
@@ -104,26 +103,6 @@ const MovieDetails = () => {
       {isShowMovie && <RelatedMovieList year={movieDetail?.["movie-year"]} />}
       {isShowDetails && <ProductionDetails movieDetail={movieDetail} />}
     </div>
-=======
-      </div>
-      <div className={styles.lastContainer}>
-        <div className={styles.options}>
-          <span
-            className={isShowMovie ? styles.activeRelated : styles.related}
-            onClick={showRelatedMoviesHandler}
-          >
-            Related
-          </span>
-          <span
-            className={isShowDetails ? styles.activeDetails : styles.details} onClick={showDetailsHandler} >
-            Details
-          </span>
-        </div>
-        {isShowMovie && <RelatedMovieList />}
-        {isShowDetails && <ProductionDetails movieDetail={movieDetail} />}
-      </div>
-    </>
->>>>>>> 107a93bdb2e71b7ee54ce50ef97e8a0cb04098e7
   );
 };
 export default MovieDetails;
