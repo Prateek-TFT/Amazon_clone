@@ -50,17 +50,6 @@ const MovieDetails = () => {
           <div className={styles.badges}>
             <p>X-Ray</p>
           </div>
-          <p className={styles.description}>{movieDetail?.['description']}</p>
-          <CastDetails />
-          <div className={styles.termContainer}>
-            <p className={styles.term}>
-              By clicking play, you agree to our
-              <Link to="/">
-                Terms of Use.
-              </Link>
-            </p>
-            <FeedbackButton />
-          </div>
         </div>
         {/* Button Container */}
         <div className={styles.buttonContainer}>
