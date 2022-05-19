@@ -24,9 +24,9 @@ const Home = () => {
         <>
           <MainCarousel />
           <MovieStore style={{marginBottom : '500px'}} />
+          {/* <MovieStore style={{marginBottom : '500px'}} />
           <MovieStore style={{marginBottom : '500px'}} />
-          <MovieStore style={{marginBottom : '500px'}} />
-          <MovieStore style={{marginBottom : '500px'}} />
+          <MovieStore style={{marginBottom : '500px'}} /> */}
 
           {/* <VideoCard /> */}
           {/* <Card/> */}
