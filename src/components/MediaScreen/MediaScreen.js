@@ -29,8 +29,8 @@ const MediaScreen = ({ movies }) => {
     });
     count--;
     console.log("RIght count is ", count);
-    if (count < -6) {
-      count = -6;
+    if (count < -9) {
+      count = -9;
     }
   };
 
@@ -77,7 +77,7 @@ const MediaScreen = ({ movies }) => {
                   setPosition(index);
                 }}
               >
-                <div className={styles.mediaImg}>
+                <div className={styles.media}>
                   <img
                     src={prime}
                     alt="logo"

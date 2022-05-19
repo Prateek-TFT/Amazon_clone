@@ -2,13 +2,7 @@
   margin-top: 20px;
   z-index: 0;
 }
-.headingBanner {
-  color: white;
-  font-size: 19px;
-  margin-left: 20px;
-  display: flex;
-  justify-content: space-between;
-}
+
 .banner {
   display: flex;
   left: 10px;
@@ -24,11 +18,12 @@
 .leftIconDiv {
   display: flex;
   align-items: center;
+  justify-content: center;
   left: 0px;
   margin-top: 20px;
   min-height: 166px;
   z-index: 1;
-  width: 40px;
+  width: 50px;
   color: gray;
   position: absolute;
   -webkit-transition: opacity 0.25s ease, background-color 0.25s ease;
@@ -43,16 +38,17 @@
 .leftIconDiv:hover .leftIcon {
   color: white;
   transform: scale(1.5);
+  transition: transform 0.25s;
 }
 .rightIconDiv {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: -160px;
+  margin-top: -166px;
   right: 0px;
   min-height: 166px;
   z-index: 1;
-  width: 40px;
+  width: 50px;
   color: gray;
   position: absolute;
   -webkit-transition: opacity 0.25s ease, background-color 0.25s ease;
@@ -68,18 +64,16 @@
 .rightIconDiv:hover .rightIcon {
   color: white;
   transform: scale(1.5);
+  transition: transform 0.25s;
 }
 
 .mediaDiv {
   position: static;
   width: 100%;
   cursor: pointer;
-  z-index: 0;
+  z-index: 1;
   padding: 10px 0px;
   padding-top: 5px;
-}
-.mediaDiv:hover > .displayhoverScreen {
-  display: block;
 }
 .mediaDiv .displayhoverScreen {
   display: none;
@@ -89,9 +83,19 @@
   min-height: 400px;
   transform: scale(1);
 }
+.mediaDiv:hover > .displayhoverScreen {
+  display: block;
+}
+.media {
+  height: 160px;
+  width: 281px;
+  border-radius: 0%;
+  margin: 5px;
+  border-radius: 4px;
+  z-index: -1;
+  visibility: visible;
+}
 /* .mediaHoverPrimeImg {
-  width: fit-content;
-  height: fit-content;
   position: absolute;
   z-index: 1;
 } */
@@ -99,33 +103,13 @@
   height: 160px;
   width: 281px;
 }
-.mediaImg {
-  height: 160px;
-  width: 281px;
-  border-radius: 0%;
-  margin: 5px;
-  border-radius: 4px;
-  z-index: 0;
-  visibility: visible;
-}
 
 .mediaDiv:hover {
   padding: 0px;
 }
 
-.mediaDiv:hover .mediaImg {
+.mediaDiv:hover .media {
   height: 0px;
   width: 284px;
   visibility: hidden;
-}
-
-.moreButton {
-  color: lightblue;
-  font-size: 14px;
-  margin-right: 15px;
-  cursor: pointer;
-  text-decoration: none;
-}
-.moreButton:hover {
-  color: white;
 }
