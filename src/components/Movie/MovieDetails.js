@@ -25,7 +25,7 @@ const MovieDetails = () => {
   useEffect(() => {
     dispatch(handleFetchMovieDetail(id));
     dispatch(handleFetchMovies());
-  }, []);
+  }, [dispatch, id]);
 
   const showRelatedMoviesHandler = () => {
     setIsShowMovie(true);
@@ -50,8 +50,16 @@ const MovieDetails = () => {
           <div className={styles.badges}>
             <p>X-Ray</p>
           </div>
-          <div className={styles.badges}>
-            <p>U/A 13+</p>
+          <p className={styles.description}>{movieDetail?.['description']}</p>
+          <CastDetails />
+          <div className={styles.termContainer}>
+            <p className={styles.term}>
+              By clicking play, you agree to our
+              <Link to="/">
+                Terms of Use.
+              </Link>
+            </p>
+            <FeedbackButton />
           </div>
         </div>
         {/* Button Container */}
@@ -62,12 +70,12 @@ const MovieDetails = () => {
               alt={"playButton"}
               src={playbutton}
             />
-            <div>Play</div>
+            <div>Watch with prime</div>
           </div>
           <IconButton />
         </div>
         <p className={styles.description}>{movieDetail?.["description"]}</p>
-        <CastDetails movieDetail={movieDetail} />
+        <CastDetails />
         <div className={styles.termContainer}>
           <p className={styles.term}>
             By clicking play, you agree to our
@@ -90,10 +98,10 @@ const MovieDetails = () => {
               Details
             </span>
           </div>
-          {isShowMovie && <RelatedMovieList />}
-          {isShowDetails && <ProductionDetails movieDetail={movieDetail} />}
         </div>
       </div>
+      {isShowMovie && <RelatedMovieList year={movieDetail?.["movie-year"]} />}
+      {isShowDetails && <ProductionDetails movieDetail={movieDetail} />}
     </div>
   );
 };

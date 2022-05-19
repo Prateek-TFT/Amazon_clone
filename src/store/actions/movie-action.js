@@ -73,7 +73,6 @@ export const handleFetchMovies = () => {
             }
             dispatch(toggleLoading())
             dispatch(fetchMovies(movies))
-            console.log(movies)
         } catch (error) {
             console.log(error.message)
         }

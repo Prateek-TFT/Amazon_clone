@@ -7,7 +7,6 @@ import MovieSlider from './MovieSlider';
 const MovieStore = () => {
   const  { listOfMovies , englishMoviesList , hindiMoviesList } = useSelector(state => state.movie);
 
-  console.log(englishMoviesList)
 
 
   return (
