@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import styles from "./HoverScreen.module.css";
+import React from "react";
+import styles from "../../styles/HoverScreen.module.css";
 import prime from "../../assets/logo/prime.svg";
 import { useNavigate } from "react-router-dom";
 

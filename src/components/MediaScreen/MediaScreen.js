@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "../MediaScreen/MediaScreen.module.css";
+import styles from "../../styles/MediaScreen.module.css";
 import HoverScreen from "../HoverScreen/HoverScreen";
 import prime from "../../assets/logo/prime.svg";
 import leftScrollIcon from "../../assets/logo/left-arrow.svg";
