@@ -1,8 +1,5 @@
 import { useSelector } from "react-redux";
-// import Slider from "react-slick";
-// import MovieCard from './MovieCard';
 import styles from "../../styles/MovieStore.module.css";
-// import MovieSlider from './MovieSlider';
 import MediaScreen from "../MediaScreen/MediaScreen";
 
 const MovieStore = () => {
@@ -14,7 +11,6 @@ const MovieStore = () => {
 
   return (
     <div className={styles["movie-container"]}>
-      {/* {englishMoviesList.length > 0 && <MovieSlider moviesList={englishMoviesList} />} */}
       {englishMoviesList.length > 0 && (
         <MediaScreen movies={englishMoviesList} />
       )}

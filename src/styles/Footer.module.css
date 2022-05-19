@@ -29,33 +29,3 @@
     word-wrap: break-word;
 }
 
-@media(min-width : 737px) and (max-width : 768px) {
-    .footer {
-        margin-top: 4.25rem !important;
-    }
-}
-@media(min-width : 494px) and (max-width : 736px) {
-    .footer {
-        margin-top: 5.5rem !important;
-    }
-}
-@media(min-width : 476px) and (max-width : 493px) {
-    .footer {
-        margin-top: 7rem !important;
-    }
-}
-@media(min-width : 412px) and (max-width : 476px) {
-    .footer {
-        margin-top: 7rem !important;
-    }
-}
-@media(min-width : 336px) and (max-width : 411px) {
-    .footer {
-        margin-top: 8rem !important;
-    }
-}
-@media(max-width : 335px) {
-    .footer {
-        margin-top: 9rem !important;
-    }
-}

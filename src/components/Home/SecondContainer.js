@@ -3,15 +3,17 @@ import styles from "../../styles/Home.module.css"
 
 export default function SecondContainer() {
     return (
-        <div className={styles['second-container']}>
-            <div className={styles['second-box']}>
-                <h1>Movie rentals on Prime Video | Store</h1>
-                <p>
-                    Where you can get your Early Access Ticket to rent new movies
-                </p>
-                <button className={styles['btn']}>
-                    Rent Now
-                </button>
+        <div className={styles['outer-container']}>
+            <div className={styles['second-container']}>
+                <div className={styles['second-box']}>
+                    <h1>Movie rentals on Prime Video | Store</h1>
+                    <p>
+                        Where you can get your Early Access Ticket to rent new movies
+                    </p>
+                    <button className={styles['btn']}>
+                        Rent Now
+                    </button>
+                </div>
             </div>
         </div>
     )

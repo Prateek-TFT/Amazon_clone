@@ -33,7 +33,7 @@ const Home = () => {
         </>
       } 
       {!user && <HomeContainer />}
-      {/* <Footer /> */}
+      <Footer />
     </>
   )
 }
