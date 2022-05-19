@@ -209,13 +209,51 @@ i {
     background-color: inherit;
 }
 
+.search-box .cancel-img {
+    display: none;
+}
+
 
 .search-box input::placeholder {
     color: #8197a4;
 }
 
+/* search suggestions css */
+.suggestion {
+    position: absolute;
+    background-color: #252E39;
+    width: 16rem;
+    right: 13%;
+    height: max-content;
+    overflow-y: scroll;
+    top: 80%;
+}
+
+.suggestion ol li{
+    list-style: none;
+    width: 100%;
+}
+
+.suggestion ol li a {
+    color: rgba(242,244,246,.9);
+    line-height: 20px;
+    cursor: pointer;
+    display: block;
+    width: 100%;
+    padding: 1rem 3rem 1rem 1.5rem;
+    cursor: pointer;
+    border-bottom:1px solid #323e4c;
+}
+.suggestion ol li a:hover {
+    background-color: #8197a4;
+}
+
+
 @media(min-width : 1040px) and (max-width : 1200px) {
     .search-box input{
+        right: 15%;
+    }
+    .search-box , .suggestion {
         right: 15%;
     }
 }
@@ -223,7 +261,7 @@ i {
     .nav-components{
         width: 100%;
         justify-content: end;
-        
+        margin-right: 2rem;
     }
     .browse {
         display: inline-block;
@@ -232,12 +270,33 @@ i {
     .nav-list {
         display: none !important;
     }
+    .search-box {
+        right: 5%;
+        z-index: 900;
+        width: 92%;
+    }
     .search-box input {
         width: 90%;
         right: 0;
         margin: 0 2rem;
+        
+    }
+    .search-box .cancel-img{
+        display: inline-block;
+        height: 19px;
+        width: 19px;
+        position: absolute;
+        bottom: 23%;
+        right: -4%;
     }
 
+    .suggestion {
+        width: 100vw;
+        min-height: 100vh;
+        background-color: #0F171E;
+        top: 100%;
+        left: 0;
+    }
 }
 
 @media (max-width : 884px) {
@@ -253,6 +312,19 @@ i {
     }
     .nav-responsive-list , .user-list {
         top: 60px;
+    }
+    .search-box{
+        top: 9px;
+    }
+}
+
+@media(max-width : 662px) {
+    .search-box {
+        width: 83%;
+        right: 10%;
+    }
+    .search-box .cancel-img {
+        right: -8%;
     }
 }
 
@@ -274,3 +346,5 @@ i {
         width: 24px;
     }
 }
+
+

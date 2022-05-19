@@ -53,7 +53,7 @@ const MediaScreen = ({ movies }) => {
       arr[j] = temp;
     }
   };
-  if (movies.length > 0) {
+  if (movies?.length > 0) {
     shuffleData(movies);
   }
   return (

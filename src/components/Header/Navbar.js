@@ -51,7 +51,7 @@ const Navbar = () => {
                         {!user && <div className={styles['btn']}><button>Try for free</button></div>}
                         <div className={styles['search']} ref={searchBoxRef}>
                             {!toggleSearchBox && <img src={search} alt="search-icon"  onClick={handleToggleSearchBox} />}
-                            {toggleSearchBox && <SearchBox  />}
+                            {toggleSearchBox && <SearchBox handleSearchBox = {handleToggleSearchBox} />}
                         </div>
                         { !user && 
                             <div className={styles['language']}>

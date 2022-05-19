@@ -1,8 +1,5 @@
 /* first-container-css  */
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
-::-webkit-scrollbar {
-  width: 0;
-}
 .first-container {
   background-image: linear-gradient(to right, #000 40%, transparent 58%),
     url("https://m.media-amazon.com/images/G/31/AmazonVideo/2019/MLP.jpg");
