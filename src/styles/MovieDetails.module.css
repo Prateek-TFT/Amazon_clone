@@ -9,7 +9,7 @@ body {
 .mainContainer {
   display: flex;
   flex-direction: column;
-  background-color: #0f171e;
+  background-color: #0F171E;
   cursor: default;
   padding: 40px;
 }
@@ -19,6 +19,10 @@ body {
   margin-top: 8vh !important;
   color: white;
 }
+.description {
+  padding: 1em 0 1em;
+}
+
 .badgesContainer {
   display: flex;
   align-items: center;
@@ -54,7 +58,7 @@ body {
   display: flex;
   background-color: #0f79af;
   height: 60px;
-  width: 100px;
+  width: 17vw;
   align-items: center;
   justify-content: space-around;
   color: white;
@@ -108,6 +112,7 @@ body {
 .lastContainer {
   width: 100%;
   margin-top: 30px;
+  padding: 30px;
 }
 .options {
   display: flex;
@@ -177,6 +182,7 @@ body {
     padding: 20px;
   }
   .description {
+    padding: 1em 0 1em;
     width: 100%;
     text-align: justify;
     color: white;

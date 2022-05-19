@@ -3,11 +3,7 @@ import { useDispatch } from 'react-redux';
 import { MainCarousel } from '../components/Carousel/MainCarousel';
 import Footer from '../components/Footer/Footer';
 import Navbar from '../components/Header/Navbar';
-import FifthContainer from '../components/Home/FifthContainer';
-import FirstContainer from '../components/Home/FirstContainer';
-import FourthContainer from '../components/Home/FourthContainer';
-import SecondContainer from '../components/Home/SecondContainer';
-import ThirdContainer from '../components/Home/ThirdContainer';
+import HomeContainer from '../components/Home/HomeContainer';
 import VideoCard from '../components/Movie/VideoCard';
 import MovieStore from '../components/Movie/MovieStore';
 import { handleFetchMovies } from '../store/actions/movie-action';
@@ -35,15 +31,8 @@ const Home = () => {
           {/* <VideoCard /> */}
           {/* <Card/> */}
         </>
-      } {!user && <>
-
-        <FirstContainer />
-        <SecondContainer />
-        <ThirdContainer />
-        <FourthContainer />
-        <FifthContainer />
-      </>
-      }
+      } 
+      {!user && <HomeContainer />}
       {/* <Footer /> */}
     </>
   )

@@ -15,9 +15,11 @@ const UserList = () => {
          user ?
           <>
               <li>
-                Profile
+                <Link to="/">Profile</Link>
               </li>
-              <li onClick={handleSignOut}>Sign-Out</li>
+              <li>
+                <Link to="/" onClick={handleSignOut}>Sign-Out</Link>
+              </li>
           </>
          :
           <li>
@@ -25,8 +27,12 @@ const UserList = () => {
           </li>   
       }
       
-      <li>Watch Anywhere</li>
-      <li>Help</li>
+      <li>
+        <Link to="/">Watch Anywhere</Link>
+      </li>
+      <li>
+        <Link to="/">Help</Link>
+      </li>
     </ul>
   );
 };
