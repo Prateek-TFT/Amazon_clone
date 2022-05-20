@@ -5,12 +5,13 @@ const Navlist = ({navStyle}) => {
   return (
     <ul className={navStyle}>
       <li><Link to="/" >Home</Link></li>
-      <li>Channels</li>
-      <li>
-        <span>Catgories</span>
-        <i className="fa fa-sort-down" />
+      <li><Link to="/" >Channels</Link></li>
+      <li> 
+        <a>       
+          <span>Catgories<i className="fa fa-sort-down" /></span>  
+        </a>      
       </li>
-      <li>My Stuff</li>
+      <li><Link to="/">My Stuff</Link></li>
     </ul>
   );
 };
