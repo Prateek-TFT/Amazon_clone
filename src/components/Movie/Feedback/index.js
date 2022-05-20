@@ -1,4 +1,4 @@
-import styles from "../../styles/FeedbackButton.module.css";
+import styles from "./FeedbackButton.module.css";
 const FeedbackButton = () => {
   return (
     <div className={styles.feedbackContainer}>

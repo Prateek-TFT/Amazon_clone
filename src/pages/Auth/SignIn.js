@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
-import { Link, Navigate, useNavigate } from 'react-router-dom';
-import AuthFormLayout from '../components/UI/AuthFormLayout';
-import { useAuth } from '../store/AuthProvider';
-import styles from '../styles/SignIn.module.css';
-import { signInValidation } from '../utils/validate';
+import { Link, useNavigate } from 'react-router-dom';
+import AuthFormLayout from '../../components/UI/Auth/AuthFormLayout';
+import { useAuth } from '../../store/AuthProvider';
+import styles from './Auth.module.css';
+import { signInValidation } from '../../utils/validate';
 
 const initialInputState = {
     email : '',

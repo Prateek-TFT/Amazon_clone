@@ -196,7 +196,7 @@ i {
 
 .search-box::before {
     content: '';
-    background: url('../assets/icons8-search-24.png');
+    background: url('../../assets/icons8-search-24.png');
     background-repeat: no-repeat;
     width: 32px;
     position: absolute;

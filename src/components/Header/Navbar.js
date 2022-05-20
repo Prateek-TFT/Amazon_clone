@@ -1,6 +1,6 @@
 import { useEffect,useState } from 'react';
 import { Link } from 'react-router-dom';
-import styles from '../../styles/Navbar.module.css';
+import styles from './Navbar.module.css';
 import logo from '../../assets/logo/logo.png';
 import search from '../../assets/search.png';
 import globe from '../../assets/globe.png';

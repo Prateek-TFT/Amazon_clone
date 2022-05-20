@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "../../styles/CastDetails.module.css";
+import styles from "./CastDetails.module.css";
 const CastDetails = ({movieDetail}) => {
   return (
     <div className={styles.castDetail}>

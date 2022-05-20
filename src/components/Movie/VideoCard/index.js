@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from '../../styles/card.css';
+import styles from './VideoCard.module.css';
 import image from '../../assets/img12.png';
 import video from '../../assets/star-war.mp4'
 function Card({movie}) {
@@ -20,10 +20,10 @@ function Card({movie}) {
 
 
   return (
-    <div className='video-card-container'>
-      <div className="video-card">
-        <img src={image} className="video-card-image" alt="" />
-        <video src={video} mute loop className='card-video'></video>
+    <div className={styles['video-card-container']}>
+      <div className={styles['video-card']}>
+        <img src={image} className={styles['video-card-image']} alt="" />
+        <video src={video} mute loop className={styles['card-video']} ></video>
       </div>
     </div>
   )

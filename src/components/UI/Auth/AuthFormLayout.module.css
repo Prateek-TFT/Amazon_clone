@@ -1,4 +1,4 @@
-.outer-box {
+.auth-outer-box {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -8,7 +8,7 @@
     background-color: white;
 }
 
-.inner-box{
+.auth-inner-box{
     width: fit-content;
     padding: 2rem;
 }

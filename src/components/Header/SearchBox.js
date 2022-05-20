@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import styles from '../../styles/Navbar.module.css';
+import styles from './Navbar.module.css';
 import cancelImg from '../../assets/cancel-img.png';
 import { searchMovies } from '../../store/actions/movie-action';
 import { Link } from 'react-router-dom';

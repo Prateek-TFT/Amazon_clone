@@ -7,11 +7,11 @@ const Navlist = ({navStyle}) => {
       <li><Link to="/" >Home</Link></li>
       <li><Link to="/" >Channels</Link></li>
       <li> 
-        <a>       
+        <Link to="/" >       
           <span>Catgories<i className="fa fa-sort-down" /></span>  
-        </a>      
+        </Link>      
       </li>
-      <li><Link to="/">My Stuff</Link></li>
+      <li><Link to="/mystuff">My Stuff</Link></li>
     </ul>
   );
 };

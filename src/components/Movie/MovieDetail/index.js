@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
-import styles from "../../styles/MovieDetails.module.css";
-import playbutton from "../../assets/logo/play.png";
-import IconButton from "./IconButton";
-import CastDetails from "./CastDetails";
-import FeedbackButton from "./FeedbackButton";
-import RelatedMovieList from "./RelatedMovieList";
-import ProductionDetails from "./ProductionDetails";
+import styles from "./MovieDetails.module.css";
+import playbutton from "../../../assets/logo/play.png";
+import IconButton from "../Icon";
+import CastDetails from "../CastDetail";
+import FeedbackButton from "../Feedback";
+import RelatedMovieList from "../RelatedMovies";
+import ProductionDetails from "../ProductionDetail";
 import {
   handleFetchMovieDetail,
   handleFetchMovies,
-} from "../../store/actions/movie-action";
+} from "../../../store/actions/movie-action";
 const MovieDetails = () => {
   const [isShowMovie, setIsShowMovie] = useState(true);
   const [isShowDetails, setIsShowDetails] = useState(false);

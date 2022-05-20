@@ -1,9 +1,9 @@
-import styles from '../styles/SignIn.module.css';
-import AuthFormLayout from '../components/UI/AuthFormLayout';
-import { emailRegex } from '../utils/validate';
-import { useAuth } from '../store/AuthProvider';
+import styles from './Auth.module.css';
+import AuthFormLayout from '../../components/UI/Auth/AuthFormLayout';
+import { emailRegex } from '../../utils/validate';
+import { useAuth } from '../../store/AuthProvider';
 import { useState } from 'react';
-import { Navigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const ForgotPassword = () => {
     const [email,setEmail] = useState('');
@@ -56,7 +56,7 @@ const ForgotPassword = () => {
             <div className={styles['customer-service']}>
                 <h4>Has your email or mobile number changed?</h4>
                 <p>
-                    If you no longer use the email address associated with your Amazon account, you may contact <a>Customer Service</a> for help restoring access to your account.
+                    If you no longer use the email address associated with your Amazon account, you may contact <Link to="/" >Customer Service</Link> for help restoring access to your account.
                 </p>
             </div>
         </AuthFormLayout>

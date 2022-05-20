@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "../../styles/ProductionDetails.module.css";
+import styles from "./ProductionDetails.module.css";
 const ProductionDetails = ({movieDetail}) => {
   return (
     <>

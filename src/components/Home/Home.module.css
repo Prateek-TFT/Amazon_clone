@@ -43,7 +43,8 @@
 }
 
 .btn {
-  margin-bottom: 15px;
+  margin-top: 1rem;
+  margin-bottom: 0.875rem;
   font-size: 1rem;
   background-color: #0f79af;
   color: white;
@@ -96,7 +97,7 @@
   }
 
   .btn {
-    margin: auto 1rem;
+    margin: 1rem;
     width: -webkit-fill-available;
   }
 }
@@ -161,7 +162,7 @@
   }
 
   .second-container .btn {
-    margin: auto 2rem !important;
+    margin: 1rem 2rem !important;
   }
 
 }

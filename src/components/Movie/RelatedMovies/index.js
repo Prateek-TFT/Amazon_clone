@@ -1,6 +1,6 @@
 import React from "react";
 import {useSelector} from "react-redux";
-import MediaScreen from "../MediaScreen/MediaScreen";
+import MediaScreen from "../../MediaScreen/MediaScreen";
 const RelatedMovieList = ({year}) => {
 
   const {listOfMovies} = useSelector(state => state.movie);
