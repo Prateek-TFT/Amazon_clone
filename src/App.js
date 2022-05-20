@@ -19,7 +19,9 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/movie/detail/:id" element={<MovieDesc/>}/>
-        <Route path="/mystuff" element={<PrivateRoute><MyStuff /></PrivateRoute>} />
+        <Route path="/mystuff" element={<PrivateRoute />} >
+          <Route path="/mystuff" element={<MyStuff />} />
+        </Route>
         <Route path="/signin" element={user ? <Navigate to="/" />:<SignIn />} />
         <Route path="/signup" element={user ? <Navigate to="/" />:<SignUp />} />
         <Route path="/forgot-password" element={user ? <Navigate to="/" />:<ForgotPassword />} />
