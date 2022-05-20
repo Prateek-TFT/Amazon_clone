@@ -9,9 +9,8 @@ const SignIn = React.lazy(() => import("./pages/SignIn"));
 const ForgotPassword = React.lazy(() => import("./pages/ForgotPassword"));
 const Home = React.lazy(() => import("./pages/Home"));
 const MovieDesc = React.lazy(() => import("./pages/MovieDesc"));
-const MyStaff = React.lazy(() => import("./pages/MyStaff"));
-// const WatchList = React.lazy(() => import("./components/MyStaff/WatchList"));
-// const Rental = React.lazy(() => import("./components/MyStaff/WatchList"));
+const MyStuff = React.lazy(() => import("./pages/MyStuff"));
+
 
 const App = () => {
   const { user } = useAuth();
@@ -21,21 +20,10 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/movie/detail/:id" element={<MovieDesc />} />
-        <Route path="/mystaff" element={<MyStaff />} />
-        {/* <Route path="/mystaff/watchlist" element={<WatchList />} />
-        <Route path="/mystaff/rental" element={<Rental />} /> */}
-        <Route
-          path="/signin"
-          element={user ? <Navigate to="/" /> : <SignIn />}
-        />
-        <Route
-          path="/signup"
-          element={user ? <Navigate to="/" /> : <SignUp />}
-        />
-        <Route
-          path="/forgot-password"
-          element={user ? <Navigate to="/" /> : <ForgotPassword />}
-        />
+        <Route path="/mystaff" element={<MyStuff />} />
+        <Route path="/signin" element={user ? <Navigate to="/" /> : <SignIn />}/>
+        <Route path="/signup" element={user ? <Navigate to="/" /> : <SignUp />}/>
+        <Route path="/forgot-password" element={user ? <Navigate to="/" /> : <ForgotPassword />}/>
       </Routes>
     </Suspense>
   );

@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import emptyRental from "../../assets/empty_rental.png";
 import styles from "../../styles/Rental.module.css";
 const Rental = () => {
@@ -16,7 +15,14 @@ const Rental = () => {
         </div>
         <div className={styles.instruction}>
           If videos are missing, make sure that you're signed into the correct
-          Amazon account and then <span className={styles.refresh}>refresh this page</span>.
+          Amazon account and then{" "}
+          <span
+            onClick={() => window.location.reload()}
+            className={styles.refresh}
+          >
+            refresh this page
+          </span>
+          .
         </div>
       </div>
     </div>
