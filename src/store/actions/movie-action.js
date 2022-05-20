@@ -4,6 +4,7 @@ export const ADD_TO_WATCHLIST = 'ADD_TO_WATCHLIST';
 export const REMOVE_FROM_WATCHLIST = 'REMOVE_FROM_WATCHLIST';
 export const TOGGLE_LOADING = 'SET_LOADING';
 export const FETCH_MOVIE_DETAIL = 'FETCH_MOVIE_DETAIL';
+export const SEARCH_MOVIES = 'SEARCH_MOVIES';
 // action creators
 
 
@@ -39,6 +40,13 @@ export const removeFromWatchlist = (movie) => {
         type: REMOVE_FROM_WATCHLIST,
         payload: movie,
     };
+}
+
+export const searchMovies = (data) => {
+    return {
+        type : SEARCH_MOVIES,
+        payload : data
+    }
 }
 
 // asyn action function
