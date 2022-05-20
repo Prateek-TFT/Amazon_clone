@@ -40,15 +40,10 @@ export const movieReducers = (state = initialMoviesState , action) => {
       }
 
     case SEARCH_MOVIES : 
-      if(action.payload.length > 0) {
-        // console.log(action.payload)
-        // const movies = state.listOfMovies.filter((movie) => movie['movie-name'].toLowerCase().includes(action.payload.toLowerCase()))
         return {
           ...state,
           searchMoviesList : state.listOfMovies.filter((movie) => movie['movie-name'].toLowerCase().includes(action.payload.toLowerCase())),
         }
-      }
-      return state;
       
   
     default:

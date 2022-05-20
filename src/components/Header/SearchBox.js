@@ -28,7 +28,9 @@ const SearchBox = ({handleSearchBox}) => {
   console.log(searchMoviesList);
 
   const handleKeyPress = debounce(()=>{
-    dispatch(searchMovies(searchText))
+    if(searchText.length>2) {
+      dispatch(searchMovies(searchText))
+    }
   },500)
 
   return (
