@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styles from "./HoverScreen.module.css";
 import prime from "../../assets/logo/prime.svg";
 import { useNavigate } from "react-router-dom";
@@ -13,7 +13,7 @@ const HoverScreen = ({ movie }) => {
       <img src={prime} alt="logo" className={styles.mediaHoverPrimeImg} />
 
       <img
-        src={movie?.["image"]}
+        src={movie["image"]}
         alt="movie_image"
         className={styles.mediaHoverImg}
         onClick={handleClick}
@@ -27,10 +27,10 @@ const HoverScreen = ({ movie }) => {
           <div className={styles.playtext}>Play</div>
         </div>
         <div className={styles.primeText}>Included with Prime</div>
-        <div className={styles.title}>{movie["movie-name"]}</div>
+        <div className={styles.title}>{movie?.["movie-name"]}</div>
         <div className={styles.overview}>
-          {movie["description"].length > 100
-            ? movie["description"].substring(0, 100) + "..."
+          {movie["decription"]?.length > 100
+            ? movie["description"]?.substring(0, 100) + "..."
             : movie["description"]}
         </div>
         <div className={styles.footerScreen}>

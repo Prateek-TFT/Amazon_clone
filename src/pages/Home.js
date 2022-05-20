@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { MainCarousel } from '../components/Carousel/MainCarousel';
 import Footer from '../components/Footer/Footer';
 import Navbar from '../components/Header/Navbar';
-import HomeContainer from '../components/Home/HomeContainer';
+import HomeContainer from '../components/Home';
 import MovieStore from '../components/Movie/MovieStore';
 import { handleFetchMovies } from '../store/actions/movie-action';
 import { useAuth } from '../store/AuthProvider';
@@ -26,7 +26,7 @@ const Home = () => {
         </>
       } 
       {!user && <HomeContainer />}
-      {/* <Footer /> */}
+      <Footer />
     </>
   )
 }

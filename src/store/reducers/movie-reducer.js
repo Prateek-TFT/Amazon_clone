@@ -1,5 +1,5 @@
 import { 
-  FETCH_ALL_MOVIES, FETCH_MOVIE_DETAIL, TOGGLE_LOADING ,
+  FETCH_ALL_MOVIES, FETCH_MOVIE_DETAIL, SEARCH_MOVIES, TOGGLE_LOADING ,
 
 } from '../actions/movie-action';
   
@@ -10,7 +10,8 @@ const initialMoviesState = {
   hindiMoviesList : [],
   listOfWatchListMovis : [],
   loading : true,
-  movieDetail : {}
+  movieDetail : {},
+  searchMoviesList : []
 }
 
 export const movieReducers = (state = initialMoviesState , action) => {
@@ -37,6 +38,13 @@ export const movieReducers = (state = initialMoviesState , action) => {
         ...state,
         movieDetail : {...action.payload}
       }
+
+    case SEARCH_MOVIES : 
+        return {
+          ...state,
+          searchMoviesList : state.listOfMovies.filter((movie) => movie['movie-name'].toLowerCase().includes(action.payload.toLowerCase())),
+        }
+      
   
     default:
       return state;

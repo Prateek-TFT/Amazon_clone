@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../store/AuthProvider";
-import styles from '../../styles/Navbar.module.css';
+import styles from './Navbar.module.css';
 
 const UserList = () => {
   const {user , signout} = useAuth();
