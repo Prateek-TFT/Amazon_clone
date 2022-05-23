@@ -4,6 +4,7 @@ import prime from "../../assets/logo/prime.svg";
 import { useNavigate } from "react-router-dom";
 
 const HoverScreen = ({ movie }) => {
+  
   const navigate = useNavigate();
   const handleClick = () => {
     return navigate(`/movie/detail/${movie["_id"]}`);
@@ -29,9 +30,11 @@ const HoverScreen = ({ movie }) => {
         <div className={styles.primeText}>Included with Prime</div>
         <div className={styles.title}>{movie?.["movie-name"]}</div>
         <div className={styles.overview}>
-          {movie["decription"]?.length > 100
-            ? movie["description"]?.substring(0, 100) + "..."
-            : movie["description"]}
+          {
+            movie["description"].length > 100
+             ? movie["description"].substring(0, 100) + "..."
+            : movie["description"]
+          }
         </div>
         <div className={styles.footerScreen}>
           <div className={styles.runTime}>{movie["duration"]}</div>
