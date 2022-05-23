@@ -17,6 +17,12 @@ export default function FirstContainer() {
                     <div className={styles['subpara']}>
                         With select credit or debit cards
                     </div>
+                    <button className={styles['btn']}>
+                        Annual Prime at Rs 1499
+                    </button>
+                    <div className={styles['subpara']}>
+                        With an electronic payment method
+                    </div>
                 </div>
             </div>
         </div>

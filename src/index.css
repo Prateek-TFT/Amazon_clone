@@ -25,23 +25,3 @@ a {
   height: 320px;
 }
 
-.slick-next {
-  right: 0px;
-}
-
-.slick-prev {
-  left: 0px;
-  z-index: 1;
-}
-
-.slick-next,
-.slick-prev {
-  top: 59%;
-  height: 160px;
-  width: 40px;
-  background-color: #00000033;
-}
-
-.slick-dots {
-  display: none !important;
-}

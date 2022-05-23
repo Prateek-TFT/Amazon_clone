@@ -49,6 +49,7 @@ export const searchMovies = (data) => {
     }
 }
 
+
 // asyn action function
 export const handleFetchMovies = () => {
     const url = 'https://movie-78f07-default-rtdb.firebaseio.com/movies.json';
