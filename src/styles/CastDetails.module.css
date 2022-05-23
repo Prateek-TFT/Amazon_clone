@@ -1,7 +1,7 @@
 .castDetail {
   display: flex;
   flex-direction: column;
-  width: 500px;
+  width: 650px;
   margin-top: 5px;
 }
 /* .castTitle {
@@ -15,8 +15,9 @@
 dt {
   color: #8197a4;
   font-weight: 700;
-  width: 150px;
+  width: 200px;
   padding-right:20px ;
+  font-size: 17px;
 }
 dd {
   color: #8197a4;

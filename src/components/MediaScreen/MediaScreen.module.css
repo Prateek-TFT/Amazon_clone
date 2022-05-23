@@ -1,0 +1,115 @@
+.mediaScreen {
+  margin-top: 20px;
+  z-index: 0;
+}
+
+.banner {
+  display: flex;
+  left: 10px;
+  overflow-y: hidden;
+  overflow-x: scroll;
+  scroll-behavior: smooth;
+  justify-content: space-between;
+  z-index: -1;
+}
+.banner::-webkit-scrollbar {
+  display: none;
+}
+.leftIconDiv {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  left: 0px;
+  margin-top: 20px;
+  min-height: 166px;
+  z-index: 1;
+  width: 50px;
+  color: gray;
+  position: absolute;
+  -webkit-transition: opacity 0.25s ease, background-color 0.25s ease;
+  transition: opacity 0.25s ease, background-color 0.25s ease;
+  background-color: rgba(15, 23, 30, 0.5);
+  cursor: pointer;
+}
+.leftIcon {
+  height: 30px;
+  width: 30px;
+}
+.leftIconDiv:hover .leftIcon {
+  color: white;
+  transform: scale(1.5);
+  transition: transform 0.25s;
+}
+.rightIconDiv {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: -166px;
+  right: 0px;
+  min-height: 166px;
+  z-index: 1;
+  width: 50px;
+  color: gray;
+  position: absolute;
+  -webkit-transition: opacity 0.25s ease, background-color 0.25s ease;
+  transition: opacity 0.25s ease, background-color 0.25s ease;
+  background-color: rgba(15, 23, 30, 0.5);
+  cursor: pointer;
+}
+.rightIcon {
+  height: 30px;
+  width: 30px;
+  margin-left: 5px;
+}
+.rightIconDiv:hover .rightIcon {
+  color: white;
+  transform: scale(1.5);
+  transition: transform 0.25s;
+}
+
+.mediaDiv {
+  position: static;
+  width: 100%;
+  cursor: pointer;
+  z-index: 1;
+  padding: 10px 0px;
+  padding-top: 5px;
+}
+.mediaDiv .displayhoverScreen {
+  display: none;
+  position: absolute;
+  z-index: 5;
+  padding: 1px;
+  min-height: 400px;
+  transform: scale(1);
+}
+.mediaDiv:hover > .displayhoverScreen {
+  display: block;
+}
+.media {
+  height: 160px;
+  width: 281px;
+  border-radius: 0%;
+  margin: 5px;
+  border-radius: 4px;
+  z-index: -1;
+  visibility: visible;
+}
+.mediaHoverPrimeImg {
+  position: absolute;
+  z-index: 1;
+}
+.movieImg {
+  height: 160px;
+  width: 281px;
+}
+
+.mediaDiv:hover {
+  padding: 0px;
+}
+
+.mediaDiv:hover .media {
+  height: 0px;
+  width: 284px;
+  visibility: hidden;
+}

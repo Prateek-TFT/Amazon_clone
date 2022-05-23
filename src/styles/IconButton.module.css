@@ -1,7 +1,6 @@
 .iconContainer {
   margin-left: 1.5vw;
   width:fit-content;
-  /* margin-top: 2vh; */
   display: flex;
   flex-wrap: wrap;
   align-items: center;
