@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "../MediaScreen/MediaScreen.module.css";
+import styles from "./MediaScreen.module.css";
 import HoverScreen from "../HoverScreen/HoverScreen";
 import prime from "../../assets/logo/prime.svg";
 import leftScrollIcon from "../../assets/logo/left-arrow.svg";
@@ -53,7 +53,7 @@ const MediaScreen = ({ movies }) => {
       arr[j] = temp;
     }
   };
-  if (movies.length > 0) {
+  if (movies?.length > 0) {
     shuffleData(movies);
   }
   return (
