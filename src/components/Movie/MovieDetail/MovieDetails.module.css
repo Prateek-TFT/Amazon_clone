@@ -1,14 +1,28 @@
 .mainContainer {
   display: flex;
   flex-direction: column;
-  background-color: #0F171E;
-  cursor: default;
+}
+.hoverMovieScreen {
+  width: 880px;
+  height: 490px;
+  position: absolute;
+  right: 0;
+  z-index: -1;
+}
+.MovieImage {
+  right: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.innerContainer {
+  background-color: #0f171ea3;
   padding: 40px;
 }
 .heading {
   font-weight: 600;
   margin: 2.5vh 0ch !important;
-  margin-top: 8vh !important;
+  margin-top: 3vh !important;
   color: white;
 }
 .description {
@@ -106,6 +120,10 @@
   margin-top: 30px;
   padding: 30px;
 }
+.endContainer {
+  padding-left: 30px;
+  padding-right: 30px;
+}
 .options {
   display: flex;
   align-items: center;
@@ -155,23 +173,37 @@
   -webkit-transition: border-bottom, color 0.2s ease-in-out;
   transition: border-bottom, color 0.2s ease-in-out;
 }
-
+@media (max-width: 1240px) {
+  .hoverMovieScreen {
+    width: 868px;
+    height: 488px;
+  }
+}
 @media (max-width: 1000px) {
-  .mainContainer {
-    display: flex;
-    flex-direction: column;
-    background-color: #0f171e;
-    cursor: default;
+  .innerContainer {
     padding: 30px;
+    background-color: #0f171ec5;
+
+  }
+  .hoverMovieScreen {
+    width: 618px;
+    height: 398px;
+  }
+}
+@media (max-width: 900px) {
+  .hoverMovieScreen {
+    width: 540px;
+    height: 303px;
   }
 }
 @media (max-width: 850px) {
-  .mainContainer {
-    display: flex;
-    flex-direction: column;
-    background-color: #0f171e;
-    cursor: default;
+  .innerContainer {
     padding: 20px;
+    background-color: #0f171ec2;
+  }
+  .hoverMovieScreen {
+    width: 510px;
+    height: 286px;
   }
   .description {
     padding: 1em 0 1em;
@@ -181,16 +213,32 @@
     text-align: start;
   }
 }
+@media (max-width: 750px) {
+  .hoverMovieScreen {
+    width: 450px;
+    height: 253px;
+  }
+}
 @media (max-width: 700px) {
-  .mainContainer {
+  .innerContainer {
+    padding: 10px;
+  }
+  .hoverMovieScreen {
+    width: 419px;
+    height: 236px;
+  }
+  /* .mainContainer {
     display: flex;
     flex-direction: column;
     background-color: #0f171e;
     cursor: default;
-    padding: 10px;
-  }
+  } */
 }
 @media (max-width: 610px) {
+  .hoverMovieScreen {
+    width: 364px;
+    height: 204px;
+  }
   .termContainer {
     display: flex;
     flex-direction: column;
@@ -208,6 +256,12 @@
   }
 }
 @media (max-width: 450px) {
+  .hoverMovieScreen {
+    width: 100%;
+  }
+  .innerContainer{
+    margin-top: 200px;
+  }
   .playButton {
     display: flex;
     background-color: #0f79af;
@@ -231,6 +285,9 @@
 }
 
 @media (max-width: 350px) {
+  .hoverMovieScreen {
+   width: 100%;
+  }
   .badgesContainer {
     display: flex;
     flex-wrap: wrap;

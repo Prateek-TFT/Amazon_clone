@@ -1,22 +1,14 @@
 .castDetail {
   display: flex;
   flex-direction: column;
-  width: 650px;
+  width: 100%;
   margin-top: 5px;
 }
-/* .castTitle {
-  font-size: 1.1rem;
-  color: #8197a4;
-  font-weight: bold;
-  line-height: 0;
-  width: 140px;
-} */
-
 dt {
   color: #8197a4;
   font-weight: 700;
   width: 200px;
-  padding-right:20px ;
+  padding-right: 20px;
   font-size: 17px;
 }
 dd {
@@ -34,7 +26,7 @@ dd {
   }
 }
 @media (max-width: 450px) {
-  .castDetail div{
+  .castDetail div {
     display: flex;
     flex-direction: column;
     margin-bottom: 20px;

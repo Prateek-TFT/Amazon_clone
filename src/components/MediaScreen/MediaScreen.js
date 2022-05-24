@@ -5,7 +5,7 @@ import prime from "../../assets/logo/prime.svg";
 import leftScrollIcon from "../../assets/logo/left-arrow.svg";
 import rightScrollIcon from "../../assets/logo/right-arrow.svg";
 
-const MediaScreen = ({ movies,id}) => {
+const MediaScreen = ({ movies,id }) => {
   var count = 0;
 
   const scrollToLeft = () => {
