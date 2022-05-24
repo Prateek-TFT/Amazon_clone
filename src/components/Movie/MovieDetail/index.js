@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import styles from "./MovieDetails.module.css";
 import playbutton from "../../../assets/logo/play.png";
 import IconButton from "../Icon";
@@ -18,6 +18,7 @@ const MovieDetails = () => {
 
   const { id } = useParams();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { loading, movieDetail, listOfMovies } = useSelector(
     (state) => state.movie
   );
@@ -34,6 +35,9 @@ const MovieDetails = () => {
   const showDetailsHandler = () => {
     setIsShowMovie(false);
     setIsShowDetails(true);
+  };
+  const moviePlayHandler = () => {
+    navigate("/player", { state: { link: movieDetail?.["link"] } });
   };
   return (
     <div className={styles.mainContainer}>
@@ -62,7 +66,7 @@ const MovieDetails = () => {
         </div>
         {/* Button Container */}
         <div className={styles.buttonContainer}>
-          <div className={styles.playButton}>
+          <div className={styles.playButton} onClick={moviePlayHandler}>
             <img
               className={styles.buttonImage}
               alt={"playButton"}
@@ -70,7 +74,7 @@ const MovieDetails = () => {
             />
             <div>Watch with prime</div>
           </div>
-          <IconButton />
+          <IconButton trailer={movieDetail?.["trailer"]} />
         </div>
         <p className={styles.description}>{movieDetail?.["description"]}</p>
         <CastDetails movieDetail={movieDetail} />

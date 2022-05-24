@@ -10,6 +10,7 @@ const ForgotPassword = React.lazy(()=>import('./pages/Auth/ForgotPassword'));
 const Home = React.lazy(()=>import('./pages/Home'));
 const MovieDesc = React.lazy(()=>import('./pages/MovieDesc'));
 const MyStuff = React.lazy(()=> import('./pages/MyStuff'));
+const MoviePlayer=React.lazy(()=>import('./components/Movie/MoviePlayer/MoviePlayer'))
 
 const App = () => {
   const { user } = useAuth();
@@ -19,6 +20,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/movie/detail/:id" element={<MovieDesc/>}/>
+        <Route path="/player" element={<MoviePlayer/>}/>
         <Route path="/mystuff" element={<PrivateRoute />} >
           <Route path="/mystuff" element={<MyStuff />} />
         </Route>
