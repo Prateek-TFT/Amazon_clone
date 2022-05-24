@@ -7,7 +7,7 @@ const MovieStore = () => {
   return (
     <div>
       {englishMoviesList.length > 0 && (
-        <MediaScreen movies={englishMoviesList} />
+        <MediaScreen id='english-movie' movies={englishMoviesList} />
       )}
     </div>
   );

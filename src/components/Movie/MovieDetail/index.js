@@ -37,6 +37,15 @@ const MovieDetails = () => {
   };
   return (
     <div className={styles.mainContainer}>
+      <div
+        className={styles.hoverMovieScreen}
+        style={{
+          backgroundImage: `linear-gradient(to right, #0f171e 10%, transparent 78%),url(${movieDetail?.["image"]})`,
+          backgroundSize: "cover",
+        }}
+      >
+        <video />
+      </div>
       <div className={styles.innerContainer}>
         <h1 className={styles.heading}>{movieDetail?.["movie-name"]}</h1>
         {/* Badges Container */}
@@ -89,8 +98,10 @@ const MovieDetails = () => {
           </div>
         </div>
       </div>
-      {isShowMovie && <RelatedMovieList year={movieDetail?.["movie-year"]} />}
-      {isShowDetails && <ProductionDetails movieDetail={movieDetail} />}
+      <div className={styles.endContainer}>
+        {isShowMovie && <RelatedMovieList year={movieDetail?.["movie-year"]} />}
+        {isShowDetails && <ProductionDetails movieDetail={movieDetail} />}
+      </div>
     </div>
   );
 };
