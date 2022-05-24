@@ -22,7 +22,7 @@
   left: 0px;
   margin-top: 20px;
   min-height: 166px;
-  z-index: 1;
+  z-index: 999;
   width: 50px;
   color: gray;
   position: absolute;
@@ -47,7 +47,7 @@
   margin-top: -166px;
   right: 0px;
   min-height: 166px;
-  z-index: 1;
+  z-index: 999;
   width: 50px;
   color: gray;
   position: absolute;
@@ -95,10 +95,9 @@
   z-index: -1;
   visibility: visible;
 }
-/* .mediaHoverPrimeImg {
-  position: absolute;
-  z-index: 1;
-} */
+.mediaHoverPrimeImg {
+  transform: translateY(100%);
+}
 .movieImg {
   height: 160px;
   width: 281px;

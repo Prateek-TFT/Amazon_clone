@@ -55,7 +55,6 @@ export const searchMovies = (data) => {
     payload: data,
   };
 };
-
 // asyn action function
 export const handleFetchMovies = () => {
   const url = "https://movie-78f07-default-rtdb.firebaseio.com/movies.json";
@@ -178,12 +177,12 @@ export const handleDeleteFromWatchlist = (id) => {
       const response = await fetch(url, {
         method: "DELETE",
       });
-      if(!response.ok) {
+      if (!response.ok) {
         throw new Error("Failed to remove from watchlist");
       }
       dispatch(removeFromWatchlist(id));
     } catch (error) {
-        console.log(error.message)
+      console.log(error.message);
     }
   };
 };
