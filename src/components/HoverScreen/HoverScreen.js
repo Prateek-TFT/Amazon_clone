@@ -8,6 +8,9 @@ const HoverScreen = ({ movie }) => {
   const handleClick = () => {
     return navigate(`/movie/detail/${movie["_id"]}`);
   };
+  const moviePlayHandler = () => {
+    navigate("/player", { state: { link: movie?.["link"] } });
+  };
   return (
     <div className={styles.hoverScreen}>
       <img src={prime} alt="logo" className={styles.mediaHoverPrimeImg} />
@@ -21,7 +24,7 @@ const HoverScreen = ({ movie }) => {
 
       <div className={styles.hoverData}>
         <div className={styles.playDiv}>
-          <button className={styles.button}>
+          <button className={styles.button} onClick={moviePlayHandler}>
             <div className={styles.play}></div>
           </button>
           <div className={styles.playtext}>Play</div>
