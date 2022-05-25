@@ -15,7 +15,7 @@
   overflow-y: hidden;
   overflow-x: scroll;
   scroll-behavior: smooth;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   z-index: -1;
 }
 .banner::-webkit-scrollbar {

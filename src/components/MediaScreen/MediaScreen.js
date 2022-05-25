@@ -4,10 +4,9 @@ import HoverScreen from "../HoverScreen/HoverScreen";
 import prime from "../../assets/logo/prime.svg";
 import leftScrollIcon from "../../assets/logo/left-arrow.svg";
 import rightScrollIcon from "../../assets/logo/right-arrow.svg";
-
-const MediaScreen = ({ movies, id, heading }) => {
+const MediaScreen = ({ movies, id }) => {
+  
   var count = 0;
-
   const scrollToLeft = () => {
     document.getElementById("bannerDiv" + id.toString()).scrollBy({
       left: -800,
@@ -69,7 +68,7 @@ const MediaScreen = ({ movies, id, heading }) => {
         &nbsp;
         {movies.map((movie, index) => {
           return (
-            <div key={index}>
+            <div key={index} id={movie._id}>
               <div
                 className={styles.mediaDiv}
                 id={`1${index}`}

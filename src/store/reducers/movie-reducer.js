@@ -3,7 +3,9 @@ import {
   FETCH_ALL_MOVIES,
   FETCH_ALL_WATCHLIST_MOVIES,
   FETCH_MOVIE_DETAIL,
+  FETCH_WATCHED_MOVIES,
   REMOVE_FROM_WATCHLIST,
+  REMOVE_WATCHED_MOVIES,
   SEARCH_MOVIES,
   TOGGLE_LOADING,
 } from "../actions/movie-action";
@@ -13,6 +15,7 @@ const initialMoviesState = {
   englishMoviesList: [],
   hindiMoviesList: [],
   listOfWatchListMovis: [],
+  continueWatchingMovies: [],
   loading: true,
   movieDetail: {},
   searchMoviesList: [],
@@ -67,8 +70,8 @@ export const movieReducers = (state = initialMoviesState, action) => {
       return {
         ...state,
         listOfWatchListMovies: state.listOfWatchListMovis.filter(
-          (movie) => movie['_id'] !== action.payload
-        )
+          (movie) => movie["_id"] !== action.payload
+        ),
       };
 
     case ADD_TO_WATCHLIST:
@@ -76,7 +79,19 @@ export const movieReducers = (state = initialMoviesState, action) => {
         ...state,
         listOfWatchListMovies: [action.payload, ...state.listOfWatchListMovis],
       };
+    case FETCH_WATCHED_MOVIES:
+      return {
+        ...state,
+        continueWatchingMovies: [...action.payload],
+      };
 
+    case REMOVE_WATCHED_MOVIES:
+      return {
+        ...state,
+        continueWatchingMovies: state.continueWatchingMovies.filter(
+          (movie) => movie["_id"] !== action.payload
+        ),
+      };
     default:
       return state;
   }

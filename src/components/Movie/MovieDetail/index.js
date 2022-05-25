@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import styles from "./MovieDetails.module.css";
@@ -8,26 +8,19 @@ import CastDetails from "../CastDetail";
 import FeedbackButton from "../Feedback";
 import RelatedMovieList from "../RelatedMovies";
 import ProductionDetails from "../ProductionDetail";
-import {
-  handleFetchMovieDetail,
-  handleFetchMovies,
-} from "../../../store/actions/movie-action";
+import { useAuth } from "../../../store/AuthProvider";
+import { handleFetchMovieDetail } from "../../../store/actions/movie-action";
 const MovieDetails = () => {
   const [isShowMovie, setIsShowMovie] = useState(true);
   const [isShowDetails, setIsShowDetails] = useState(false);
-
+  const { user } = useAuth();
   const { id } = useParams();
   const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const { loading, movieDetail, listOfMovies } = useSelector(
-    (state) => state.movie
-  );
+  const { movieDetail } = useSelector((state) => state.movie);
 
   useEffect(() => {
     dispatch(handleFetchMovieDetail(id));
-    dispatch(handleFetchMovies());
-  }, [dispatch, id]);
-
+  }, [id,dispatch]);
   const showRelatedMoviesHandler = () => {
     setIsShowMovie(true);
     setIsShowDetails(false);
@@ -36,8 +29,19 @@ const MovieDetails = () => {
     setIsShowMovie(false);
     setIsShowDetails(true);
   };
+<<<<<<< HEAD
   const moviePlayHandler = () => {
     navigate("/player", { state: { link: movieDetail?.["link"] } });
+=======
+  const watchedMovieHandler = () => {
+    fetch(
+      `https://app-88579-default-rtdb.firebaseio.com/${user.uid}/continueWatching.json`,
+      {
+        method: "POST",
+        body: JSON.stringify(movieDetail),
+      }
+    );
+>>>>>>> prateek
   };
   return (
     <div className={styles.mainContainer}>
@@ -66,7 +70,11 @@ const MovieDetails = () => {
         </div>
         {/* Button Container */}
         <div className={styles.buttonContainer}>
+<<<<<<< HEAD
           <div className={styles.playButton} onClick={moviePlayHandler}>
+=======
+          <div className={styles.playButton} onClick={watchedMovieHandler}>
+>>>>>>> prateek
             <img
               className={styles.buttonImage}
               alt={"playButton"}
