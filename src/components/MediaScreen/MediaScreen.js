@@ -4,8 +4,7 @@ import HoverScreen from "../HoverScreen/HoverScreen";
 import prime from "../../assets/logo/prime.svg";
 import leftScrollIcon from "../../assets/logo/left-arrow.svg";
 import rightScrollIcon from "../../assets/logo/right-arrow.svg";
-const MediaScreen = ({ movies, id }) => {
-  
+const MediaScreen = ({ movies, id, heading }) => {
   var count = 0;
   const scrollToLeft = () => {
     document.getElementById("bannerDiv" + id.toString()).scrollBy({

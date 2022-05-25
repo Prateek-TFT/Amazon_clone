@@ -8,11 +8,18 @@ export const FETCH_MOVIE_DETAIL = "FETCH_MOVIE_DETAIL";
 export const SEARCH_MOVIES = "SEARCH_MOVIES";
 export const REMOVE_WATCHED_MOVIES = "REMOVE_WATCHED_MOVIES";
 export const FETCH_WATCHED_MOVIES = "FETCH_WATCHED_MOVIES";
+export const ADD_WATCHED_MOVIES = "ADD_WATCHED_MOVIES";
 // action creators
 
 export const fetchWatchedMovies = (movies) => {
   return {
     type: FETCH_WATCHED_MOVIES,
+    payload: movies,
+  };
+};
+export const addWatchedMovies = (movies) => {
+  return {
+    type: ADD_WATCHED_MOVIES,
     payload: movies,
   };
 };
@@ -136,6 +143,23 @@ export const FetchWatchedMoviesHandler = (id) => {
       dispatch(fetchWatchedMovies(movies));
     } catch (error) {
       console.log(error.message);
+    }
+  };
+};
+export const handleAddWatchedMovies = (userId, movie) => {
+  const url = `https://app-88579-default-rtdb.firebaseio.com/${userId}/continueWatching.json`;
+  return async (dispatch) => {
+    try {
+      dispatch(toggleLoading());
+      const res = await fetch(url, {
+        method: "POST",
+        body: JSON.stringify(movie),
+      });
+      if (!res.ok) {
+        throw new Error("Failed to fetch the data from api!");
+      }
+    } catch (error) {
+      dispatch(addWatchedMovies(movie));
     }
   };
 };

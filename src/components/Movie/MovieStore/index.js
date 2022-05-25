@@ -18,14 +18,26 @@ const MovieStore = () => {
   }, [dispatch, user.uid]);
   return (
     <div>
-      {englishMoviesList.length > 0 && (
-        <MediaScreen id="hindi=movie-list" movies={hindiMoviesList} />
-      )}
-      {englishMoviesList.length > 0 && (
-        <MediaScreen id="english-movie-list" movies={englishMoviesList} />
-      )}
       {continueWatchingMovies.length > 0 && (
-        <MediaScreen id="watched" movies={continueWatchingMovies} />
+        <MediaScreen
+          heading="Continue Watching"
+          id="watched-movie-list"
+          movies={continueWatchingMovies}
+        />
+      )}
+      {englishMoviesList.length > 0 && (
+        <MediaScreen
+          heading="English Movies"
+          id="english-movie-list"
+          movies={englishMoviesList}
+        />
+      )}
+      {englishMoviesList.length > 0 && (
+        <MediaScreen
+          heading="Hindi Movies"
+          id="hindi-movie-list"
+          movies={hindiMoviesList}
+        />
       )}
     </div>
   );

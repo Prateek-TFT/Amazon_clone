@@ -1,5 +1,6 @@
 import {
   ADD_TO_WATCHLIST,
+  ADD_WATCHED_MOVIES,
   FETCH_ALL_MOVIES,
   FETCH_ALL_WATCHLIST_MOVIES,
   FETCH_MOVIE_DETAIL,
@@ -84,7 +85,14 @@ export const movieReducers = (state = initialMoviesState, action) => {
         ...state,
         continueWatchingMovies: [...action.payload],
       };
-
+    case ADD_WATCHED_MOVIES:
+      return {
+        ...state,
+        continueWatchingMovies: [
+          action.payload,
+          ...state.continueWatchingMovies,
+        ],
+      };
     case REMOVE_WATCHED_MOVIES:
       return {
         ...state,

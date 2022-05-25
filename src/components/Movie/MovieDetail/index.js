@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import styles from "./MovieDetails.module.css";
@@ -9,7 +9,10 @@ import FeedbackButton from "../Feedback";
 import RelatedMovieList from "../RelatedMovies";
 import ProductionDetails from "../ProductionDetail";
 import { useAuth } from "../../../store/AuthProvider";
-import { handleFetchMovieDetail } from "../../../store/actions/movie-action";
+import {
+  handleAddWatchedMovies,
+  handleFetchMovieDetail,
+} from "../../../store/actions/movie-action";
 const MovieDetails = () => {
   const [isShowMovie, setIsShowMovie] = useState(true);
   const [isShowDetails, setIsShowDetails] = useState(false);
@@ -20,7 +23,7 @@ const MovieDetails = () => {
 
   useEffect(() => {
     dispatch(handleFetchMovieDetail(id));
-  }, [id,dispatch]);
+  }, [id, dispatch]);
   const showRelatedMoviesHandler = () => {
     setIsShowMovie(true);
     setIsShowDetails(false);
@@ -29,19 +32,8 @@ const MovieDetails = () => {
     setIsShowMovie(false);
     setIsShowDetails(true);
   };
-<<<<<<< HEAD
-  const moviePlayHandler = () => {
-    navigate("/player", { state: { link: movieDetail?.["link"] } });
-=======
   const watchedMovieHandler = () => {
-    fetch(
-      `https://app-88579-default-rtdb.firebaseio.com/${user.uid}/continueWatching.json`,
-      {
-        method: "POST",
-        body: JSON.stringify(movieDetail),
-      }
-    );
->>>>>>> prateek
+    dispatch(handleAddWatchedMovies(user.uid, movieDetail));
   };
   return (
     <div className={styles.mainContainer}>
@@ -70,11 +62,7 @@ const MovieDetails = () => {
         </div>
         {/* Button Container */}
         <div className={styles.buttonContainer}>
-<<<<<<< HEAD
-          <div className={styles.playButton} onClick={moviePlayHandler}>
-=======
           <div className={styles.playButton} onClick={watchedMovieHandler}>
->>>>>>> prateek
             <img
               className={styles.buttonImage}
               alt={"playButton"}
