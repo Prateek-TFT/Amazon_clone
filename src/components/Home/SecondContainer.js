@@ -3,7 +3,7 @@ import styles from "./Home.module.css"
 
 export default function SecondContainer() {
     return (
-        <div className={styles['outer-container']}>
+        <div className={styles['outer-second-container']}>
             <div className={styles['second-container']}>
                 <div className={styles['second-box']}>
                     <h1>Movie rentals on Prime Video | Store</h1>

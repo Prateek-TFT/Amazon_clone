@@ -4,6 +4,7 @@ import prime from "../../assets/logo/prime.svg";
 import { useNavigate } from "react-router-dom";
 
 const HoverScreen = ({ movie }) => {
+  
   const navigate = useNavigate();
   const handleClick = () => {
     return navigate(`/movie/detail/${movie["_id"]}`);

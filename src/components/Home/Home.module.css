@@ -1,5 +1,10 @@
 /* first-container-css  */
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
+
+.outer-container , .outer-second-container {
+  height: 80vh;
+}
+
 .first-container {
   background-image: linear-gradient(to right, #000 40%, transparent 58%),
     url("https://m.media-amazon.com/images/G/31/AmazonVideo/2019/MLP.jpg");
@@ -7,7 +12,7 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-color: #000;
-  min-height: 70vh;
+  height: 100%;
   width: 100%;
   font-family: 'Amazon Ember Light';
 }
@@ -39,7 +44,7 @@
 
 .subpara {
   font-size: 1rem !important;
-  margin-left: 1.75rem;
+  margin-left: 1.25rem;
 }
 
 .btn {
@@ -61,7 +66,7 @@
 
 @media (max-width: 768px) {
   .outer-container {
-    height: 85vh;
+    height: 140vh;
     position: relative;
   }
   .first-container {
@@ -69,6 +74,8 @@
       url("https://m.media-amazon.com/images/G/31/AmazonVideo/2019/MLP._SX1440_CR575,0,865,675_QL80_AC_FP_.jpg");
     width: 100%;
     background-position: center top;
+    height: 100%;
+    background-size: contain;
   }
   .first-box {
     align-items: center;
@@ -93,7 +100,6 @@
   .subpara {
     font-size: 0.875rem !important;
     margin-left: 0;
-    padding-top: 0.875rem;
   }
 
   .btn {
@@ -111,7 +117,7 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-color: #000;
-  min-height: 70vh;
+  height: 100%;
   width: 100%;
   font-family: 'Amazon Ember Light';
 }
@@ -133,19 +139,24 @@
 }
 
 @media (max-width: 768px) {
+  .outer-second-container {
+    height: 110vh;
+    position: relative;
+  }
   .second-container {
     background-image: linear-gradient(to top, #000 0%, transparent 20%), url('https://m.media-amazon.com/images/G/31/AmazonVideo/2019/TVOD_V2_Revised._SX1440_CR575,0,865,675_QL80_AC_FP_.jpg');
     width: 100%;
     background-position: center top;
+    height: 100%;
+    background-size: contain;
   }
   .second-box {
     align-items: center;
     background-color: #000;
     position: absolute;
-    /* top: 60%; */
-    bottom: 0;
+    bottom: 0%;
     box-sizing: border-box;
-    padding: 1rem 2rem 4rem 1rem;
+    padding: 3rem 1.5rem 3rem 1.5rem;;
     width: inherit;
   }
 
@@ -272,13 +283,18 @@
 
 /* fourth-container-css */
 
+.outer-box {
+  height: 85vh;
+}
+
 .fourth-container {
   background-image: linear-gradient(to left, #000 40%, transparent 58%), url('https://images-na.ssl-images-amazon.com/images/G/01/digital/video/Magellan_MLP/MLP_Template_Image_Left.jpg');
   background-position: left top;
   background-size: cover;
   background-repeat: no-repeat;
   width: 100%;
-  height: 70vh;
+  height: 100%;
+  object-fit: contain;
   box-sizing: border-box;
   padding: 3.124rem 2.25rem;
 }
@@ -312,13 +328,18 @@
 @media(max-width : 768px) {
   .outer-box {
     position: relative;
-    height: 95vh;
+    height: 100vh;
   }
   .fourth-container {
-    position: relative;
-    padding: 0;
-    height: 90vh;
+    background-image: linear-gradient(to top, #000 0%, transparent 20%), url('https://images-na.ssl-images-amazon.com/images/G/01/digital/video/Magellan_MLP/MLP_Template_Image_Left._SX1440_CR0,0,865,675_QL80_AC_FP_.jpg');
+    background-position: center top;
+    background-repeat: no-repeat;
+    height: 100%;
+    width: 100%;
+    background-size: contain;
+    padding: 0 !important;
   }
+  
 
   .fourth-box {
     padding-left: 0;
@@ -349,7 +370,7 @@
   background-size: cover;
   background-repeat: no-repeat;
   width: 100%;
-  height: 70vh;
+  height: 100%;
   box-sizing: border-box;
   padding: 3.124rem 2.25rem;
 }
@@ -386,7 +407,10 @@
   .fifth-container {
     background-image: linear-gradient(to top, #000 0%, transparent 20%), url('https://m.media-amazon.com/images/G/01/digital/video/Magellan_MLP/IN-kids-30Jan._SX1440_CR575,0,865,675_QL80_AC_FP_.jpg');
     padding: 0;
-    height: 89vh;
+    height: 100%;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: contain;
   }
 
   .fifth-box {
