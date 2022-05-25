@@ -8,8 +8,8 @@ const MovieStore = () => {
     <div>
       {englishMoviesList.length > 0 && (
         <>
-          {/* <MediaScreen movies={englishMoviesList} /> */}
-          <MediaScreen movies={hindiMoviesList} />
+          <MediaScreen id='english-movie' movies={englishMoviesList} />
+          <MediaScreen id='hindi-movie' movies={hindiMoviesList} />
         </>
       )}
     </div>

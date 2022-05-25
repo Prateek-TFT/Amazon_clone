@@ -5,12 +5,11 @@ import prime from "../../assets/logo/prime.svg";
 import leftScrollIcon from "../../assets/logo/left-arrow.svg";
 import rightScrollIcon from "../../assets/logo/right-arrow.svg";
 
-const MediaScreen = ({ movies }) => {
+const MediaScreen = ({ movies, id }) => {
   var count = 0;
-  var moveCount = "movie10";
 
   const scrollToLeft = () => {
-    document.getElementById("bannerDiv" + moveCount.toString()).scrollBy({
+    document.getElementById("bannerDiv" + id.toString()).scrollBy({
       left: -800,
     });
     if (count === -5.4) {
@@ -24,7 +23,7 @@ const MediaScreen = ({ movies }) => {
     }
   };
   const scrollToRight = () => {
-    document.getElementById("bannerDiv" + moveCount.toString()).scrollBy({
+    document.getElementById("bannerDiv" + id.toString()).scrollBy({
       left: 800,
     });
     count--;
@@ -65,7 +64,7 @@ const MediaScreen = ({ movies }) => {
           className={styles.leftIcon}
         />
       </div>
-      <div className={styles.banner} id={"bannerDiv" + moveCount.toString()}>
+      <div className={styles.banner} id={"bannerDiv" + id.toString()}>
         &nbsp;
         {movies.map((movie, index) => {
           return (
