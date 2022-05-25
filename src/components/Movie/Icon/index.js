@@ -1,20 +1,7 @@
 import React from "react";
-import { useSelector } from "react-redux";
-import { useAuth } from "../../../store/AuthProvider";
 import styles from "./IconButton.module.css";
 
 const IconButton = () => {
-  const { user } = useAuth();
-  const { movieDetail } = useSelector((state) => state.movie);
-  const AddToWatchListHandler = () => {
-    fetch(
-      `https://app-88579-default-rtdb.firebaseio.com/${user.uid}/continueWatching.json`,
-      {
-        method: "POST",
-        body: JSON.stringify(movieDetail),
-      }
-    );
-  };
   return (
     <div className={styles.iconContainer}>
       <div className={styles.icons}>
@@ -28,7 +15,7 @@ const IconButton = () => {
           ></path>
         </svg>
       </div>
-      <div className={styles.icons} onClick={AddToWatchListHandler}>
+      <div className={styles.icons}>
         <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg">
           <title>Add</title>
           <path

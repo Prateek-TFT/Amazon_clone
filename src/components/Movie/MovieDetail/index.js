@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import styles from "./MovieDetails.module.css";
@@ -20,7 +20,7 @@ const MovieDetails = () => {
 
   useEffect(() => {
     dispatch(handleFetchMovieDetail(id));
-  }, []);
+  }, [id,dispatch]);
   const showRelatedMoviesHandler = () => {
     setIsShowMovie(true);
     setIsShowDetails(false);

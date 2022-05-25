@@ -10,20 +10,20 @@ import MediaScreen from "../../MediaScreen/MediaScreen";
 const MovieStore = () => {
   const { englishMoviesList, hindiMoviesList, continueWatchingMovies } =
     useSelector((state) => state.movie);
-
   const { user } = useAuth();
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(handleFetchMovies());
     dispatch(FetchWatchedMoviesHandler(user.uid));
-  }, [dispatch]);
+  }, [dispatch, user.uid]);
   return (
     <div>
-      <MediaScreen id="hindi=movie-list" movies={hindiMoviesList} />
+      {englishMoviesList.length > 0 && (
+        <MediaScreen id="hindi=movie-list" movies={hindiMoviesList} />
+      )}
       {englishMoviesList.length > 0 && (
         <MediaScreen id="english-movie-list" movies={englishMoviesList} />
       )}
-      ,
       {continueWatchingMovies.length > 0 && (
         <MediaScreen id="watched" movies={continueWatchingMovies} />
       )}
