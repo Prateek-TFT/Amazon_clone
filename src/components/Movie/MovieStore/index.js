@@ -10,9 +10,16 @@ const MovieStore = () => {
     <div>
       {englishMoviesList.length > 0 && (
         <MediaScreen
-          heading="English Movie"
+          heading="English Movies"
           id="english-movie"
           movies={englishMoviesList}
+        />
+      )}
+      {hindiMoviesList.length > 0 && (
+        <MediaScreen
+          heading="Hindi Movies"
+          id="hindi-movie"
+          movies={hindiMoviesList}
         />
       )}
     </div>

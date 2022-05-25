@@ -11,6 +11,13 @@ const HoverScreen = ({ movie }) => {
   const moviePlayHandler = () => {
     navigate("/player", { state: { link: movie?.["link"] } });
   };
+  var overview;
+  const description = movie["description"]?.split(" ");
+  if (description.length > 19) {
+    overview = description.slice(0, 19).join(" ") + "...";
+  } else {
+    overview = description.slice(0, description.length - 1).join(" ");
+  }
   return (
     <div className={styles.hoverScreen}>
       <img src={prime} alt="logo" className={styles.mediaHoverPrimeImg} />
@@ -32,9 +39,10 @@ const HoverScreen = ({ movie }) => {
         <div className={styles.primeText}>Included with Prime</div>
         <div className={styles.title}>{movie?.["movie-name"]}</div>
         <div className={styles.overview}>
-          {movie["decription"]?.length > 100
+          {/* {movie["description"]?.split(" ").length > 30
             ? movie["description"]?.substring(0, 100) + "..."
-            : movie["description"]}
+            : movie["description"]} */}
+          {overview}
         </div>
         <div className={styles.footerScreen}>
           <div className={styles.runTime}>{movie["duration"]}</div>
