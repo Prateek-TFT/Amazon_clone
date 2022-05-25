@@ -1,15 +1,15 @@
-import React from 'react'
+import React from "react";
 import Navbar from "../components/Header/Navbar";
-import MovieDetails from '../components/Movie/MovieDetail';
-import Footer from '../components/Footer/Footer';
+import MovieDetails from "../components/Movie/MovieDetail";
+import Footer from "../components/Footer/Footer";
 function MovieDesc() {
   return (
     <>
       <Navbar />
       <MovieDetails />
-      <Footer/>
+      <Footer />
     </>
-  )
+  );
 }
 
-export default MovieDesc
+export default MovieDesc;

@@ -6,8 +6,22 @@ export const FETCH_ALL_WATCHLIST_MOVIES = "FETCH_ALL_WATCHLIST_MOVIES";
 export const TOGGLE_LOADING = "SET_LOADING";
 export const FETCH_MOVIE_DETAIL = "FETCH_MOVIE_DETAIL";
 export const SEARCH_MOVIES = "SEARCH_MOVIES";
+export const REMOVE_WATCHED_MOVIES = "REMOVE_WATCHED_MOVIES";
+export const FETCH_WATCHED_MOVIES = "FETCH_WATCHED_MOVIES";
 // action creators
 
+export const fetchWatchedMovies = (movies) => {
+  return {
+    type: FETCH_WATCHED_MOVIES,
+    payload: movies,
+  };
+};
+export const removeWatchedMovies = (movies) => {
+  return {
+    type: REMOVE_WATCHED_MOVIES,
+    payload: movies,
+  };
+};
 export const fetchMovies = (movies) => {
   return {
     type: FETCH_ALL_MOVIES,
@@ -91,7 +105,40 @@ export const handleFetchMovies = () => {
     }
   };
 };
-
+export const FetchWatchedMoviesHandler = (id) => {
+  const url = `https://app-88579-default-rtdb.firebaseio.com/${id}/continueWatching.json`;
+  return async (dispatch) => {
+    try {
+      dispatch(toggleLoading());
+      const movies = [];
+      const res = await fetch(url);
+      const data = await res.json();
+      for (const key in data) {
+        movies.push({
+          _id: key,
+          imdb: data[key].imdb,
+          trailerOrClips: data[key].trailer,
+          "movie-name": data[key]["movie-name"],
+          link: data[key]["link"],
+          duration: data[key]["duration"],
+          "movie-year": data[key]["movie-year"],
+          description: data[key]["description"],
+          director: data[key]["director"],
+          starring: data[key]["starring"],
+          genres: data[key]["genres"],
+          subtitles: data[key]["subtitles"],
+          "audio-lang": data[key]["audio-lang"],
+          producer: data[key]["producer"],
+          "content-advisory": data[key]["content-advisrory"],
+          image: data[key]["image"],
+        });
+      }
+      dispatch(fetchWatchedMovies(movies));
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+};
 export const handleFetchMovieDetail = (id) => {
   const url = `https://movie-78f07-default-rtdb.firebaseio.com/movies/${id}.json`;
   return async (dispatch) => {

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import styles from "./MovieDetails.module.css";
@@ -8,25 +8,19 @@ import CastDetails from "../CastDetail";
 import FeedbackButton from "../Feedback";
 import RelatedMovieList from "../RelatedMovies";
 import ProductionDetails from "../ProductionDetail";
-import {
-  handleFetchMovieDetail,
-  handleFetchMovies,
-} from "../../../store/actions/movie-action";
+import { useAuth } from "../../../store/AuthProvider";
+import { handleFetchMovieDetail } from "../../../store/actions/movie-action";
 const MovieDetails = () => {
   const [isShowMovie, setIsShowMovie] = useState(true);
   const [isShowDetails, setIsShowDetails] = useState(false);
-
+  const { user } = useAuth();
   const { id } = useParams();
   const dispatch = useDispatch();
-  const { loading, movieDetail, listOfMovies } = useSelector(
-    (state) => state.movie
-  );
+  const { movieDetail } = useSelector((state) => state.movie);
 
   useEffect(() => {
     dispatch(handleFetchMovieDetail(id));
-    dispatch(handleFetchMovies());
-  }, [dispatch, id]);
-
+  }, []);
   const showRelatedMoviesHandler = () => {
     setIsShowMovie(true);
     setIsShowDetails(false);
@@ -34,6 +28,15 @@ const MovieDetails = () => {
   const showDetailsHandler = () => {
     setIsShowMovie(false);
     setIsShowDetails(true);
+  };
+  const watchedMovieHandler = () => {
+    fetch(
+      `https://app-88579-default-rtdb.firebaseio.com/${user.uid}/continueWatching.json`,
+      {
+        method: "POST",
+        body: JSON.stringify(movieDetail),
+      }
+    );
   };
   return (
     <div className={styles.mainContainer}>
@@ -62,7 +65,7 @@ const MovieDetails = () => {
         </div>
         {/* Button Container */}
         <div className={styles.buttonContainer}>
-          <div className={styles.playButton}>
+          <div className={styles.playButton} onClick={watchedMovieHandler}>
             <img
               className={styles.buttonImage}
               alt={"playButton"}

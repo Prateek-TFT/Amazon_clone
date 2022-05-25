@@ -13,7 +13,6 @@ const MyStuff = React.lazy(() => import("./pages/MyStuff"));
 
 const App = () => {
   const { user } = useAuth();
-
   return (
     <Suspense fallback={<Spinner />}>
       <Routes>
