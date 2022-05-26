@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import styles from "./MovieDetails.module.css";
 import playbutton from "../../../assets/logo/play.png";
 import IconButton from "../Icon";
@@ -8,25 +8,19 @@ import CastDetails from "../CastDetail";
 import FeedbackButton from "../Feedback";
 import RelatedMovieList from "../RelatedMovies";
 import ProductionDetails from "../ProductionDetail";
-import {
-  handleFetchMovieDetail,
-  handleFetchMovies,
-} from "../../../store/actions/movie-action";
+import { useAuth } from "../../../store/AuthProvider";
+import { handleFetchMovieDetail } from "../../../store/actions/movie-action";
 const MovieDetails = () => {
   const [isShowMovie, setIsShowMovie] = useState(true);
   const [isShowDetails, setIsShowDetails] = useState(false);
-
+  const { user } = useAuth();
   const { id } = useParams();
   const dispatch = useDispatch();
-  const { loading, movieDetail, listOfMovies } = useSelector(
-    (state) => state.movie
-  );
+  const { movieDetail } = useSelector((state) => state.movie);
 
   useEffect(() => {
     dispatch(handleFetchMovieDetail(id));
-    dispatch(handleFetchMovies());
-  }, [dispatch, id]);
-
+  }, [id,dispatch]);
   const showRelatedMoviesHandler = () => {
     setIsShowMovie(true);
     setIsShowDetails(false);
@@ -35,8 +29,26 @@ const MovieDetails = () => {
     setIsShowMovie(false);
     setIsShowDetails(true);
   };
+  const watchedMovieHandler = () => {
+    fetch(
+      `https://app-88579-default-rtdb.firebaseio.com/${user.uid}/continueWatching.json`,
+      {
+        method: "POST",
+        body: JSON.stringify(movieDetail),
+      }
+    );
+  };
   return (
     <div className={styles.mainContainer}>
+      <div
+        className={styles.hoverMovieScreen}
+        style={{
+          backgroundImage: `linear-gradient(to right, #0f171e 10%, transparent 78%),url(${movieDetail?.["image"]})`,
+          backgroundSize: "cover",
+        }}
+      >
+        <video />
+      </div>
       <div className={styles.innerContainer}>
         <h1 className={styles.heading}>{movieDetail?.["movie-name"]}</h1>
         {/* Badges Container */}
@@ -53,7 +65,7 @@ const MovieDetails = () => {
         </div>
         {/* Button Container */}
         <div className={styles.buttonContainer}>
-          <div className={styles.playButton}>
+          <div className={styles.playButton} onClick={watchedMovieHandler}>
             <img
               className={styles.buttonImage}
               alt={"playButton"}
@@ -61,10 +73,10 @@ const MovieDetails = () => {
             />
             <div>Watch with prime</div>
           </div>
-          <IconButton />
+          <IconButton trailer={movieDetail?.["trailer"]} />
         </div>
         <p className={styles.description}>{movieDetail?.["description"]}</p>
-        <CastDetails />
+        <CastDetails movieDetail={movieDetail} />
         <div className={styles.termContainer}>
           <p className={styles.term}>
             By clicking play, you agree to our
@@ -89,8 +101,10 @@ const MovieDetails = () => {
           </div>
         </div>
       </div>
-      {isShowMovie && <RelatedMovieList year={movieDetail?.["movie-year"]} />}
-      {isShowDetails && <ProductionDetails movieDetail={movieDetail} />}
+      <div className={styles.endContainer}>
+        {isShowMovie && <RelatedMovieList year={movieDetail?.["movie-year"]} />}
+        {isShowDetails && <ProductionDetails movieDetail={movieDetail} />}
+      </div>
     </div>
   );
 };

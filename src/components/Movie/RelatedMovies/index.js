@@ -9,6 +9,6 @@ const RelatedMovieList = ({year}) => {
     return (movie['movie-year'] >= year-3 && movie['movie-year'] <= year+3)
   })
   
-  return <MediaScreen id='realted-movies' movies={relatedMoviesList} />;
+  return <MediaScreen id='related-movie' movies={relatedMoviesList} />;
 };
 export default RelatedMovieList;

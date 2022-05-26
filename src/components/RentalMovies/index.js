@@ -1,5 +1,5 @@
-import styles from './RentalMovies.module.css';
-import emptyRental from '../../assets/empty_rental.png';
+import styles from "./RentalMovies.module.css";
+import emptyRental from "../../assets/empty_rental.png";
 
 const RentalMovies = () => {
   return (
@@ -26,7 +26,7 @@ const RentalMovies = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default RentalMovies;

@@ -1,51 +1,66 @@
 import {
-  FETCH_ALL_MOVIES, FETCH_MOVIE_DETAIL, SEARCH_MOVIES, TOGGLE_LOADING, ADD_TO_WATCHLIST, REMOVE_FROM_WATCHLIST, FETCH_WATCHLIST
-
-} from '../actions/movie-action';
-
+  ADD_TO_WATCHLIST,
+  FETCH_ALL_MOVIES,
+  FETCH_ALL_WATCHLIST_MOVIES,
+  FETCH_MOVIE_DETAIL,
+  FETCH_WATCHED_MOVIES,
+  REMOVE_FROM_WATCHLIST,
+  REMOVE_WATCHED_MOVIES,
+  SEARCH_MOVIES,
+  TOGGLE_LOADING,
+} from "../actions/movie-action";
 
 const initialMoviesState = {
   listOfMovies: [],
   englishMoviesList: [],
   hindiMoviesList: [],
-  listOfWatchListMovies: [],
+  listOfWatchListMovis: [],
+  continueWatchingMovies: [],
   loading: true,
   movieDetail: {},
-  searchMoviesList: []
-}
+  searchMoviesList: [],
+};
 
 export const movieReducers = (state = initialMoviesState, action) => {
   switch (action.type) {
     case FETCH_ALL_MOVIES:
-      const englishMovies = action.payload.filter((movie) => movie['audio-lang'] === 'English');
-      const hindiMovies = action.payload.filter((movie) => movie['audio-lang'] === 'Hindi');
+      const englishMovies = action.payload.filter(
+        (movie) => movie["audio-lang"] === "English"
+      );
+      const hindiMovies = action.payload.filter(
+        (movie) => movie["audio-lang"] === "Hindi"
+      );
       return {
         ...state,
         listOfMovies: [...action.payload],
         englishMoviesList: englishMovies,
         hindiMoviesList: hindiMovies,
-        loading: false
-      }
+        loading: false,
+      };
 
     case TOGGLE_LOADING:
       return {
         ...state,
-        loading: !state.loading
-      }
+        loading: !state.loading,
+      };
 
     case FETCH_MOVIE_DETAIL:
       return {
         ...state,
-        movieDetail: { ...action.payload }
-      }
+        movieDetail: { ...action.payload },
+      };
 
     case SEARCH_MOVIES:
       return {
         ...state,
-        searchMoviesList: state.listOfMovies.filter((movie) => movie['movie-name'].toLowerCase().includes(action.payload.toLowerCase())),
-      }
+        searchMoviesList: state.listOfMovies.filter((movie) =>
+          movie["movie-name"]
+            .toLowerCase()
+            .includes(action.payload.toLowerCase())
+        ),
+      };
 
-    case FETCH_WATCHLIST:
+    case FETCH_ALL_WATCHLIST_MOVIES:
       return {
         ...state,
         listOfWatchListMovies: action.payload,
@@ -54,18 +69,30 @@ export const movieReducers = (state = initialMoviesState, action) => {
     case REMOVE_FROM_WATCHLIST:
       return {
         ...state,
-        listOfWatchListMovies: state.listOfWatchListMovies.filter(
-          (movie) => movie._id !== action.payload
+        listOfWatchListMovies: state.listOfWatchListMovis.filter(
+          (movie) => movie["_id"] !== action.payload
         ),
       };
 
     case ADD_TO_WATCHLIST:
       return {
         ...state,
-        listOfWatchListMovies: [action.payload, ...state.listOfWatchListMovies],
+        listOfWatchListMovies: [action.payload, ...state.listOfWatchListMovis],
+      };
+    case FETCH_WATCHED_MOVIES:
+      return {
+        ...state,
+        continueWatchingMovies: [...action.payload],
       };
 
+    case REMOVE_WATCHED_MOVIES:
+      return {
+        ...state,
+        continueWatchingMovies: state.continueWatchingMovies.filter(
+          (movie) => movie["_id"] !== action.payload
+        ),
+      };
     default:
       return state;
   }
-}
+};

@@ -1,27 +1,38 @@
-import React from "react";
+import React, {useState } from "react";
 import styles from "./HoverScreen.module.css";
 import prime from "../../assets/logo/prime.svg";
 import { useNavigate } from "react-router-dom";
-
+import HoverVideoPlayer from "react-hover-video-player";
+import video from "../../assets/Intro video/Prime-Intro.mp4";
 const HoverScreen = ({ movie }) => {
+  const [isVideoPlaying, setIsVideoPlaying] = useState(false);
   const navigate = useNavigate();
   const handleClick = () => {
     return navigate(`/movie/detail/${movie["_id"]}`);
   };
+  const moviePlayHandler = () => {
+    navigate("/player", { state: { link: movie?.["link"] } });
+  };
+  var overview;
+  const description = movie["description"]?.split(" ");
+  if (description.length > 19) {
+    overview = description.slice(0, 19).join(" ") + "...";
+  } else {
+    overview = description.slice(0, description.length - 1).join(" ");
+  }
   return (
-    <div className={styles.hoverScreen}>
+    <div className={styles.hoverScreen} onClick={handleClick}>
       <img src={prime} alt="logo" className={styles.mediaHoverPrimeImg} />
-
-      <img
-        src={movie["image"]}
-        alt="movie_image"
-        className={styles.mediaHoverImg}
-        onClick={handleClick}
+      <HoverVideoPlayer
+        videoSrc={video}
+        focused={isVideoPlaying}
+        onHoverStart={() => setIsVideoPlaying(!isVideoPlaying)}
+        loop={true}
       />
 
       <div className={styles.hoverData}>
         <div className={styles.playDiv}>
-          <button className={styles.button}>
+          <button className={styles.button} onClick={moviePlayHandler}>
             <div className={styles.play}></div>
           </button>
           <div className={styles.playtext}>Play</div>
@@ -29,8 +40,8 @@ const HoverScreen = ({ movie }) => {
         <div className={styles.primeText}>Included with Prime</div>
         <div className={styles.title}>{movie?.["movie-name"]}</div>
         <div className={styles.overview}>
-          {movie["description"]?.length > 100
-            ? movie["description"]?.substring(0, 100) + "..."
+          {movie["description"].length > 100
+            ? movie["description"].substring(0, 100) + "..."
             : movie["description"]}
         </div>
         <div className={styles.footerScreen}>

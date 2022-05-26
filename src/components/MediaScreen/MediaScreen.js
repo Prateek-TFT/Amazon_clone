@@ -5,7 +5,7 @@ import prime from "../../assets/logo/prime.svg";
 import leftScrollIcon from "../../assets/logo/left-arrow.svg";
 import rightScrollIcon from "../../assets/logo/right-arrow.svg";
 
-const MediaScreen = ({ movies, id }) => {
+const MediaScreen = ({ movies, id, heading }) => {
   var count = 0;
 
   const scrollToLeft = () => {
@@ -57,6 +57,7 @@ const MediaScreen = ({ movies, id }) => {
   }
   return (
     <div className={styles.mediaScreen}>
+      <div className={styles.heading}>{heading}</div>
       <div className={styles.leftIconDiv} onClick={scrollToLeft}>
         <img
           src={leftScrollIcon}
@@ -68,7 +69,7 @@ const MediaScreen = ({ movies, id }) => {
         &nbsp;
         {movies.map((movie, index) => {
           return (
-            <div key={index}>
+            <div key={index} id={movie._id}>
               <div
                 className={styles.mediaDiv}
                 id={`1${index}`}

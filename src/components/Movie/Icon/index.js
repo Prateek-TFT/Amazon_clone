@@ -1,10 +1,15 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import styles from "./IconButton.module.css";
 
-const IconButton = () => {
+const IconButton = ({ trailer }) => {
+  const navigate = useNavigate();
+  const playeTrailerHandler = () => {
+    navigate("/player", { state: { link: trailer } });
+  };
   return (
     <div className={styles.iconContainer}>
-      <div className={styles.icons}>
+      <div className={styles.icons} onClick={playeTrailerHandler}>
         <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg">
           <title>Trailer</title>
           <path
@@ -17,7 +22,7 @@ const IconButton = () => {
       </div>
       <div className={styles.icons}>
         <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg">
-          <title>Add</title>
+          <title>Add to Watchlist</title>
           <path
             d="M3 12h18m-9 9V3"
             stroke="currentColor"

@@ -1,7 +1,5 @@
 import { Link } from "react-router-dom";
-
-const Navlist = ({navStyle}) => {
-
+const Navlist = ({ navStyle }) => {
   return (
     <ul className={navStyle}>
       <li><Link to="/" >Home</Link></li>
