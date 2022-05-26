@@ -26,7 +26,7 @@
   align-items: center;
   justify-content: center;
   left: 0px;
-  margin-top: 20px;
+  margin-top: 2px;
   min-height: 166px;
   z-index: 900;
   width: 50px;
@@ -39,13 +39,13 @@
 }
 .leftIcon {
   height: 30px;
-  width: 30px;
+  /* width: 30px; */
 }
-.leftIconDiv:hover .leftIcon {
+/* .leftIconDiv:hover .leftIcon {
   color: white;
   transform: scale(1.5);
   transition: transform 0.25s;
-}
+} */
 .rightIconDiv {
   display: flex;
   align-items: center;
@@ -64,14 +64,14 @@
 }
 .rightIcon {
   height: 30px;
-  width: 30px;
+  /* width: 30px; */
   margin-left: 5px;
 }
-.rightIconDiv:hover .rightIcon {
+/* .rightIconDiv:hover .rightIcon {
   color: white;
   transform: scale(1.5);
   transition: transform 0.25s;
-}
+} */
 
 .mediaDiv {
   position: static;
