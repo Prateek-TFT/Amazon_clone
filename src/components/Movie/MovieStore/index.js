@@ -1,44 +1,40 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  FetchWatchedMoviesHandler,
+  FetchContinueWatchingMoviesHandler,
   handleFetchMovies,
 } from "../../../store/actions/movie-action";
 import { useAuth } from "../../../store/AuthProvider";
 import MediaScreen from "../../MediaScreen/MediaScreen";
 
 const MovieStore = () => {
-  const { englishMoviesList, hindiMoviesList, continueWatchingMovies } =
-    useSelector((state) => state.movie);
+  const { englishMoviesList, hindiMoviesList, listOfContinueWatchingMovies } = useSelector((state) => state.movie);
   const { user } = useAuth();
+  const {uid} = user;
   const dispatch = useDispatch();
+
   useEffect(() => {
+
     dispatch(handleFetchMovies());
-    dispatch(FetchWatchedMoviesHandler(user.uid));
-  }, [dispatch, user.uid]);
+    dispatch(FetchContinueWatchingMoviesHandler(uid));
+
+  }, [dispatch, uid]);
+
+
   return (
     <div>
-      {continueWatchingMovies.length > 0 && (
-        <MediaScreen
-          heading="Continue Watching"
-          id="watched-movie-list"
-          movies={continueWatchingMovies}
-        />
+      {listOfContinueWatchingMovies.length > 0 && (
+        <MediaScreen heading="Continue Watching" id="watched" movies={listOfContinueWatchingMovies} />
       )}
+      
       {englishMoviesList.length > 0 && (
-        <MediaScreen
-          heading="English Movies"
-          id="english-movie-list"
-          movies={englishMoviesList}
-        />
+        <MediaScreen heading="Hindi Movies" id="english-movie-list" movies={englishMoviesList} />
       )}
-      {englishMoviesList.length > 0 && (
-        <MediaScreen
-          heading="Hindi Movies"
-          id="hindi-movie-list"
-          movies={hindiMoviesList}
-        />
+
+      {hindiMoviesList.length > 0 && (
+        <MediaScreen heading="English Movies" id="hindi=movie-list" movies={hindiMoviesList} />
       )}
+      
     </div>
   );
 };

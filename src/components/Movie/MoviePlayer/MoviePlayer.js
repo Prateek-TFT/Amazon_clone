@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 import ReactPlayer from "react-player";
 import { useLocation } from "react-router-dom";
 import styles from "../MoviePlayer/MoviePlayer.module.css";
 const MoviePlayer = () => {
   const location = useLocation();
+  useEffect(() => {
+    console.log(location.state.link);
+  });
   return (
     <div className={styles["player-wrapper"]}>
       <ReactPlayer

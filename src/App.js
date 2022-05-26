@@ -1,5 +1,6 @@
-import React, { Suspense } from "react";
+import React, { Suspense, useEffect } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
+import MoviePlayer from "./components/Movie/MoviePlayer/MoviePlayer";
 import PrivateRoute from "./components/Route/PrivateRoute";
 import Spinner from "./components/UI/Spinner";
 import { useAuth } from "./store/AuthProvider";
@@ -10,9 +11,6 @@ const ForgotPassword = React.lazy(() => import("./pages/Auth/ForgotPassword"));
 const Home = React.lazy(() => import("./pages/Home"));
 const MovieDesc = React.lazy(() => import("./pages/MovieDesc"));
 const MyStuff = React.lazy(() => import("./pages/MyStuff"));
-const MoviePlayer = React.lazy(() =>
-  import("./components/Movie/MoviePlayer/MoviePlayer")
-);
 
 const App = () => {
   const { user } = useAuth();

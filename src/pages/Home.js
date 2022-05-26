@@ -14,7 +14,7 @@ const Home = () => {
       {user && (
         <>
           <MainCarousel />
-          <MovieStore style={{ marginBottom: "500px" }} />
+          <MovieStore style={{ marginBottom: "500px"}} />
         </>
       )}
       {!user && <HomeContainer />}
