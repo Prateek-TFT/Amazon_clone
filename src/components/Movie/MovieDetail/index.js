@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import styles from "./MovieDetails.module.css";
@@ -9,10 +9,12 @@ import FeedbackButton from "../Feedback";
 import RelatedMovieList from "../RelatedMovies";
 import ProductionDetails from "../ProductionDetail";
 import { useAuth } from "../../../store/AuthProvider";
-import { handleFetchMovieDetail } from "../../../store/actions/movie-action";
+import {
+  addToContinueWatchingMoviesHandler,
+  handleFetchMovieDetail,
+} from "../../../store/actions/movie-action";
 const MovieDetails = () => {
-  const [isShowMovie, setIsShowMovie] = useState(true);
-  const [isShowDetails, setIsShowDetails] = useState(false);
+  const [showActiveTab, setShowActiveTab] = useState(true);
   const { user } = useAuth();
   const { id } = useParams();
   const dispatch = useDispatch();
@@ -20,24 +22,17 @@ const MovieDetails = () => {
 
   useEffect(() => {
     dispatch(handleFetchMovieDetail(id));
-  }, [id,dispatch]);
-  const showRelatedMoviesHandler = () => {
-    setIsShowMovie(true);
-    setIsShowDetails(false);
-  };
-  const showDetailsHandler = () => {
-    setIsShowMovie(false);
-    setIsShowDetails(true);
-  };
+  }, [id, dispatch]);
+  const navigate = useNavigate();
+  const handleToggleTab = () => setShowActiveTab(!showActiveTab);
+
   const watchedMovieHandler = () => {
-    fetch(
-      `https://app-88579-default-rtdb.firebaseio.com/${user.uid}/continueWatching.json`,
-      {
-        method: "POST",
-        body: JSON.stringify(movieDetail),
-      }
+    dispatch(
+      addToContinueWatchingMoviesHandler(user.uid, { ...movieDetail, _id: id })
     );
+    navigate("/player", { state: { link: movieDetail?.["link"] } });
   };
+
   return (
     <div className={styles.mainContainer}>
       <div
@@ -87,14 +82,14 @@ const MovieDetails = () => {
         <div className={styles.lastContainer}>
           <div className={styles.options}>
             <span
-              className={isShowMovie ? styles.activeRelated : styles.related}
-              onClick={showRelatedMoviesHandler}
+              className={showActiveTab ? styles.activeRelated : styles.related}
+              onClick={handleToggleTab}
             >
               Related
             </span>
             <span
-              className={isShowDetails ? styles.activeDetails : styles.details}
-              onClick={showDetailsHandler}
+              className={!showActiveTab ? styles.activeDetails : styles.details}
+              onClick={handleToggleTab}
             >
               Details
             </span>
@@ -102,8 +97,10 @@ const MovieDetails = () => {
         </div>
       </div>
       <div className={styles.endContainer}>
-        {isShowMovie && <RelatedMovieList year={movieDetail?.["movie-year"]} />}
-        {isShowDetails && <ProductionDetails movieDetail={movieDetail} />}
+        {showActiveTab && (
+          <RelatedMovieList year={movieDetail?.["movie-year"]} />
+        )}
+        {!showActiveTab && <ProductionDetails movieDetail={movieDetail} />}
       </div>
     </div>
   );

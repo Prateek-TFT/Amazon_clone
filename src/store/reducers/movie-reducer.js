@@ -1,13 +1,15 @@
 import {
   ADD_TO_WATCHLIST,
+  ADD_WATCHED_MOVIES,
   FETCH_ALL_MOVIES,
   FETCH_ALL_WATCHLIST_MOVIES,
   FETCH_MOVIE_DETAIL,
-  FETCH_WATCHED_MOVIES,
   REMOVE_FROM_WATCHLIST,
-  REMOVE_WATCHED_MOVIES,
   SEARCH_MOVIES,
   TOGGLE_LOADING,
+  FETCH_ALL_CONTINUE_WATCHING_MOVIES,
+  REMOVE_FROM_CONTINUE_WATCH_MOVIES,
+  ADD_TO_CONTINUE_WATCHING,
 } from "../actions/movie-action";
 
 const initialMoviesState = {
@@ -15,7 +17,7 @@ const initialMoviesState = {
   englishMoviesList: [],
   hindiMoviesList: [],
   listOfWatchListMovis: [],
-  continueWatchingMovies: [],
+  listOfContinueWatchingMovies: [],
   loading: true,
   movieDetail: {},
   searchMoviesList: [],
@@ -79,18 +81,21 @@ export const movieReducers = (state = initialMoviesState, action) => {
         ...state,
         listOfWatchListMovies: [action.payload, ...state.listOfWatchListMovis],
       };
-    case FETCH_WATCHED_MOVIES:
+    case FETCH_ALL_CONTINUE_WATCHING_MOVIES:
       return {
         ...state,
-        continueWatchingMovies: [...action.payload],
+        listOfContinueWatchingMovies: [...action.payload],
       };
 
-    case REMOVE_WATCHED_MOVIES:
+    case ADD_TO_CONTINUE_WATCHING : 
       return {
         ...state,
-        continueWatchingMovies: state.continueWatchingMovies.filter(
-          (movie) => movie["_id"] !== action.payload
-        ),
+        listOfContinueWatchingMovies : [...state.listOfContinueWatchingMovies,action.payload]
+      }
+
+    case REMOVE_FROM_CONTINUE_WATCH_MOVIES:
+      return {
+        ...state,
       };
     default:
       return state;

@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./MediaScreen.module.css";
 import HoverScreen from "../HoverScreen/HoverScreen";
 import prime from "../../assets/logo/prime.svg";
 import leftScrollIcon from "../../assets/logo/left-arrow.svg";
 import rightScrollIcon from "../../assets/logo/right-arrow.svg";
-
 const MediaScreen = ({ movies, id, heading }) => {
+  const [toggelLeftButton, setToggleLeftButton] = useState(false);
   var count = 0;
 
   const scrollToLeft = () => {
@@ -14,15 +14,17 @@ const MediaScreen = ({ movies, id, heading }) => {
     });
     if (count === -5.4) {
       count = -5;
+      setToggleLeftButton(false);
     }
     count++;
 
-    console.log("Left count is ", count);
     if (count > 0) {
       count = 0;
+      setToggleLeftButton(false);
     }
   };
   const scrollToRight = () => {
+    setToggleLeftButton(true);
     document.getElementById("bannerDiv" + id.toString()).scrollBy({
       left: 800,
     });

@@ -1,5 +1,6 @@
-import React, { Suspense } from "react";
+import React, { Suspense, useEffect } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
+import MoviePlayer from "./components/Movie/MoviePlayer/MoviePlayer";
 import PrivateRoute from "./components/Route/PrivateRoute";
 import Spinner from "./components/UI/Spinner";
 import { useAuth } from "./store/AuthProvider";
@@ -13,11 +14,13 @@ const MyStuff = React.lazy(() => import("./pages/MyStuff"));
 
 const App = () => {
   const { user } = useAuth();
+
   return (
     <Suspense fallback={<Spinner />}>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/movie/detail/:id" element={<MovieDesc />} />
+        <Route path="/player" element={<MoviePlayer />} />
         <Route path="/mystuff" element={<PrivateRoute />}>
           <Route path="/mystuff" element={<MyStuff />} />
         </Route>

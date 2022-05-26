@@ -1,4 +1,4 @@
-import React, {useState } from "react";
+import React, { useState } from "react";
 import styles from "./HoverScreen.module.css";
 import prime from "../../assets/logo/prime.svg";
 import { useNavigate } from "react-router-dom";
@@ -10,16 +10,11 @@ const HoverScreen = ({ movie }) => {
   const handleClick = () => {
     return navigate(`/movie/detail/${movie["_id"]}`);
   };
-  const moviePlayHandler = () => {
+  const moviePlayHandler = (event) => {
+    event.stopPropagation();
     navigate("/player", { state: { link: movie?.["link"] } });
   };
-  var overview;
-  const description = movie["description"]?.split(" ");
-  if (description.length > 19) {
-    overview = description.slice(0, 19).join(" ") + "...";
-  } else {
-    overview = description.slice(0, description.length - 1).join(" ");
-  }
+
   return (
     <div className={styles.hoverScreen} onClick={handleClick}>
       <img src={prime} alt="logo" className={styles.mediaHoverPrimeImg} />
