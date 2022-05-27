@@ -22,13 +22,13 @@ const MovieStore = () => {
 
   return (
     <div>
-      {listOfContinueWatchingMovies.length > 0 && (
+      {/* {listOfContinueWatchingMovies.length > 0 && (
         <ContinueWatchList
           heading="Continue Watching"
           id="watched"
           movies={listOfContinueWatchingMovies}
         />
-      )}
+      )} */}
 
       {englishMoviesList.length > 0 && (
         <MediaScreen
