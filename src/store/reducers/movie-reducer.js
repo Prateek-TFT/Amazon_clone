@@ -1,6 +1,5 @@
 import {
   ADD_TO_WATCHLIST,
-  ADD_WATCHED_MOVIES,
   FETCH_ALL_MOVIES,
   FETCH_ALL_WATCHLIST_MOVIES,
   FETCH_MOVIE_DETAIL,
@@ -87,15 +86,21 @@ export const movieReducers = (state = initialMoviesState, action) => {
         listOfContinueWatchingMovies: [...action.payload],
       };
 
-    case ADD_TO_CONTINUE_WATCHING : 
+    case ADD_TO_CONTINUE_WATCHING:
       return {
         ...state,
-        listOfContinueWatchingMovies : [...state.listOfContinueWatchingMovies,action.payload]
-      }
+        listOfContinueWatchingMovies: [
+          ...state.listOfContinueWatchingMovies,
+          action.payload,
+        ],
+      };
 
     case REMOVE_FROM_CONTINUE_WATCH_MOVIES:
       return {
         ...state,
+        listOfContinueWatchingMovies: state.listOfContinueWatchingMovies.filter(
+          (movie) => movie["_id"] !== action.payload
+        ),
       };
     default:
       return state;
