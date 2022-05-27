@@ -7,9 +7,6 @@ import rightScrollIcon from "../../assets/logo/right-arrow.svg";
 import crossIcon from "../../assets/logo/cross.svg";
 const ContinueWatchList = ({ movies, id, heading }) => {
   const [toggle, setToggle] = useState(false);
-  // const [showEditContinueWatchList, setShowEditContinueWatchList] =
-  //   useState(false);
-  // const [color, setColor] = useState("#FFFFFF");
   var count = 0;
   const scrollToLeft = () => {
     document.getElementById("bannerDiv" + id.toString()).scrollBy({
@@ -95,51 +92,56 @@ const ContinueWatchList = ({ movies, id, heading }) => {
         &nbsp;
         {movies.map((movie, index) => {
           return (
-            <div key={index} id={movie._id}>
-              <div className={styles.mediaDiv}>
-                {!toggle && (
-                  <>
-                    <div
-                      className={styles.media}
-                      id={`1${index}`}
-                      onMouseEnter={() => {
-                        setPosition(index);
-                      }}
-                    >
-                      <img
-                        src={prime}
-                        alt="logo"
-                        className={styles.mediaHoverPrimeImg}
-                      />
-                      <img
-                        src={movie?.["image"]}
-                        alt="movie_image"
-                        className={styles.movieImg}
-                      />
-                    </div>
-                    <div className={styles.displayhoverScreen} id={`2${index}`}>
-                      <HoverScreen movie={movie} />
-                    </div>
-                  </>
-                )}
-                {toggle && (
-                  <>
+            <>
+              {!toggle && (
+                <div key={index} id={movie._id}>
+                  <div className={styles.mediaDiv}>
+                    <>
+                      <div
+                        className={styles.media}
+                        id={`1${index}`}
+                        onMouseEnter={() => {
+                          setPosition(index);
+                        }}
+                      >
+                        <img
+                          src={prime}
+                          alt="logo"
+                          className={styles.mediaHoverPrimeImg}
+                        />
+                        <img
+                          src={movie?.["image"]}
+                          alt="movie_image"
+                          className={styles.movieImg}
+                        />
+                      </div>
+                      <div
+                        className={styles.displayhoverScreen}
+                        id={`2${index}`}
+                      >
+                        <HoverScreen movie={movie} />
+                      </div>
+                    </>
+                  </div>
+                </div>
+              )}
+              {toggle && (
+                <div key={index} id={movie._id}>
+                  <div className={styles.mediaDiv}>
                     <div className={styles.continueWatchListDeleteButton}>
                       <svg className={styles.crossIcon}>
                         <defs></defs>
                         <g
                           id="Page-1"
                           stroke="none"
-                          stroke-width="1"
+                          strokeWidth="1"
                           fill="none"
-                          fill-rule="evenodd"
+                          fillRule="evenodd"
                         >
                           <path
                             d="M26.5359445,24.3809524 L31.9234247,18.9934721 L29.7684326,16.83848 L24.3809524,22.2259603 L18.9934721,16.83848 L16.83848,18.9934721 L22.2259603,24.3809524 L16.83848,29.7684326 L18.9934721,31.9234247 L24.3809524,26.5359445 L29.7684326,31.9234247 L31.9234247,29.7684326 L26.5359445,24.3809524 Z M24,0 C37.2552,0 48,10.7448 48,24 C48,37.2552 37.2552,48 24,48 C10.7448,48 0,37.2552 0,24 C0,10.7448 10.7448,0 24,0 Z"
                             id="Combined-Shape"
-                            fill='#FFFFFF'
-                            // onMouseEnter={() => setColor("#FFFFFF00")}
-                            // onmouseleave={() => setColor("#FFFFFF")}
+                            fill="#FFFFFF"
                           />
                         </g>
                       </svg>
@@ -156,10 +158,10 @@ const ContinueWatchList = ({ movies, id, heading }) => {
                         className={styles.movieImg}
                       />
                     </div>
-                  </>
-                )}
-              </div>
-            </div>
+                  </div>
+                </div>
+              )}
+            </>
           );
         })}
       </div>

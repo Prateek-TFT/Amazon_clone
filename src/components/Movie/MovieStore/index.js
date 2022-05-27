@@ -22,17 +22,17 @@ const MovieStore = () => {
 
   return (
     <div>
-      {/* {listOfContinueWatchingMovies.length > 0 && (
+      {listOfContinueWatchingMovies.length > 0 && (
         <ContinueWatchList
           heading="Continue Watching"
           id="watched"
           movies={listOfContinueWatchingMovies}
         />
-      )} */}
+      )}
 
       {englishMoviesList.length > 0 && (
         <MediaScreen
-          heading="Hindi Movies"
+          heading="English Movies"
           id="english-movie-list"
           movies={englishMoviesList}
         />
@@ -40,7 +40,7 @@ const MovieStore = () => {
 
       {hindiMoviesList.length > 0 && (
         <MediaScreen
-          heading="English Movies"
+          heading="Hindi Movies"
           id="hindi=movie-list"
           movies={hindiMoviesList}
         />

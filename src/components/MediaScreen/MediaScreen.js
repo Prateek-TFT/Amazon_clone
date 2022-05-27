@@ -46,8 +46,8 @@ const MediaScreen = ({ movies, id, heading }) => {
 
   const shuffleData = (arr) => {
     for (var i = arr.length - 1; i > 0; i--) {
-      // var j = Math.floor(Math.random() * (i + 1));
-      var j = i + 1;
+      var j = Math.floor(Math.random() * (i + 1));
+      // var j = i + 1;
       var temp = arr[i];
       arr[i] = arr[j];
       arr[j] = temp;
@@ -73,7 +73,7 @@ const MediaScreen = ({ movies, id, heading }) => {
         {movies.map((movie, index) => {
           return (
             <div key={index}
-             id={movie._id}
+             id={index}
              >
               <div
                 className={styles.mediaDiv}
