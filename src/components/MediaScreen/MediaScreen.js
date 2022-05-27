@@ -38,7 +38,7 @@ const MediaScreen = ({ movies, id, heading }) => {
     var x = document.getElementById(`1${id}`);
     var divItem = document.getElementById(`2${id}`);
     if (divItem) {
-      divItem.style.position = "absolute";
+      divItem.style.position = "relative";
       divItem.style.top = parseInt(x.offsetTop, 10) + "px";
       divItem.style.left = parseInt(x.offsetLeft, 10) + count * 800 + "px";
     }
@@ -102,12 +102,12 @@ const MediaScreen = ({ movies, id, heading }) => {
         })}
       </div>
       <div className={styles.rightIconDiv} onClick={scrollToRight}>
-        <img
-          src={rightScrollIcon}
-          alt="left_Scroll"
-          className={styles.rightIcon}
-        />
-      </div>
+          <img
+            src={rightScrollIcon}
+            alt="left_Scroll"
+            className={styles.rightIcon}
+          />
+        </div>
     </div>
   );
 };

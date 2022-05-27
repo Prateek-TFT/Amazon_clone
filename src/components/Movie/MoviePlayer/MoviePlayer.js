@@ -10,6 +10,7 @@ const MoviePlayer = () => {
   return (
     <div className={styles["player-wrapper"]}>
       <ReactPlayer
+      playing={true}
         controls
         className={styles["react-player"]}
         url={location.state.link}
