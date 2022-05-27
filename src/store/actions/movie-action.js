@@ -92,24 +92,7 @@ export const handleFetchMovies = () => {
       const res = await fetch(url);
       const data = await res.json();
       for (const key in data) {
-        movies.push({
-          _id: key,
-          imdb: data[key].imdb,
-          trailerOrClips: data[key].trailer,
-          "movie-name": data[key]["movie-name"],
-          link: data[key]["link"],
-          duration: data[key]["duration"],
-          "movie-year": data[key]["movie-year"],
-          description: data[key]["description"],
-          director: data[key]["director"],
-          starring: data[key]["starring"],
-          genres: data[key]["genres"],
-          subtitles: data[key]["subtitles"],
-          "audio-lang": data[key]["audio-lang"],
-          producer: data[key]["producer"],
-          "content-advisory": data[key]["content-advisrory"],
-          image: data[key]["image"],
-        });
+        movies.push({ _id: key,...data[key]})
       }
       dispatch(toggleLoading());
       dispatch(fetchMovies(movies));
@@ -118,7 +101,6 @@ export const handleFetchMovies = () => {
     }
   };
 };
-
 export const handleFetchMovieDetail = (id) => {
   const url = `https://movie-78f07-default-rtdb.firebaseio.com/movies/${id}.json`;
   return async (dispatch) => {
@@ -150,24 +132,7 @@ export const handleFetchWatchlist = () => {
       const data = await response.json();
       const movies = [];
       for (const key in data) {
-        movies.push({
-          _id: key,
-          imdb: data[key].imdb,
-          trailerOrClips: data[key].trailer,
-          "movie-name": data[key]["movie-name"],
-          link: data[key]["link"],
-          duration: data[key]["duration"],
-          "movie-year": data[key]["movie-year"],
-          description: data[key]["description"],
-          director: data[key]["director"],
-          starring: data[key]["starring"],
-          genres: data[key]["genres"],
-          subtitles: data[key]["subtitles"],
-          "audio-lang": data[key]["audio-lang"],
-          producer: data[key]["producer"],
-          "content-advisory": data[key]["content-advisrory"],
-          image: data[key]["image"],
-        });
+        movies.push({ _id: key,...data[key]});
       }
       dispatch(toggleLoading());
       dispatch(fetchWatchlist(movies));
@@ -225,26 +190,9 @@ export const FetchContinueWatchingMoviesHandler = (id) => {
       const res = await fetch(url);
       const data = await res.json();
       for (const key in data) {
-        movies.push({
-          "continue_watching_movie_id" : key,
-          "_id": data[key]['_id'],
-          "imdb": data[key].imdb,
-          "trailerOrClips": data[key].trailer,
-          "movie-name": data[key]["movie-name"],
-          "link": data[key]["link"],
-          "duration": data[key]["duration"],
-          "movie-year": data[key]["movie-year"],
-          "description": data[key]["description"],
-          "director": data[key]["director"],
-          "starring": data[key]["starring"],
-          "genres": data[key]["genres"],
-          "subtitles": data[key]["subtitles"],
-          "audio-lang": data[key]["audio-lang"],
-          "producer": data[key]["producer"],
-          "content-advisory": data[key]["content-advisrory"],
-          "image": data[key]["image"],
-        });
+        movies.push({"continue_watching_movie_id" : key,...data[key]})
       }
+      console.log(movies)
       dispatch(fetchContinueWatchingMovies(movies));
     } catch (error) {
       console.log(error.message);

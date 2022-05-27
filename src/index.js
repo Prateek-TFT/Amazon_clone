@@ -8,7 +8,7 @@ import "./index.css";
 import App from "./App";
 import { AuthProvider } from "./store/AuthProvider";
 import { rootReducers } from "./store/reducers";
-
+import '../src/utils/i18n'
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 const store = createStore(rootReducers, applyMiddleware(thunk));

@@ -1,6 +1,6 @@
-import React, { useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import styles from "./MovieDetails.module.css";
 import playbutton from "../../../assets/logo/play.png";
 import IconButton from "../Icon";
@@ -9,7 +9,10 @@ import FeedbackButton from "../Feedback";
 import RelatedMovieList from "../RelatedMovies";
 import ProductionDetails from "../ProductionDetail";
 import { useAuth } from "../../../store/AuthProvider";
-import { addToContinueWatchingMoviesHandler, handleFetchMovieDetail } from "../../../store/actions/movie-action";
+import {
+  addToContinueWatchingMoviesHandler,
+  handleFetchMovieDetail,
+} from "../../../store/actions/movie-action";
 const MovieDetails = () => {
   const [showActiveTab, setShowActiveTab] = useState(true);
   const { user } = useAuth();
@@ -19,12 +22,15 @@ const MovieDetails = () => {
 
   useEffect(() => {
     dispatch(handleFetchMovieDetail(id));
-  }, [id,dispatch]);
-
+  }, [id, dispatch]);
+  const navigate = useNavigate();
   const handleToggleTab = () => setShowActiveTab(!showActiveTab);
 
   const watchedMovieHandler = () => {
-    dispatch(addToContinueWatchingMoviesHandler(user.uid,{...movieDetail,_id : id}))
+    dispatch(
+      addToContinueWatchingMoviesHandler(user.uid, { ...movieDetail, _id: id })
+    );
+    navigate("/player", { state: { link: movieDetail?.["link"] } });
   };
 
   return (
@@ -91,7 +97,9 @@ const MovieDetails = () => {
         </div>
       </div>
       <div className={styles.endContainer}>
-        {showActiveTab && <RelatedMovieList year={movieDetail?.["movie-year"]} />}
+        {showActiveTab && (
+          <RelatedMovieList year={movieDetail?.["movie-year"]} />
+        )}
         {!showActiveTab && <ProductionDetails movieDetail={movieDetail} />}
       </div>
     </div>

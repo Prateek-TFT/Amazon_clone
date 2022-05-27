@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./MediaScreen.module.css";
 import HoverScreen from "../HoverScreen/HoverScreen";
 import prime from "../../assets/logo/prime.svg";
@@ -10,14 +10,17 @@ const MediaScreen = ({ movies, id, heading }) => {
     });
     if (count === -5) {
       count = -5;
+      setToggleLeftButton(false);
     }
     count++;
 
     if (count > 0) {
       count = 0;
+      setToggleLeftButton(false);
     }
   };
   const scrollToRight = () => {
+    setToggleLeftButton(true);
     document.getElementById("bannerDiv" + id.toString()).scrollBy({
       left: 800,
     });
@@ -53,13 +56,15 @@ const MediaScreen = ({ movies, id, heading }) => {
   return (
     <div className={styles.mediaScreen}>
       <div className={styles.heading}>{heading}</div>
-      <div className={styles.leftIconDiv} onClick={scrollToLeft}>
-        <img
-          src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgiIGhlaWdodD0iMzIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTMuMjM3IDE3LjIzN3YtMi40NzRsMTQgMTRjLjY4NC42ODMuNjg0IDEuNzkgMCAyLjQ3NGExLjc0OCAxLjc0OCAwIDAgMS0yLjQ3NCAwbC0xNC0xNGExLjc0OCAxLjc0OCAwIDAgMSAwLTIuNDc0bDE0LTE0YTEuNzQ4IDEuNzQ4IDAgMCAxIDIuNDc0IDBjLjY4NC42ODMuNjg0IDEuNzkgMCAyLjQ3NGwtMTQgMTR6IiBmaWxsPSIjRUZGMUYxIi8+PC9zdmc+"
-          alt="left_Scroll"
-          className={styles.leftIcon}
-        />
-      </div>
+      {toggelLeftButton && (
+        <div className={styles.leftIconDiv} onClick={scrollToLeft}>
+          <img
+            src={leftScrollIcon}
+            alt="left_Scroll"
+            className={styles.leftIcon}
+          />
+        </div>
+      )}
       <div className={styles.banner} id={"bannerDiv" + id.toString()}>
         &nbsp;
         {movies.map((movie, index) => {

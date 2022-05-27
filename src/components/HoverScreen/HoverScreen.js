@@ -1,4 +1,4 @@
-import React, {useState } from "react";
+import React, { useState } from "react";
 import styles from "./HoverScreen.module.css";
 import prime from "../../assets/logo/prime.svg";
 import { useNavigate } from "react-router-dom";
@@ -10,7 +10,8 @@ const HoverScreen = ({ movie }) => {
   const handleClick = () => {
     return navigate(`/movie/detail/${movie["_id"]}`);
   };
-  const moviePlayHandler = () => {
+  const moviePlayHandler = (event) => {
+    event.stopPropagation();
     navigate("/player", { state: { link: movie?.["link"] } });
   };
 
