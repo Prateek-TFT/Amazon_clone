@@ -3,6 +3,7 @@ import styles from "./MediaScreen.module.css";
 import HoverScreen from "../HoverScreen/HoverScreen";
 import prime from "../../assets/logo/prime.svg";
 const MediaScreen = ({ movies, id, heading }) => {
+
   const [toggelLeftButton, setToggleLeftButton] = useState(false);
   let count = 0;
 
