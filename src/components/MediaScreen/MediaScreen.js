@@ -2,17 +2,15 @@ import React, { useState } from "react";
 import styles from "./MediaScreen.module.css";
 import HoverScreen from "../HoverScreen/HoverScreen";
 import prime from "../../assets/logo/prime.svg";
-import leftScrollIcon from "../../assets/logo/left-arrow.svg";
-import rightScrollIcon from "../../assets/logo/right-arrow.svg";
 const MediaScreen = ({ movies, id, heading }) => {
   const [toggelLeftButton, setToggleLeftButton] = useState(false);
-  var count = 0;
+  let count = 0;
 
   const scrollToLeft = () => {
     document.getElementById("bannerDiv" + id.toString()).scrollBy({
       left: -800,
     });
-    if (count === -5.4) {
+    if (count === -5) {
       count = -5;
       setToggleLeftButton(false);
     }
@@ -30,16 +28,16 @@ const MediaScreen = ({ movies, id, heading }) => {
     });
     count--;
     console.log("RIght count is ", count);
-    if (count < -9) {
-      count = -9;
+    if (count < -6) {
+      count = -6;
     }
   };
 
   const setPosition = (id) => {
-    var x = document.getElementById(`1${id}`);
-    var divItem = document.getElementById(`2${id}`);
+    let x = document.getElementById(`1${id}`);
+    let divItem = document.getElementById(`2${id}`);
     if (divItem) {
-      divItem.style.position = "absolute";
+      divItem.style.position = "relative";
       divItem.style.top = parseInt(x.offsetTop, 10) + "px";
       divItem.style.left = parseInt(x.offsetLeft, 10) + count * 800 + "px";
     }
@@ -47,9 +45,10 @@ const MediaScreen = ({ movies, id, heading }) => {
   };
 
   const shuffleData = (arr) => {
-    for (var i = arr.length - 1; i > 0; i--) {
-      var j = Math.floor(Math.random() * (i + 1));
-      var temp = arr[i];
+    for (let i = arr.length - 1; i > 0; i--) {
+      let j = Math.floor(Math.random() * (i + 1));
+      // var j = i + 1;
+      let temp = arr[i];
       arr[i] = arr[j];
       arr[j] = temp;
     }
@@ -60,18 +59,20 @@ const MediaScreen = ({ movies, id, heading }) => {
   return (
     <div className={styles.mediaScreen}>
       <div className={styles.heading}>{heading}</div>
-      <div className={styles.leftIconDiv} onClick={scrollToLeft}>
-        <img
-          src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgiIGhlaWdodD0iMzIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTMuMjM3IDE3LjIzN3YtMi40NzRsMTQgMTRjLjY4NC42ODMuNjg0IDEuNzkgMCAyLjQ3NGExLjc0OCAxLjc0OCAwIDAgMS0yLjQ3NCAwbC0xNC0xNGExLjc0OCAxLjc0OCAwIDAgMSAwLTIuNDc0bDE0LTE0YTEuNzQ4IDEuNzQ4IDAgMCAxIDIuNDc0IDBjLjY4NC42ODMuNjg0IDEuNzkgMCAyLjQ3NGwtMTQgMTR6IiBmaWxsPSIjRUZGMUYxIi8+PC9zdmc+"
-          alt="left_Scroll"
-          className={styles.leftIcon}
-        />
-      </div>
+      {toggelLeftButton && (
+        <div className={styles.leftIconDiv} onClick={scrollToLeft}>
+          <img
+            src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgiIGhlaWdodD0iMzIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTMuMjM3IDE3LjIzN3YtMi40NzRsMTQgMTRjLjY4NC42ODMuNjg0IDEuNzkgMCAyLjQ3NGExLjc0OCAxLjc0OCAwIDAgMS0yLjQ3NCAwbC0xNC0xNGExLjc0OCAxLjc0OCAwIDAgMSAwLTIuNDc0bDE0LTE0YTEuNzQ4IDEuNzQ4IDAgMCAxIDIuNDc0IDBjLjY4NC42ODMuNjg0IDEuNzkgMCAyLjQ3NGwtMTQgMTR6IiBmaWxsPSIjRUZGMUYxIi8+PC9zdmc+"
+            alt="left_Scroll"
+            className={styles.leftIcon}
+          />
+        </div>
+      )}
       <div className={styles.banner} id={"bannerDiv" + id.toString()}>
         &nbsp;
         {movies.map((movie, index) => {
           return (
-            <div key={index} id={movie._id}>
+            <div key={index} id={index}>
               <div
                 className={styles.mediaDiv}
                 id={`1${index}`}

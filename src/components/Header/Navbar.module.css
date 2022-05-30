@@ -3,7 +3,7 @@
     background-color: #1A242F;
     height: fit-content;
     box-sizing: border-box;
-    z-index: 900;
+    z-index: 999;
 }
 .sticky {
     position: sticky;

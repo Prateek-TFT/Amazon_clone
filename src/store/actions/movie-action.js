@@ -6,11 +6,12 @@ export const FETCH_ALL_WATCHLIST_MOVIES = "FETCH_ALL_WATCHLIST_MOVIES";
 export const TOGGLE_LOADING = "SET_LOADING";
 export const FETCH_MOVIE_DETAIL = "FETCH_MOVIE_DETAIL";
 export const SEARCH_MOVIES = "SEARCH_MOVIES";
-export const REMOVE_FROM_CONTINUE_WATCH_MOVIES = "REMOVE_FROM_CONTINUE_WATCH_MOVIES";
-export const FETCH_ALL_CONTINUE_WATCHING_MOVIES = "FETCH_ALL_CONTINUE_WATCHING_MOVIES";
+export const REMOVE_FROM_CONTINUE_WATCH_MOVIES =
+  "REMOVE_FROM_CONTINUE_WATCH_MOVIES";
+export const FETCH_ALL_CONTINUE_WATCHING_MOVIES =
+  "FETCH_ALL_CONTINUE_WATCHING_MOVIES";
 export const ADD_TO_CONTINUE_WATCHING = "ADD_TO_CONTINUE_WATCHING";
 // action creators
-
 
 export const fetchMovies = (movies) => {
   return {
@@ -69,10 +70,10 @@ export const fetchContinueWatchingMovies = (movies) => {
 
 export const addToContinueWatchingMovies = (movie) => {
   return {
-    type : ADD_TO_CONTINUE_WATCHING,
-    payload : movie
-  }
-}
+    type: ADD_TO_CONTINUE_WATCHING,
+    payload: movie,
+  };
+};
 
 export const removeFromContinueWatching = (movie) => {
   return {
@@ -80,7 +81,6 @@ export const removeFromContinueWatching = (movie) => {
     payload: movie,
   };
 };
-
 
 // asyn action function
 export const handleFetchMovies = () => {
@@ -92,24 +92,7 @@ export const handleFetchMovies = () => {
       const res = await fetch(url);
       const data = await res.json();
       for (const key in data) {
-        movies.push({
-          _id: key,
-          imdb: data[key].imdb,
-          trailerOrClips: data[key].trailer,
-          "movie-name": data[key]["movie-name"],
-          link: data[key]["link"],
-          duration: data[key]["duration"],
-          "movie-year": data[key]["movie-year"],
-          description: data[key]["description"],
-          director: data[key]["director"],
-          starring: data[key]["starring"],
-          genres: data[key]["genres"],
-          subtitles: data[key]["subtitles"],
-          "audio-lang": data[key]["audio-lang"],
-          producer: data[key]["producer"],
-          "content-advisory": data[key]["content-advisrory"],
-          image: data[key]["image"],
-        });
+        movies.push({ _id: key, ...data[key] });
       }
       dispatch(toggleLoading());
       dispatch(fetchMovies(movies));
@@ -149,24 +132,7 @@ export const handleFetchWatchlist = () => {
       const data = await response.json();
       const movies = [];
       for (const key in data) {
-        movies.push({
-          _id: key,
-          imdb: data[key].imdb,
-          trailerOrClips: data[key].trailer,
-          "movie-name": data[key]["movie-name"],
-          link: data[key]["link"],
-          duration: data[key]["duration"],
-          "movie-year": data[key]["movie-year"],
-          description: data[key]["description"],
-          director: data[key]["director"],
-          starring: data[key]["starring"],
-          genres: data[key]["genres"],
-          subtitles: data[key]["subtitles"],
-          "audio-lang": data[key]["audio-lang"],
-          producer: data[key]["producer"],
-          "content-advisory": data[key]["content-advisrory"],
-          image: data[key]["image"],
-        });
+        movies.push({ _id: key, ...data[key] });
       }
       dispatch(toggleLoading());
       dispatch(fetchWatchlist(movies));
@@ -213,10 +179,9 @@ export const handleDeleteFromWatchlist = (id) => {
   };
 };
 
-
 //function for continue watching movies
 export const FetchContinueWatchingMoviesHandler = (id) => {
-  const url = `https://movie-78f07-default-rtdb.firebaseio.com/continue-watching/${id}.json`;
+  const url = `https://app-88579-default-rtdb.firebaseio.com/continue-watching/${id}.json`;
   return async (dispatch) => {
     try {
       dispatch(toggleLoading());
@@ -224,25 +189,7 @@ export const FetchContinueWatchingMoviesHandler = (id) => {
       const res = await fetch(url);
       const data = await res.json();
       for (const key in data) {
-        movies.push({
-          "continue_watching_movie_id" : key,
-          "_id": data[key]['_id'],
-          "imdb": data[key].imdb,
-          "trailerOrClips": data[key].trailer,
-          "movie-name": data[key]["movie-name"],
-          "link": data[key]["link"],
-          "duration": data[key]["duration"],
-          "movie-year": data[key]["movie-year"],
-          "description": data[key]["description"],
-          "director": data[key]["director"],
-          "starring": data[key]["starring"],
-          "genres": data[key]["genres"],
-          "subtitles": data[key]["subtitles"],
-          "audio-lang": data[key]["audio-lang"],
-          "producer": data[key]["producer"],
-          "content-advisory": data[key]["content-advisrory"],
-          "image": data[key]["image"],
-        });
+        movies.push({ continue_watching_movie_id: key, ...data[key] });
       }
       dispatch(fetchContinueWatchingMovies(movies));
     } catch (error) {
@@ -251,23 +198,38 @@ export const FetchContinueWatchingMoviesHandler = (id) => {
   };
 };
 
-
-export const addToContinueWatchingMoviesHandler = (id,movie) => {
-  const url = `https://movie-78f07-default-rtdb.firebaseio.com/continue-watching/${id}.json`;
+export const addToContinueWatchingMoviesHandler = (id, movie) => {
+  const url = `https://app-88579-default-rtdb.firebaseio.com/continue-watching/${id}.json`;
   return async (dispatch) => {
     try {
-      const res = await fetch(url,{
-        method : "POST",
-        body : JSON.stringify(movie)
-      })
-      if(!res.ok) {
-        throw new Error("Failed to add to continue watching")
+      const res = await fetch(url, {
+        method: "POST",
+        body: JSON.stringify(movie),
+      });
+      if (!res.ok) {
+        throw new Error("Failed to add to continue watching");
       }
       const data = await res.json();
-      const newMovie = {"continue_watching_movie_id" : data.name,...movie}
-      dispatch(addToContinueWatchingMovies(newMovie))
+      const newMovie = { continue_watching_movie_id: data.name, ...movie };
+      dispatch(addToContinueWatchingMovies(newMovie));
     } catch (error) {
-      console.log(error.message)
+      console.log(error.message);
     }
-  }
-}
+  };
+};
+export const removeFromContinueWatchingHandler = (userId, id) => {
+  const url = `https://app-88579-default-rtdb.firebaseio.com/continue-watching/${userId}/${id}.json`;
+  return async (dispatch) => {
+    try {
+      const res = await fetch(url, {
+        method: "DELETE",
+      });
+      if (!res.ok) {
+        throw new Error("Failed to remove continue watching");
+      }
+      dispatch(removeFromContinueWatching(id));
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+};
