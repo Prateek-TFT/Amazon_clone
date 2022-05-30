@@ -1,4 +1,4 @@
-import React, { Suspense, useEffect } from "react";
+import React, { Suspense } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 import MoviePlayer from "./components/Movie/MoviePlayer/MoviePlayer";
 import PrivateRoute from "./components/Route/PrivateRoute";

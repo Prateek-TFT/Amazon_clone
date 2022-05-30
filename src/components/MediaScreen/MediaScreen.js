@@ -5,6 +5,7 @@ import prime from "../../assets/logo/prime.svg";
 import leftScrollIcon from "../../assets/logo/left-arrow.svg";
 import rightScrollIcon from "../../assets/logo/right-arrow.svg";
 const MediaScreen = ({ movies, id, heading }) => {
+  console.log(movies)
   const [toggelLeftButton, setToggleLeftButton] = useState(false);
   var count = 0;
   const scrollToLeft = () => {

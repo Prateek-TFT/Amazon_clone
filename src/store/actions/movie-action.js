@@ -192,7 +192,6 @@ export const FetchContinueWatchingMoviesHandler = (id) => {
       for (const key in data) {
         movies.push({"continue_watching_movie_id" : key,...data[key]})
       }
-      console.log(movies)
       dispatch(fetchContinueWatchingMovies(movies));
     } catch (error) {
       console.log(error.message);
