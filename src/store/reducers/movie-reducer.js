@@ -1,6 +1,5 @@
 import {
   ADD_TO_WATCHLIST,
-  ADD_WATCHED_MOVIES,
   FETCH_ALL_MOVIES,
   FETCH_ALL_WATCHLIST_MOVIES,
   FETCH_MOVIE_DETAIL,
@@ -16,7 +15,7 @@ const initialMoviesState = {
   listOfMovies: [],
   englishMoviesList: [],
   hindiMoviesList: [],
-  listOfWatchListMovis: [],
+  listOfWatchListMovies: [],
   listOfContinueWatchingMovies: [],
   loading: true,
   movieDetail: {},
@@ -25,6 +24,8 @@ const initialMoviesState = {
 
 export const movieReducers = (state = initialMoviesState, action) => {
   switch (action.type) {
+
+    // fetch all movies part
     case FETCH_ALL_MOVIES:
       const englishMovies = action.payload.filter(
         (movie) => movie["audio-lang"] === "English"
@@ -52,6 +53,8 @@ export const movieReducers = (state = initialMoviesState, action) => {
         movieDetail: { ...action.payload },
       };
 
+    // search movie part
+
     case SEARCH_MOVIES:
       return {
         ...state,
@@ -62,18 +65,12 @@ export const movieReducers = (state = initialMoviesState, action) => {
         ),
       };
 
+    // watchlist movie part
+
     case FETCH_ALL_WATCHLIST_MOVIES:
       return {
         ...state,
         listOfWatchListMovies: action.payload,
-      };
-
-    case REMOVE_FROM_WATCHLIST:
-      return {
-        ...state,
-        listOfWatchListMovies: state.listOfWatchListMovis.filter(
-          (movie) => movie["_id"] !== action.payload
-        ),
       };
 
     case ADD_TO_WATCHLIST:
@@ -81,22 +78,39 @@ export const movieReducers = (state = initialMoviesState, action) => {
         ...state,
         listOfWatchListMovies: [action.payload, ...state.listOfWatchListMovis],
       };
+
+    case REMOVE_FROM_WATCHLIST:
+      return {
+        ...state,
+        listOfWatchListMovies: state.listOfWatchListMovis.filter(
+          (movie) => movie["watchlist_movie_id"] !== action.payload
+        ),
+      };
+
+    // continue watching movies part
     case FETCH_ALL_CONTINUE_WATCHING_MOVIES:
       return {
         ...state,
         listOfContinueWatchingMovies: [...action.payload],
       };
 
-    case ADD_TO_CONTINUE_WATCHING : 
+    case ADD_TO_CONTINUE_WATCHING:
       return {
         ...state,
-        listOfContinueWatchingMovies : [...state.listOfContinueWatchingMovies,action.payload]
-      }
+        listOfContinueWatchingMovies: [
+          ...state.listOfContinueWatchingMovies,
+          action.payload,
+        ],
+      };
 
     case REMOVE_FROM_CONTINUE_WATCH_MOVIES:
       return {
         ...state,
+        listOfContinueWatchingMovies: state.listOfContinueWatchingMovies.filter(
+          (movie) => movie["continue_watching_movie_id"] !== action.payload
+        ),
       };
+      
     default:
       return state;
   }
