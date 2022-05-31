@@ -4,7 +4,6 @@ import HoverScreen from "../HoverScreen/HoverScreen";
 import prime from "../../assets/logo/prime.svg";
 import leftScrollIcon from "../../assets/logo/left-arrow.svg";
 import rightScrollIcon from "../../assets/logo/right-arrow.svg";
-import crossIcon from "../../assets/logo/cross.svg";
 const ContinueWatchList = ({ movies, id, heading }) => {
   const [toggle, setToggle] = useState(false);
   var count = 0;

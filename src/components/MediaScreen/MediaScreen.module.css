@@ -28,7 +28,7 @@
   left: 0px;
   margin-top: 20px;
   min-height: 166px;
-  z-index: 999;
+  z-index: 10;
   width: 50px;
   color: gray;
   position: absolute;
@@ -53,7 +53,7 @@
   margin-top: -166px;
   right: 0px;
   min-height: 166px;
-  z-index: 999;
+  z-index: 10;
   width: 50px;
   color: gray;
   position: absolute;
