@@ -3,9 +3,10 @@ import styles from "./MediaScreen.module.css";
 import HoverScreen from "../HoverScreen/HoverScreen";
 import prime from "../../assets/logo/prime.svg";
 const MediaScreen = ({ movies, id, heading }) => {
-  console.log(movies)
+
   const [toggelLeftButton, setToggleLeftButton] = useState(false);
   var count = 0;
+
   const scrollToLeft = () => {
     document.getElementById("bannerDiv" + id.toString()).scrollBy({
       left: -800,
@@ -34,8 +35,8 @@ const MediaScreen = ({ movies, id, heading }) => {
   };
 
   const setPosition = (id) => {
-    var x = document.getElementById(`1${id}`);
-    var divItem = document.getElementById(`2${id}`);
+    let x = document.getElementById(`1${id}`);
+    let divItem = document.getElementById(`2${id}`);
     if (divItem) {
       divItem.style.position = "absolute";
       divItem.style.top = parseInt(x.offsetTop, 10) + "px";
@@ -72,9 +73,7 @@ const MediaScreen = ({ movies, id, heading }) => {
         &nbsp;
         {movies.map((movie, index) => {
           return (
-            <div key={index}
-             id={index}
-             >
+            <div key={index} id={index}>
               <div
                 className={styles.mediaDiv}
                 id={`1${index}`}
@@ -96,7 +95,7 @@ const MediaScreen = ({ movies, id, heading }) => {
                 </div>
 
                 <div className={styles.displayhoverScreen} id={`2${index}`}>
-                  <HoverScreen movie={movie} />
+                  <HoverScreen key={index} movie={movie} />
                 </div>
               </div>
             </div>

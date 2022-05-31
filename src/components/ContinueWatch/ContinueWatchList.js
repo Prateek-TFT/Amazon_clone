@@ -1,11 +1,22 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./ContinueWatchList.module.css";
 import HoverScreen from "../HoverScreen/HoverScreen";
 import prime from "../../assets/logo/prime.svg";
 import leftScrollIcon from "../../assets/logo/left-arrow.svg";
 import rightScrollIcon from "../../assets/logo/right-arrow.svg";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  FetchContinueWatchingMoviesHandler,
+  removeFromContinueWatchingHandler,
+} from "../../store/actions/movie-action";
+import { useAuth } from "../../store/AuthProvider";
 const ContinueWatchList = ({ movies, id, heading }) => {
   const [toggle, setToggle] = useState(false);
+  const dispatch = useDispatch();
+  const { user } = useAuth();
+  const { listOfContinueWatchingMovies, movieDetail } = useSelector(
+    (state) => state.movie
+  );
   var count = 0;
   const scrollToLeft = () => {
     document.getElementById("bannerDiv" + id.toString()).scrollBy({
@@ -41,18 +52,6 @@ const ContinueWatchList = ({ movies, id, heading }) => {
     }
     return divItem.style;
   };
-
-  const shuffleData = (arr) => {
-    for (var i = arr.length - 1; i > 0; i--) {
-      var j = Math.floor(Math.random() * (i + 1));
-      var temp = arr[i];
-      arr[i] = arr[j];
-      arr[j] = temp;
-    }
-  };
-  if (movies?.length > 0) {
-    shuffleData(movies);
-  }
   const editContinueWatchListHandler = () => {
     setToggle(!toggle);
     // setShowEditContinueWatchList(!showEditContinueWatchList);
@@ -60,6 +59,12 @@ const ContinueWatchList = ({ movies, id, heading }) => {
   const editedContinueWatchListHandler = () => {
     setToggle(!toggle);
   };
+  const removeContinueWatchingMovieHandle = (id) => {
+    dispatch(removeFromContinueWatchingHandler(user.uid, id));
+  };
+  useEffect(() => {
+    dispatch(FetchContinueWatchingMoviesHandler(user.uid));
+  }, [listOfContinueWatchingMovies]);
   return (
     <div className={styles.mediaScreen}>
       <div className={styles.action}>
@@ -92,10 +97,10 @@ const ContinueWatchList = ({ movies, id, heading }) => {
         {movies.map((movie, index) => {
           return (
             <>
-              {!toggle && (
-                <div key={index} id={movie._id}>
-                  <div className={styles.mediaDiv}>
-                    <>
+              <div key={index} id={movie._id}>
+                <div className={styles.mediaDiv}>
+                  <>
+                    {!toggle && (
                       <div
                         className={styles.media}
                         id={`1${index}`}
@@ -114,52 +119,50 @@ const ContinueWatchList = ({ movies, id, heading }) => {
                           className={styles.movieImg}
                         />
                       </div>
+                    )}
+                    {toggle && (
+                      <div className={styles.mediaEdit}>
+                        <img
+                          className={styles.movieImg}
+                          style={{ opacity: "0.7" }}
+                          src={movie.image}
+                        />
+                        <svg
+                          className={styles.crossIcon}
+                          onClick={() =>
+                            removeContinueWatchingMovieHandle(
+                              movie.continue_watching_movie_id
+                            )
+                          }
+                        >
+                          <defs></defs>
+                          <g
+                            id="Page-1"
+                            stroke="none"
+                            strokeWidth="1"
+                            fill="none"
+                            fillRule="evenodd"
+                          >
+                            <path
+                              d="M26.5359445,24.3809524 L31.9234247,18.9934721 L29.7684326,16.83848 L24.3809524,22.2259603 L18.9934721,16.83848 L16.83848,18.9934721 L22.2259603,24.3809524 L16.83848,29.7684326 L18.9934721,31.9234247 L24.3809524,26.5359445 L29.7684326,31.9234247 L31.9234247,29.7684326 L26.5359445,24.3809524 Z M24,0 C37.2552,0 48,10.7448 48,24 C48,37.2552 37.2552,48 24,48 C10.7448,48 0,37.2552 0,24 C0,10.7448 10.7448,0 24,0 Z"
+                              id="Combined-Shape"
+                              fill="#FFFFFF"
+                            />
+                          </g>
+                        </svg>
+                      </div>
+                    )}
+                    {!toggle && (
                       <div
                         className={styles.displayhoverScreen}
                         id={`2${index}`}
                       >
                         <HoverScreen movie={movie} />
                       </div>
-                    </>
-                  </div>
+                    )}
+                  </>
                 </div>
-              )}
-              {toggle && (
-                <div key={index} id={movie._id}>
-                  <div className={styles.mediaDiv}>
-                    <div className={styles.continueWatchListDeleteButton}>
-                      <svg className={styles.crossIcon}>
-                        <defs></defs>
-                        <g
-                          id="Page-1"
-                          stroke="none"
-                          strokeWidth="1"
-                          fill="none"
-                          fillRule="evenodd"
-                        >
-                          <path
-                            d="M26.5359445,24.3809524 L31.9234247,18.9934721 L29.7684326,16.83848 L24.3809524,22.2259603 L18.9934721,16.83848 L16.83848,18.9934721 L22.2259603,24.3809524 L16.83848,29.7684326 L18.9934721,31.9234247 L24.3809524,26.5359445 L29.7684326,31.9234247 L31.9234247,29.7684326 L26.5359445,24.3809524 Z M24,0 C37.2552,0 48,10.7448 48,24 C48,37.2552 37.2552,48 24,48 C10.7448,48 0,37.2552 0,24 C0,10.7448 10.7448,0 24,0 Z"
-                            id="Combined-Shape"
-                            fill="#FFFFFF"
-                          />
-                        </g>
-                      </svg>
-                    </div>
-                    <div className={styles.media}>
-                      <img
-                        src={prime}
-                        alt="logo"
-                        className={styles.mediaHoverPrimeImg}
-                      />
-                      <img
-                        src={movie?.["image"]}
-                        alt="movie_image"
-                        className={styles.movieImg}
-                      />
-                    </div>
-                  </div>
-                </div>
-              )}
+              </div>
             </>
           );
         })}
@@ -171,6 +174,7 @@ const ContinueWatchList = ({ movies, id, heading }) => {
           className={styles.rightIcon}
         />
       </div>
+      //{" "}
     </div>
   );
 };

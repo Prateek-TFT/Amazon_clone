@@ -35,7 +35,7 @@ const HoverScreen = ({ movie }) => {
         <div className={styles.primeText}>Included with Prime</div>
         <div className={styles.title}>{movie?.["movie-name"]}</div>
         <div className={styles.overview}>
-          {movie["description"].length > 100
+          {movie["description"]?.length > 100
             ? movie["description"].substring(0, 100) + "..."
             : movie["description"]}
         </div>

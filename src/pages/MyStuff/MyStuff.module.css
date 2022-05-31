@@ -5,6 +5,7 @@
 .navigation {
   display: flex;
   flex-direction: row;
+  margin-bottom: 2.5rem;
 }
 .watchlist {
   color: #8197a4;
