@@ -4,7 +4,7 @@ const WatchListCard = ({ movie }) => {
   const [isShown, setIsShown] = useState(false);
   return (
     <div
-      className={styles.container}
+      className={styles.card}
       onMouseEnter={() => setIsShown(true)}
       onMouseLeave={() => setIsShown(false)}
     >
@@ -35,7 +35,7 @@ const WatchListCard = ({ movie }) => {
               <span>{movie["movie-year"]}</span>
             </div>
           </div>
-        )}
+        )} 
       </div>
     </div>
   );
