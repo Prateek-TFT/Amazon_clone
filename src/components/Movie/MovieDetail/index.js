@@ -14,7 +14,10 @@ import {
   handleFetchMovieDetail,
 } from "../../../store/actions/movie-action";
 const MovieDetails = () => {
-  const [showActiveTab, setShowActiveTab] = useState(true);
+  const [toggle, setToggle] = useState({
+    showRelatedMovies: true,
+    showMoreDetails: false,
+  });
   const { user } = useAuth();
   const { id } = useParams();
   const dispatch = useDispatch();
@@ -24,7 +27,16 @@ const MovieDetails = () => {
     dispatch(handleFetchMovieDetail(id));
   }, [id, dispatch]);
   const navigate = useNavigate();
-  const handleToggleTab = () => setShowActiveTab(!showActiveTab);
+  const showRelatedMoviesHandler = () =>
+    setToggle({
+      showRelatedMovies: true,
+      showMoreDetails: false,
+    });
+  const showMoreDetailsHandler = () =>
+    setToggle({
+      showRelatedMovies: false,
+      showMoreDetails: true,
+    });
 
   const watchedMovieHandler = () => {
     dispatch(
@@ -82,14 +94,18 @@ const MovieDetails = () => {
         <div className={styles.lastContainer}>
           <div className={styles.options}>
             <span
-              className={showActiveTab ? styles.activeRelated : styles.related}
-              onClick={handleToggleTab}
+              className={
+                toggle.showRelatedMovies ? styles.activeRelated : styles.related
+              }
+              onClick={showRelatedMoviesHandler}
             >
               Related
             </span>
             <span
-              className={!showActiveTab ? styles.activeDetails : styles.details}
-              onClick={handleToggleTab}
+              className={
+                toggle.showMoreDetails ? styles.activeDetails : styles.details
+              }
+              onClick={showMoreDetailsHandler}
             >
               Details
             </span>
@@ -97,10 +113,12 @@ const MovieDetails = () => {
         </div>
       </div>
       <div className={styles.endContainer}>
-        {showActiveTab && (
+        {toggle.showRelatedMovies && (
           <RelatedMovieList year={movieDetail?.["movie-year"]} />
         )}
-        {!showActiveTab && <ProductionDetails movieDetail={movieDetail} />}
+        {toggle.showMoreDetails && (
+          <ProductionDetails movieDetail={movieDetail} />
+        )}
       </div>
     </div>
   );
