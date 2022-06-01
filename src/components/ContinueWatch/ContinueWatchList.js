@@ -2,8 +2,6 @@ import React, { useEffect, useState } from "react";
 import styles from "./ContinueWatchList.module.css";
 import HoverScreen from "../HoverScreen/HoverScreen";
 import prime from "../../assets/logo/prime.svg";
-import leftScrollIcon from "../../assets/logo/left-arrow.svg";
-import rightScrollIcon from "../../assets/logo/right-arrow.svg";
 import { useDispatch, useSelector } from "react-redux";
 import {
   FetchContinueWatchingMoviesHandler,
@@ -87,7 +85,7 @@ const ContinueWatchList = ({ movies, id, heading }) => {
       </div>
       <div className={styles.leftIconDiv} onClick={scrollToLeft}>
         <img
-          src={leftScrollIcon}
+          src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgiIGhlaWdodD0iMzIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTMuMjM3IDE3LjIzN3YtMi40NzRsMTQgMTRjLjY4NC42ODMuNjg0IDEuNzkgMCAyLjQ3NGExLjc0OCAxLjc0OCAwIDAgMS0yLjQ3NCAwbC0xNC0xNGExLjc0OCAxLjc0OCAwIDAgMSAwLTIuNDc0bDE0LTE0YTEuNzQ4IDEuNzQ4IDAgMCAxIDIuNDc0IDBjLjY4NC42ODMuNjg0IDEuNzkgMCAyLjQ3NGwtMTQgMTR6IiBmaWxsPSIjRUZGMUYxIi8+PC9zdmc+"
           alt="left_Scroll"
           className={styles.leftIcon}
         />
@@ -169,7 +167,7 @@ const ContinueWatchList = ({ movies, id, heading }) => {
       </div>
       <div className={styles.rightIconDiv} onClick={scrollToRight}>
         <img
-          src={rightScrollIcon}
+          src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgiIGhlaWdodD0iMzIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTE0Ljc2MyAxNy4yMzd2LTIuNDc0bC0xNCAxNGExLjc0OCAxLjc0OCAwIDAgMCAwIDIuNDc0Yy42ODMuNjg0IDEuNzkuNjg0IDIuNDc0IDBsMTQtMTRhMS43NDggMS43NDggMCAwIDAgMC0yLjQ3NGwtMTQtMTRBMS43NSAxLjc1IDAgMCAwIC43NjMgMy4yMzdsMTQgMTR6IiBmaWxsPSIjRUZGMUYxIi8+PC9zdmc+"
           alt="left_Scroll"
           className={styles.rightIcon}
         />

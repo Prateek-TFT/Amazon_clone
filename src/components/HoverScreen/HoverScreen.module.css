@@ -37,6 +37,11 @@
   z-index: 2;
   text-decoration: none;
 }
+.buttonContainer{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 .playDiv {
   display: flex;
   justify-content: space-between;
@@ -56,6 +61,11 @@
   outline: none;
   background-color: black;
   cursor: pointer;
+}
+.watchlistButton{
+  display: flex;
+  margin-top: 20px;
+
 }
 .play {
   border-top: 8px solid black;
