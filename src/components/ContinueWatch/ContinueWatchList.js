@@ -12,7 +12,7 @@ const ContinueWatchList = ({ movies, id, heading }) => {
   const [toggle, setToggle] = useState(false);
   const dispatch = useDispatch();
   const { user } = useAuth();
-  const { listOfContinueWatchingMovies, movieDetail } = useSelector(
+  const { listOfContinueWatchingMovies } = useSelector(
     (state) => state.movie
   );
   var count = 0;

@@ -18,13 +18,13 @@ const initialMoviesState = {
   listOfWatchListMovies: [],
   listOfContinueWatchingMovies: [],
   loading: true,
+  isAddedToWatchList: false,
   movieDetail: {},
   searchMoviesList: [],
 };
 
 export const movieReducers = (state = initialMoviesState, action) => {
   switch (action.type) {
-
     // fetch all movies part
     case FETCH_ALL_MOVIES:
       const englishMovies = action.payload.filter(
@@ -76,15 +76,17 @@ export const movieReducers = (state = initialMoviesState, action) => {
     case ADD_TO_WATCHLIST:
       return {
         ...state,
-        listOfWatchListMovies: [action.payload, ...state.listOfWatchListMovis],
+        listOfWatchListMovies: [action.payload, ...state.listOfWatchListMovies],
+        isAddedToWatchList: true,
       };
 
     case REMOVE_FROM_WATCHLIST:
       return {
         ...state,
-        listOfWatchListMovies: state.listOfWatchListMovis.filter(
+        listOfWatchListMovies: state.listOfWatchListMovies.filter(
           (movie) => movie["watchlist_movie_id"] !== action.payload
         ),
+        isAddedToWatchList: false,
       };
 
     // continue watching movies part
@@ -97,7 +99,10 @@ export const movieReducers = (state = initialMoviesState, action) => {
     case ADD_TO_CONTINUE_WATCHING:
       return {
         ...state,
-        listOfContinueWatchingMovies: [...state.listOfContinueWatchingMovies,action.payload,],
+        listOfContinueWatchingMovies: [
+          ...state.listOfContinueWatchingMovies,
+          action.payload,
+        ],
       };
 
     case REMOVE_FROM_CONTINUE_WATCH_MOVIES:
@@ -107,7 +112,7 @@ export const movieReducers = (state = initialMoviesState, action) => {
           (movie) => movie["continue_watching_movie_id"] !== action.payload
         ),
       };
-      
+
     default:
       return state;
   }

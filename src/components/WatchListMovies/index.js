@@ -1,15 +1,24 @@
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import styles from "./WatchListMovies.module.css";
 import emptyWatchList from "../../assets/empty_watchlist.png";
 import WatchListCard from "./WatchListCard";
-
-const WatchListMovies = ({ movies }) => {
+import { useDispatch, useSelector } from "react-redux";
+import { handleFetchWatchlist } from "../../store/actions/movie-action";
+import { useAuth } from "../../store/AuthProvider";
+const WatchListMovies = () => {
+  const { user } = useAuth();
+  const { listOfWatchListMovies } = useSelector((state) => state.movie);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(handleFetchWatchlist(user.uid));
+  }, [listOfWatchListMovies]);
   return (
     <div className={styles.WatchListContainer}>
-      {movies?.length > 0 ? (
+      {listOfWatchListMovies?.length > 0 ? (
         <div className={styles["watchlist-card-container"]}>
-          {movies.map((movie, index) => (
-            <WatchListCard key={index} movie={movie} />
+          {listOfWatchListMovies.map((movie, index) => (
+            <WatchListCard key={index} id={index} movie={movie} />
           ))}
         </div>
       ) : (

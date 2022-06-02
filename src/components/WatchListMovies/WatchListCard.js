@@ -2,8 +2,9 @@ import React from "react";
 import HoverScreen from "../HoverScreen/HoverScreen";
 import styles from "./WatchListCard.module.css";
 import prime from "../../assets/logo/prime.svg";
-const WatchListCard = ({ movie, key }) => {
-  const setPosition = (id) => {
+
+const WatchListCard = ({ movie, key, isAddedToWatchList, id }) => {
+    const setPosition = (id) => {
     let x = document.getElementById(`1${id}`);
     let divItem = document.getElementById(`2${id}`);
     if (divItem) {
@@ -32,7 +33,7 @@ const WatchListCard = ({ movie, key }) => {
         </div>
 
         <div className={styles.displayhoverScreen} id={`2${key}`}>
-          <HoverScreen movie={movie} />
+          <HoverScreen movie={movie} isAddedToWatchList={isAddedToWatchList} />
         </div>
       </div>
     </div>

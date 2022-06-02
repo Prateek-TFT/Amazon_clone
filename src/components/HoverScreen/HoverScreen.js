@@ -4,17 +4,19 @@ import prime from "../../assets/logo/prime.svg";
 import { useNavigate, useParams } from "react-router-dom";
 import HoverVideoPlayer from "react-hover-video-player";
 import video from "../../assets/Intro video/Prime-Intro.mp4";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useAuth } from "../../store/AuthProvider";
 import { addToContinueWatchingMoviesHandler } from "../../store/actions/movie-action";
+import {
+  handleAddToWatchlist,
+  handleDeleteFromWatchlist,
+} from "../../store/actions/movie-action";
 const HoverScreen = ({ movie }) => {
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
-  const [toggle, setToggle] = useState({
-    addToWatchList: true,
-    removeFromWatchlist: false,
-  });
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const {isAddedToWatchList}=useSelector(state=>state.movie)
   const { user } = useAuth();
   const { id } = useParams();
   const handleClick = () => {
@@ -29,17 +31,12 @@ const HoverScreen = ({ movie }) => {
   };
   const addToWatchlistHandler = (event) => {
     event.stopPropagation();
-    setToggle({
-      addToWatchList: false,
-      removeFromWatchlist: true,
-    });
+    console.log("button pressed"+isAddedToWatchList);
+    dispatch(handleAddToWatchlist(user.uid, { ...movie, _id: id }));
   };
-  const removeFromWatchlistHandler = (event) => {
+  const removeFromWatchlistHandler = (event, id) => {
     event.stopPropagation();
-    setToggle({
-      addToWatchList: true,
-      removeFromWatchlist: false,
-    });
+    dispatch(handleDeleteFromWatchlist(user.uid, id));
   };
 
   return (
@@ -61,7 +58,7 @@ const HoverScreen = ({ movie }) => {
             <div className={styles.playtext}>Play</div>
           </div>
           <div className={styles.watchlistButton}>
-            {toggle.addToWatchList && (
+            {!isAddedToWatchList && (
               <div onClick={addToWatchlistHandler}>
                 <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg">
                   <title>Add to Watchlist</title>
@@ -75,8 +72,8 @@ const HoverScreen = ({ movie }) => {
                 </svg>
               </div>
             )}
-            {toggle.removeFromWatchlist && (
-              <div onClick={removeFromWatchlistHandler}>
+            {isAddedToWatchList && (
+              <div onClick={() => removeFromWatchlistHandler(id)}>
                 <svg
                   width="24px"
                   height="24px"
