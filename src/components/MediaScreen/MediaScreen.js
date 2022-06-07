@@ -8,7 +8,7 @@ const MediaScreen = ({ movies, id, heading }) => {
   var count = 0;
 
   const scrollToLeft = () => {
-    document.getElementById("bannerDiv" + id.toString()).scrollBy({
+    document.getElementById("bannerDiv" + id).scrollBy({
       left: -800,
     });
     if (count === -5.4) {
@@ -24,7 +24,7 @@ const MediaScreen = ({ movies, id, heading }) => {
   };
   const scrollToRight = () => {
     // setToggleLeftButton(true);
-    document.getElementById("bannerDiv" + id.toString()).scrollBy({
+    document.getElementById("bannerDiv" + id).scrollBy({
       left: 800,
     });
     count--;
@@ -34,9 +34,9 @@ const MediaScreen = ({ movies, id, heading }) => {
     }
   };
 
-  const setPosition = (movie) => {
-    let x = document.getElementById(`1${movie._id}`);
-    let divItem = document.getElementById(`2${movie._id}`);
+  const setPosition = (id) => {
+    let x = document.getElementById(`1${id}`);
+    let divItem = document.getElementById(`2${id}`);
     if (divItem) {
       divItem.style.position = "absolute";
       divItem.style.top = parseInt(x.offsetTop, 10) + "px";
@@ -44,17 +44,17 @@ const MediaScreen = ({ movies, id, heading }) => {
     }
     return divItem.style;
   };
-  const shuffleData = (arr) => {
-    for (var i = arr.length - 1; i > 0; i--) {
-      var j = Math.floor(Math.random() * (i + 1));
-      var temp = arr[i];
-      arr[i] = arr[j];
-      arr[j] = temp;
-    }
-  };
-  if (movies.length > 0) {
-    shuffleData(movies);
-  }
+  // const shuffleData = (arr) => {
+  //   for (var i = arr.length - 1; i > 0; i--) {
+  //     var j = Math.floor(Math.random() * (i + 1));
+  //     var temp = arr[i];
+  //     arr[i] = arr[j];
+  //     arr[j] = temp;
+  //   }
+  // };
+  // if (movies.length > 0) {
+  //   shuffleData(movies);
+  // }
   return (
     <div className={styles.mediaScreen}>
       <div className={styles.heading}>{heading}</div>
@@ -67,16 +67,16 @@ const MediaScreen = ({ movies, id, heading }) => {
           />
         </div>
       {/* )} */}
-      <div className={styles.banner} id={"bannerDiv" + id.toString()}>
+      <div className={styles.banner} id={"bannerDiv" + id}>
         &nbsp;
-        {movies.map((movie) => {
+        {movies.map((movie,index) => {
           return (
-            <div key={movie._id}>
+            <div key={index}>
               <div
                 className={styles.mediaDiv}
-                id={`1${movie._id}`}
+                id={`1${index}`}
                 onMouseEnter={() => {
-                  setPosition(movie);
+                  setPosition(index);
                 }}
               >
                 <div className={styles.media}>
@@ -92,7 +92,7 @@ const MediaScreen = ({ movies, id, heading }) => {
                   />
                 </div>
 
-                <div className={styles.displayhoverScreen} id={`2${movie._id}`}>
+                <div className={styles.displayhoverScreen} id={`2${index}`}>
                   <HoverScreen movie={movie} />
                 </div>
               </div>
