@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styles from "./MediaScreen.module.css";
 import HoverScreen from "../HoverScreen/HoverScreen";
 import prime from "../../assets/logo/prime.svg";

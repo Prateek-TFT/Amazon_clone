@@ -81,7 +81,7 @@
 .mediaDiv .displayhoverScreen {
   display: none;
   position: absolute;
-  z-index: 5;
+  z-index: 99999;
   padding: 1px;
   min-height: 400px;
   transform: scale(1);

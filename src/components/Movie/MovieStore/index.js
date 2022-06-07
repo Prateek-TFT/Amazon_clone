@@ -7,7 +7,7 @@ import {
 import { useAuth } from "../../../store/AuthProvider";
 import MediaScreen from "../../MediaScreen/MediaScreen";
 import ContinueWatchList from "../../ContinueWatch/ContinueWatchList";
-
+import Slick from "../../MediaScreen/slick";
 const MovieStore = () => {
   const { englishMoviesList, hindiMoviesList, listOfContinueWatchingMovies } =
     useSelector((state) => state.movie);
@@ -34,6 +34,13 @@ const MovieStore = () => {
         <MediaScreen
           heading="English Movies"
           id="english-movie-list"
+          movies={englishMoviesList}
+        />
+      )}
+      {englishMoviesList.length > 0 && (
+        <Slick
+          // heading="English Movies"
+          // id="english-movie-list"
           movies={englishMoviesList}
         />
       )}
