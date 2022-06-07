@@ -3,18 +3,14 @@ import styles from "./ContinueWatchList.module.css";
 import HoverScreen from "../HoverScreen/HoverScreen";
 import prime from "../../assets/logo/prime.svg";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  FetchContinueWatchingMoviesHandler,
-  removeFromContinueWatchingHandler,
-} from "../../store/actions/movie-action";
+import { FetchContinueWatchingMoviesHandler, removeFromContinueWatchingHandler } from "../../store/actions/movie-action";
 import { useAuth } from "../../store/AuthProvider";
+
 const ContinueWatchList = ({ movies, id, heading }) => {
   const [toggle, setToggle] = useState(false);
   const dispatch = useDispatch();
   const { user } = useAuth();
-  const { listOfContinueWatchingMovies } = useSelector(
-    (state) => state.movie
-  );
+  const { listOfContinueWatchingMovies } = useSelector((state) => state.movie);
   var count = 0;
   const scrollToLeft = () => {
     document.getElementById("bannerDiv" + id.toString()).scrollBy({

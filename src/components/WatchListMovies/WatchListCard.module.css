@@ -1,3 +1,14 @@
+.banner {
+  display: flex;
+  left: 10px;
+  flex-wrap: wrap;
+  width: 100vw;
+  /* z-index: -1; */
+}
+.watchListCard{
+  
+}
+
 .mediaDiv {
   position: static;
   width: 100%;
@@ -19,9 +30,9 @@
 }
 .media {
   height: 208px;
-  width: 281px;
+  width: 300px;
   border-radius: 0%;
-  margin: -20px 5px;
+  margin: 5px;
   border-radius: 4px;
   z-index: -1;
   visibility: visible;
@@ -32,7 +43,7 @@
 }
 .movieImg {
   height: 160px;
-  width: 281px;
+  width: 300px;
   border-radius: 5px;
 }
 

@@ -11,28 +11,27 @@ import {
   handleAddToWatchlist,
   handleDeleteFromWatchlist,
 } from "../../store/actions/movie-action";
-const HoverScreen = ({ movie }) => {
+const HoverScreen = ({ movie, id }) => {
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const {isAddedToWatchList}=useSelector(state=>state.movie)
   const { user } = useAuth();
-  const { id } = useParams();
+  console.log(movie)
   const handleClick = () => {
     return navigate(`/movie/detail/${movie["_id"]}`);
   };
   const moviePlayHandler = (event) => {
     event.stopPropagation();
     dispatch(
-      addToContinueWatchingMoviesHandler(user.uid, { ...movie, _id: id })
+      addToContinueWatchingMoviesHandler(user.uid, { ...movie})
     );
     navigate("/player", { state: { link: movie?.["link"] } });
   };
   const addToWatchlistHandler = (event) => {
     event.stopPropagation();
-    console.log("button pressed"+isAddedToWatchList);
-    dispatch(handleAddToWatchlist(user.uid, { ...movie, _id: id }));
+    dispatch(handleAddToWatchlist(user.uid, { ...movie }));
   };
   const removeFromWatchlistHandler = (event, id) => {
     event.stopPropagation();
