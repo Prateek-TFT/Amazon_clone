@@ -11,7 +11,7 @@ const MediaScreen = ({ movies, id, heading }) => {
     document.getElementById("bannerDiv" + id.toString()).scrollBy({
       left: -800,
     });
-    if (count === -5) {
+    if (count === -5.4) {
       count = -5;
       // setToggleLeftButton(false);
     }
@@ -34,9 +34,9 @@ const MediaScreen = ({ movies, id, heading }) => {
     }
   };
 
-  const setPosition = (id) => {
-    let x = document.getElementById(`1${id}`);
-    let divItem = document.getElementById(`2${id}`);
+  const setPosition = (movie) => {
+    let x = document.getElementById(`1${movie._id}`);
+    let divItem = document.getElementById(`2${movie._id}`);
     if (divItem) {
       divItem.style.position = "absolute";
       divItem.style.top = parseInt(x.offsetTop, 10) + "px";
@@ -44,19 +44,17 @@ const MediaScreen = ({ movies, id, heading }) => {
     }
     return divItem.style;
   };
-
-  // const shuffleData = (arr) => {
-  //   for (var i = arr.length - 1; i > 0; i--) {
-  //     var j = Math.floor(Math.random() * (i + 1));
-  //     // var j = i + 1;
-  //     var temp = arr[i];
-  //     arr[i] = arr[j];
-  //     arr[j] = temp;
-  //   }
-  // };
-  // if (movies?.length > 0) {
-  //   shuffleData(movies);
-  // }
+  const shuffleData = (arr) => {
+    for (var i = arr.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var temp = arr[i];
+      arr[i] = arr[j];
+      arr[j] = temp;
+    }
+  };
+  if (movies.length > 0) {
+    shuffleData(movies);
+  }
   return (
     <div className={styles.mediaScreen}>
       <div className={styles.heading}>{heading}</div>
@@ -71,14 +69,14 @@ const MediaScreen = ({ movies, id, heading }) => {
       {/* )} */}
       <div className={styles.banner} id={"bannerDiv" + id.toString()}>
         &nbsp;
-        {movies.map((movie, index) => {
+        {movies.map((movie) => {
           return (
-            <div key={index} id={index}>
+            <div key={movie._id}>
               <div
                 className={styles.mediaDiv}
-                id={`1${index}`}
+                id={`1${movie._id}`}
                 onMouseEnter={() => {
-                  setPosition(index);
+                  setPosition(movie);
                 }}
               >
                 <div className={styles.media}>
@@ -94,8 +92,8 @@ const MediaScreen = ({ movies, id, heading }) => {
                   />
                 </div>
 
-                <div className={styles.displayhoverScreen} id={`2${index}`}>
-                  <HoverScreen key={index} movie={movie} />
+                <div className={styles.displayhoverScreen} id={`2${movie._id}`}>
+                  <HoverScreen movie={movie} />
                 </div>
               </div>
             </div>

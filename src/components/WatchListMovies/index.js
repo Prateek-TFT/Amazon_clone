@@ -17,9 +17,7 @@ const WatchListMovies = () => {
     <div className={styles.WatchListContainer}>
       {listOfWatchListMovies?.length > 0 ? (
         <div className={styles["watchlist-card-container"]}>
-          {listOfWatchListMovies.map((movie, index) => (
-            <WatchListCard key={index} id={index} movie={movie} />
-          ))}
+          <WatchListCard movies={listOfWatchListMovies} />
         </div>
       ) : (
         <div className={styles.emptyWatchListContainer}>

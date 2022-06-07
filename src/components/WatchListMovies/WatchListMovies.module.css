@@ -1,12 +1,7 @@
-.watchlist-card-container {
-  /* display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  grid-gap: 0.875rem; */
+/* .watchlist-card-container {
   display: flex;
-  justify-content: flex-start;
-  flex-wrap: wrap;
   align-items: center;
-}
+} */
 
 .emptyWatchListContainer {
   display: flex;
