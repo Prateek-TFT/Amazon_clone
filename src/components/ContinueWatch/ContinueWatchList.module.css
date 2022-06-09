@@ -24,6 +24,7 @@
   transition: color 0.2s;
 }
 .banner {
+  height: 180px;
   display: flex;
   left: 10px;
   overflow-y: hidden;

@@ -13,7 +13,7 @@ const ContinueWatchList = ({ movies, id, heading }) => {
   const { listOfContinueWatchingMovies } = useSelector((state) => state.movie);
   var count = 0;
   const scrollToLeft = () => {
-    document.getElementById("bannerDiv" + id.toString()).scrollBy({
+    document.getElementById("continueWatching" + id.toString()).scrollBy({
       left: -800,
     });
     if (count === -5.4) {
@@ -26,7 +26,7 @@ const ContinueWatchList = ({ movies, id, heading }) => {
     }
   };
   const scrollToRight = () => {
-    document.getElementById("bannerDiv" + id.toString()).scrollBy({
+    document.getElementById("continueWatching" + id.toString()).scrollBy({
       left: 800,
     });
     count--;
@@ -86,7 +86,7 @@ const ContinueWatchList = ({ movies, id, heading }) => {
           className={styles.leftIcon}
         />
       </div>
-      <div className={styles.banner} id={"bannerDiv" + id.toString()}>
+      <div className={styles.banner} id={"continueWatching" + id.toString()}>
         &nbsp;
         {movies.map((movie, index) => {
           return (
