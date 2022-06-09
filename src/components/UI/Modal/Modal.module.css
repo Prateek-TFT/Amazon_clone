@@ -15,7 +15,16 @@
   width: 100%;
   height: 350px;
   /* background-color: #0f171e; */
-  background-image: radial-gradient(ellipse at left top,rgba(29,79,115,.2) 10%,#0f171e 80%),radial-gradient(ellipse at left bottom,rgba(29,79,115,.1) 20%,#0f171e 80%);
+  background-image: radial-gradient(
+      ellipse at left top,
+      rgba(29, 79, 115, 0.7),
+      #0f171e 80%
+    ),
+    radial-gradient(
+      ellipse at left bottom,
+      rgba(29, 79, 115, 0.6),
+      #0f171e 80%
+    );
   padding: 1rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
   z-index: 30;

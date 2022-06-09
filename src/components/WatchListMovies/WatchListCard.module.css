@@ -3,12 +3,7 @@
   left: 10px;
   flex-wrap: wrap;
   width: 100vw;
-  /* z-index: -1; */
 }
-/* .watchListCard{
-  
-} */
-
 .mediaDiv {
   position: static;
   width: 100%;

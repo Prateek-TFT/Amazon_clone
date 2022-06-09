@@ -15,6 +15,13 @@ const initialMoviesState = {
   listOfMovies: [],
   englishMoviesList: [],
   hindiMoviesList: [],
+  dramaMoviesList: [],
+  actionMoviesList: [],
+  adventureMoviesList: [],
+  romanticMoviesList: [],
+  comedyMoviesList: [],
+  suspenseMoviesList: [],
+  horrorMoviesList: [],
   listOfWatchListMovies: [],
   listOfContinueWatchingMovies: [],
   loading: true,
@@ -33,11 +40,63 @@ export const movieReducers = (state = initialMoviesState, action) => {
       const hindiMovies = action.payload.filter(
         (movie) => movie["audio-lang"] === "Hindi"
       );
+      const dramaMovies = action.payload.filter(function (movie) {
+        var genres = movie["genres"].split(",");
+        for (var i = 0; i < genres.length; i++) {
+          if (genres[i].trim() === "Drama") {
+            return true;
+          }
+        }
+      });
+      // const dramaMovies = action.payload.filter(
+      //   (movie) =>
+      //     movie["genres"].split(",").find((str) => str.trim() === "Drama") ===
+      //     "Drama"
+      // );
+      const actionMovies = action.payload.filter(
+        (movie) =>
+          movie["genres"].split(",").find((str) => str.trim() === "Action") ===
+          "Action"
+      );
+      const adventureMovies = action.payload.filter(
+        (movie) =>
+          movie["genres"]
+            .split(",")
+            .find((str) => str.trim() === "Adventure") === "Adventure"
+      );
+      const romanticMovies = action.payload.filter(
+        (movie) =>
+          movie["genres"].split(",").find((str) => str.trim() === "Romance") ===
+          "Romance"
+      );
+      const comedyMovies = action.payload.filter(
+        (movie) =>
+          movie["genres"].split(",").find((str) => str.trim() === "Comedy") ===
+          "Comedy"
+      );
+      const suspenseMovies = action.payload.filter(
+        (movie) =>
+          movie["genres"]
+            .split(",")
+            .find((str) => str.trim() === "Suspense") === "Suspense"
+      );
+      const horrorMovies = action.payload.filter(
+        (movie) =>
+          movie["genres"].split(",").find((str) => str.trim() === "Horror") ===
+          "Horror"
+      );
       return {
         ...state,
         listOfMovies: [...action.payload],
         englishMoviesList: englishMovies,
         hindiMoviesList: hindiMovies,
+        dramaMoviesList: dramaMovies,
+        actionMoviesList: actionMovies,
+        adventureMoviesList: adventureMovies,
+        romanticMoviesList: romanticMovies,
+        comedyMoviesList: comedyMovies,
+        suspenseMoviesList: suspenseMovies,
+        horrorMoviesList: horrorMovies,
         loading: false,
       };
 

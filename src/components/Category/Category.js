@@ -1,6 +1,7 @@
 import React from "react";
 import Modal from "../UI/Modal/Modal";
 import styles from "../Category/Category.module.css";
+import { useNavigate } from "react-router-dom";
 const topCategories = [
   "Included with prime",
   "Amazon Originals",
@@ -10,8 +11,9 @@ const topCategories = [
 ];
 const otherCategories = [
   "Drama",
-  "Action and Adventure",
-  "Romantic",
+  "Action",
+  "Adventure",
+  "Romance",
   "Comedy",
   "Suspense",
   "Horror",
@@ -29,9 +31,12 @@ const audioLanguages = [
   "Marathi",
   "Gujarati",
 ];
-// const url =
-//   "	https://m.media-amazon.com/images/G/01/digital/video/web_cats/Amazon-Originals.png";
+
 const Category = (props) => {
+  const navigate = useNavigate();
+  const routeToCategoryDisplayPageHandler = (header) => {
+    navigate("/category-display-page", { state: { header: header } });
+  };
   return (
     <Modal onClick={props.onHideCategory}>
       <div className={styles.categoryContainer}>
@@ -69,17 +74,27 @@ const Category = (props) => {
             </h3>
             <div className={styles.audioContainer}>
               {audioLanguages.map((audio, index) => (
-                <div key={index} className={styles.fronts}>
+                <div
+                  key={index}
+                  className={styles.fronts}
+                  onClick={() => routeToCategoryDisplayPageHandler(audio)}
+                >
                   {audio}
                 </div>
               ))}
             </div>
           </div>
           <div>
-            <h3 className={styles.heading} style={{marginBottom: "20px" }}>Other Category</h3>
+            <h3 className={styles.heading} style={{ marginBottom: "20px" }}>
+              Other Category
+            </h3>
             <div className={styles.otherCategoryContainer}>
               {otherCategories.map((categorie, index) => (
-                <div key={index} className={styles.fronts}>
+                <div
+                  key={index}
+                  className={styles.fronts}
+                  onClick={() => routeToCategoryDisplayPageHandler(categorie)}
+                >
                   {categorie}
                 </div>
               ))}
